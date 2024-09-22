@@ -4330,7 +4330,7 @@ __metadata:
     "@sereneinserenade/tiptap-search-and-replace": "npm:0.1.1"
     "@tabler/icons-react": "npm:3.16.0"
     "@tiptap/core": "npm:2.7.1"
-    "@tiptap/extension-code-block": "npm:2.7.1"
+    "@tiptap/extension-code-block": "npm:2.7.2"
     "@tiptap/extension-code-block-lowlight": "npm:2.7.1"
     "@tiptap/extension-color": "npm:2.7.1"
     "@tiptap/extension-image": "npm:2.7.1"
@@ -5559,7 +5559,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiptap/extension-code-block@npm:2.7.1, @tiptap/extension-code-block@npm:^2.7.1":
+"@tiptap/extension-code-block@npm:2.7.2":
+  version: 2.7.2
+  resolution: "@tiptap/extension-code-block@npm:2.7.2"
+  peerDependencies:
+    "@tiptap/core": ^2.7.0
+    "@tiptap/pm": ^2.7.0
+  checksum: 10/70a317ace26b25133717fab42473628ea2cfd1f338c1e3f5aaaee22b125bd1eaab57e605652bc97ac5265f80794137ed5fbb185a9205656321093bf69337e435
+  languageName: node
+  linkType: hard
+
+"@tiptap/extension-code-block@npm:^2.7.1":
   version: 2.7.1
   resolution: "@tiptap/extension-code-block@npm:2.7.1"
   peerDependencies:
