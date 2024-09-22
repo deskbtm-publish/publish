@@ -24,8 +24,8 @@
     }
   },
   "repository": {
-    "url": "https://github.com/indiebase/indiebase",
-    "directory": "apps/first_party/gadgets",
+    "url": "https://github.com/deskbtm-publish/publish",
+    "directory": "first_party/react-compiler-loader",
     "type": "git"
   },
   "scripts": {

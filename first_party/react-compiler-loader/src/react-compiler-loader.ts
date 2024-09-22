@@ -1,4 +1,4 @@
-import babel from '@babel/core';
+import * as babel from '@babel/core';
 import BabelPluginReactCompiler from 'babel-plugin-react-compiler';
 import type webpack from 'webpack';
 
@@ -15,6 +15,16 @@ export const reactCompilerLoader = async function (
       sourceFileName: this.resourcePath,
       filename: this.resourcePath,
       plugins: [[BabelPluginReactCompiler, reactCompilerConfig]],
+      generatorOpts: {
+        jsescOption: {
+          minimal: true,
+        },
+      },
+      cloneInputAst: false,
+      ast: false,
+      sourceMaps: true,
+      configFile: false,
+      babelrc: false,
     });
 
     if (!result) {

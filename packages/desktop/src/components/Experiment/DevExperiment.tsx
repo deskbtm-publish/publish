@@ -3,6 +3,7 @@ import { Sandbox } from '@publish/addon-rt';
 import { createTransport, IndexedDBTransport, Logger } from '@publish/logger';
 import { XApi } from '@publish-kit/x-api';
 import { type FC, Suspense } from 'react';
+import PouchDB from 'pouchdb';
 
 import { DeviceInfo } from '../DeviceInfo';
 
@@ -36,6 +37,32 @@ export const DevExperiment: FC<DevExperimentProps> = function () {
             }}
           >
             Test log storage
+          </Button>
+        </Card>
+        <Card padding="lg" shadow="sm" radius="md" withBorder>
+          <Button
+            onClick={async () => {
+              const db = new PouchDB('kittens');
+
+              const r = await db.info();
+
+              const doc = {
+                _id: 'mittens',
+                name: 'Mittens',
+                occupation: 'kitten',
+                age: 3,
+                hobbies: [
+                  'playing with balls of yarn',
+                  'chasing laser pointers',
+                  "lookin' hella cute",
+                ],
+              };
+              db.put(doc);
+
+              console.log(r);
+            }}
+          >
+            PouchDB
           </Button>
         </Card>
 

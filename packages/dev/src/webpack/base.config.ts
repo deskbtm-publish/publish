@@ -15,7 +15,12 @@ import { type Configuration, DefinePlugin, ProgressPlugin } from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 import { getEnvironment } from './env';
-import { __project, __rootProject, require } from './utils';
+import {
+  __project,
+  __rootProject,
+  InternalConfiguration,
+  require,
+} from './utils';
 
 declare global {
   const kReleaseMode: string;
@@ -54,7 +59,9 @@ function getStyleLoaders(cssOptions: any) {
  *
  * @returns
  */
-export function createConfiguration(): Configuration {
+export function createConfiguration({
+  reactCompiler,
+}: InternalConfiguration): Configuration {
   const kEnvMode = process.env.NODE_ENV as Configuration['mode'];
   const publicPath = process.env.PUBLIC_PATH ?? '/';
 
@@ -246,6 +253,10 @@ export function createConfiguration(): Configuration {
               },
             ],
           },
+          reactCompiler && {
+            test: /\.(js|mjs|jsx|ts|tsx)$/,
+            loader: require.resolve('react-compiler-loader'),
+          },
           {
             test: /\.css$/,
             exclude: /\.module\.css$/,
@@ -273,7 +284,7 @@ export function createConfiguration(): Configuration {
             exclude: [/^$/, /\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
             type: 'asset/resource',
           },
-        ],
+        ].filter(Boolean),
       },
     ],
   } satisfies Configuration['module'];

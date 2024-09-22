@@ -7,6 +7,7 @@ import { __project, configure, HTML } from '@publish/dev';
 const excludeChunks = ['sw'];
 
 const config = configure({
+  reactCompiler: true,
   entry: {
     main: path.resolve(__project, './src/main.tsx'),
     sw: {

@@ -19,9 +19,13 @@ export const resolveRelativeProject = (relativePath: string) =>
 
 export const require = createRequire(import.meta.url);
 
-export interface PublishPackConfiguration extends Configuration {
+export interface InternalConfiguration {
   reactCompiler?: boolean;
 }
+
+export interface PublishPackConfiguration
+  extends Configuration,
+    InternalConfiguration {}
 
 /**
  * Configure webpack
@@ -39,8 +43,11 @@ export interface PublishPackConfiguration extends Configuration {
  * })
  * ```
  */
-export async function configure(config: PublishPackConfiguration) {
-  const baseConfig = createConfiguration();
+export async function configure({
+  reactCompiler,
+  ...config
+}: PublishPackConfiguration) {
+  const baseConfig = createConfiguration({ reactCompiler });
   const serverConfig = await createDevServerConfiguration();
 
   return merge<Configuration>(baseConfig, config, serverConfig);

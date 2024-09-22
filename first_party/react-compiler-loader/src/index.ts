@@ -1,1 +1,1 @@
-export * from './react-compiler-loader';
+export { reactCompilerLoader as default } from './react-compiler-loader';
