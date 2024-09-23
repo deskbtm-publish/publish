@@ -2671,6 +2671,7 @@ dependencies = [
 name = "publish"
 version = "0.0.0"
 dependencies = [
+ "enigo",
  "serde",
  "serde_json",
  "tauri",

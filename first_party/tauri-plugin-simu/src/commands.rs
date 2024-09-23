@@ -28,6 +28,7 @@ fn create(settings: Option<SiumSettings>) -> Enigo {
 pub(crate) async fn key<R: Runtime>(app: AppHandle<R>, settings: Option<SiumSettings>) -> () {
     let mut enigo = self::create(settings);
 
+
     // if action == "key" {
     //     enigo.key(Key::Unicode('a'), Direction::Press).unwrap();
     // }

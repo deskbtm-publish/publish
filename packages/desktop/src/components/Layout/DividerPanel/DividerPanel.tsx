@@ -61,7 +61,6 @@ export const DividerPanelInner = function ({
 }) {
   const { children, dividerWidth, initial, hideDividerCollapsed, ...rest } =
     props;
-  const collapsedPosition = dividerWidth! / 2;
   const { isDragging, position, separatorProps, setPosition } = useResizable({
     axis: 'x',
     initial,
@@ -77,8 +76,6 @@ export const DividerPanelInner = function ({
       setPosition,
     };
   }, [setPosition]);
-
-  const collapsed = hideDividerCollapsed && panel?.collapsed;
 
   return (
     <Flex direction="row" h="100%">

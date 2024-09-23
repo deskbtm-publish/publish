@@ -70,7 +70,6 @@ export interface SandboxOptions {
  * });
  *
  * sandbox.addEventListener('manifest',(e) => {},{ once: true },);
- *
  * ```
  */
 export class Sandbox extends EventTarget {

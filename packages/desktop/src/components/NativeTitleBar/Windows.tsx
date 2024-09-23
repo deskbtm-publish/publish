@@ -15,6 +15,7 @@ import {
 } from 'react';
 import { IF } from 'reactgets';
 import { useNativeWindow } from 'tauri-reactgets';
+import { invoke } from '@tauri-apps/api/core';
 
 import * as classes from './NativeTitleBar.module.css';
 
@@ -29,10 +30,15 @@ export const WindowsNativeTitleBar: FC<WindowsNativeTitleBarProps> =
       null,
     );
 
+    const showSnapOverlay = () =>
+      invoke('plugin:publish-window-snap|show_snap_overlay');
+
     const updateWindowMaximized = useCallback(async () => {
       const r = await current?.isMaximized();
       setWindowMaximized(r);
     }, []);
+
+    let timer: NodeJS.Timeout;
 
     useEffect(() => {
       updateWindowMaximized();
@@ -52,6 +58,10 @@ export const WindowsNativeTitleBar: FC<WindowsNativeTitleBarProps> =
           <IconWindowsMinimize />
         </Center>
         <Center
+          onMouseLeave={() => clearTimeout(timer)}
+          onMouseEnter={() => {
+            timer = setTimeout(showSnapOverlay, 500);
+          }}
           component="button"
           onClick={async () => current?.toggleMaximize()}
         >

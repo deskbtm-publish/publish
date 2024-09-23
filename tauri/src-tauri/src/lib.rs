@@ -1,4 +1,7 @@
+use self::plugins::window_snap;
 use tauri::Manager;
+
+mod plugins;
 
 // #[cfg(desktop)]
 // mod tray;
@@ -10,6 +13,7 @@ pub fn run() {
     .plugin(tauri_plugin_fs::init())
     .plugin(tauri_plugin_shell::init())
     .plugin(tauri_plugin_http::init())
+    .plugin(window_snap::init())
     .setup(|app| {
       #[cfg(all(desktop))]
       {
