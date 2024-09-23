@@ -15,7 +15,7 @@ import {
 import { ReactElement } from 'react';
 
 import { useDocEditorContext } from '../DocEditor.context';
-import classes from '../DocEditor.module.css';
+import * as classes from '../DocEditor.module.css';
 
 export type PrimitiveFnStylesNames = 'primitiveFn';
 

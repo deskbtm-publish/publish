@@ -11,7 +11,7 @@ import React from 'react';
 import { useProps } from 'reactgets/hooks/use-props';
 
 import { DividerHandle } from './DividerHandle';
-import classes from './DividerPanel.module.css';
+import * as classes from './DividerPanel.module.css';
 import { DividerPanelContext } from './DividerPanelContext';
 import { Panel, PanelProps } from './Panel';
 import { useDividerPanel } from './use-divider-panel';

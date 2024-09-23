@@ -1,4 +1,4 @@
-import classes from './ContextMenu.module.css';
+import * as classes from './ContextMenu.module.css';
 // import * as classes from './ContextMenu.css';
 import type { ItemTracker, ItemTrackerRecord } from './hooks';
 

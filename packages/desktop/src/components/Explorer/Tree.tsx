@@ -20,7 +20,7 @@ import { EXPLORER_EMPTY_ID } from '../context-menus';
 import { useContextMenu } from '../ContextMenu';
 // import { Dropzone } from '../Dropzone';
 import { DragPreview } from './DragPreview';
-import classes from './Explorer.module.css';
+import * as classes from './Explorer.module.css';
 import { useExplorer } from './hooks';
 import { TreeNode } from './TreeNode';
 import type { NodeData } from './types';

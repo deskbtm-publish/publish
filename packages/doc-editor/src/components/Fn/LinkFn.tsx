@@ -20,7 +20,7 @@ import { IconExternalLink, IconLink } from '@tabler/icons-react';
 import React, { useState } from 'react';
 
 import { useDocEditorContext } from '../DocEditor.context';
-import classes from '../DocEditor.module.css';
+import * as classes from '../DocEditor.module.css';
 import type { PrimitiveFnProps } from './PrimitiveFn';
 import { PrimitiveFn } from './PrimitiveFn';
 

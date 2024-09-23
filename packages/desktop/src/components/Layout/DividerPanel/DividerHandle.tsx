@@ -1,6 +1,6 @@
 import { Box, Center } from '@mantine/core';
 
-import classes from './DividerPanel.module.css';
+import * as classes from './DividerPanel.module.css';
 import type { DividerProps } from './use-resizable';
 
 export interface DividerHandleProps extends DividerProps {

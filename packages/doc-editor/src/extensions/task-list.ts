@@ -1,4 +1,4 @@
-import classes from '../components/DocEditor.module.css';
+import * as classes from '../components/DocEditor.module.css';
 
 import TipTapTaskList from '@tiptap/extension-task-list';
 

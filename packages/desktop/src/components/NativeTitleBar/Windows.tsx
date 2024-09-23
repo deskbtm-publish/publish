@@ -16,7 +16,7 @@ import {
 import { IF } from 'reactgets';
 import { useNativeWindow } from 'tauri-reactgets';
 
-import classes from './NativeTitleBar.module.css';
+import * as classes from './NativeTitleBar.module.css';
 
 export interface WindowsNativeTitleBarProps extends PropsWithChildren {
   label?: string;

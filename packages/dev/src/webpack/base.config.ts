@@ -52,6 +52,33 @@ function getStyleLoaders(cssOptions: any) {
   ];
 }
 
+const swcOptions = {
+  // https://swc.rs/docs/configuring-swc/
+  jsc: {
+    preserveAllComments: true,
+    parser: {
+      syntax: 'typescript',
+      dynamicImport: true,
+      topLevelAwait: false,
+      tsx: true,
+      decorators: true,
+    },
+    target: 'es2022',
+    externalHelpers: false,
+    transform: {
+      react: {
+        runtime: 'automatic',
+        refresh: kDevMode && {
+          refreshReg: '$RefreshReg$',
+          refreshSig: '$RefreshSig$',
+          emitFullSignatures: true,
+        },
+      },
+      useDefineForClassFields: false,
+    },
+  },
+};
+
 /**
  * buildMode is used for bundle
  * envMode is used for environment, eg buildMode=production to minify the code
@@ -183,6 +210,36 @@ export function createConfiguration({
       //   loader: require.resolve('source-map-loader'),
       // },
       {
+        test: /\.(js|mjs|cjs|cts|mts|ts)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: require.resolve('swc-loader'),
+            options: swcOptions,
+          },
+        ],
+      },
+      {
+        test: /\.(jsx|tsx)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: require.resolve('swc-loader'),
+            options: swcOptions,
+          },
+          reactCompiler && {
+            loader: require.resolve('react-compiler-loader'),
+            options: {
+              babelPlugins: [
+                '@babel/plugin-syntax-jsx',
+                ['@babel/plugin-syntax-typescript', { isTSX: true }],
+              ],
+            },
+          },
+        ].filter(Boolean),
+      },
+
+      {
         oneOf: [
           {
             test: /\.svg$/,
@@ -218,45 +275,50 @@ export function createConfiguration({
             test: /\.(ttf|eot|woff|woff2)$/,
             type: 'asset/resource',
           },
-          {
-            test: /\.(js|mjs|jsx|ts|tsx)$/,
-            exclude: /node_modules/,
-            use: [
-              {
-                loader: require.resolve('swc-loader'),
-                options: {
-                  // https://swc.rs/docs/configuring-swc/
-                  jsc: {
-                    preserveAllComments: true,
-                    parser: {
-                      syntax: 'typescript',
-                      dynamicImport: true,
-                      topLevelAwait: false,
-                      tsx: true,
-                      decorators: true,
-                    },
-                    target: 'es2022',
-                    externalHelpers: false,
-                    transform: {
-                      react: {
-                        runtime: 'automatic',
-                        refresh: kDevMode && {
-                          refreshReg: '$RefreshReg$',
-                          refreshSig: '$RefreshSig$',
-                          emitFullSignatures: true,
-                        },
-                      },
-                      useDefineForClassFields: false,
-                    },
-                  },
-                },
-              },
-            ],
-          },
-          reactCompiler && {
-            test: /\.(js|mjs|jsx|ts|tsx)$/,
-            loader: require.resolve('react-compiler-loader'),
-          },
+          // {
+          //   test: /\.(js|mjs|jsx|ts|tsx)$/,
+          //   exclude: /node_modules/,
+          //   use: [
+          //     {
+          //       loader: require.resolve('swc-loader'),
+          //       options: {
+          //         // https://swc.rs/docs/configuring-swc/
+          //         jsc: {
+          //           preserveAllComments: true,
+          //           parser: {
+          //             syntax: 'typescript',
+          //             dynamicImport: true,
+          //             topLevelAwait: false,
+          //             tsx: true,
+          //             decorators: true,
+          //           },
+          //           target: 'es2022',
+          //           externalHelpers: false,
+          //           transform: {
+          //             react: {
+          //               runtime: 'automatic',
+          //               refresh: kDevMode && {
+          //                 refreshReg: '$RefreshReg$',
+          //                 refreshSig: '$RefreshSig$',
+          //                 emitFullSignatures: true,
+          //               },
+          //             },
+          //             useDefineForClassFields: false,
+          //           },
+          //         },
+          //       },
+          //     },
+          //     reactCompiler && {
+          //       loader: require.resolve('react-compiler-loader'),
+          //       options: {
+          //         babelPlugins: [
+          //           '@babel/plugin-syntax-jsx',
+          //           ['@babel/plugin-syntax-typescript', { isTSX: true }],
+          //         ],
+          //       },
+          //     },
+          //   ].filter(Boolean),
+          // },
           {
             test: /\.css$/,
             exclude: /\.module\.css$/,
@@ -270,10 +332,12 @@ export function createConfiguration({
             test: /\.module\.css$/,
             use: getStyleLoaders({
               sourceMap: false,
+              esModule: true,
               modules: {
+                auto: true,
                 localIdentName: '[name]__[local]--[hash:base64:8]',
               },
-              importLoaders: 1,
+              importLoaders: 2,
             }),
           },
           {
@@ -284,7 +348,7 @@ export function createConfiguration({
             exclude: [/^$/, /\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
             type: 'asset/resource',
           },
-        ].filter(Boolean),
+        ],
       },
     ],
   } satisfies Configuration['module'];
@@ -334,7 +398,7 @@ export function createConfiguration({
     type: 'filesystem',
     version: env.hash,
     store: 'pack',
-    maxAge: 1e4,
+    maxAge: 1e5,
     buildDependencies: {
       defaultWebpack: ['webpack/lib/'],
       config: [__filename],

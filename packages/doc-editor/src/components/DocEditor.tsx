@@ -10,7 +10,7 @@ import React, { useMemo } from 'react';
 
 import { DocEditorContent } from './Content/Content';
 import { DocEditorProvider } from './DocEditor.context';
-import classes from './DocEditor.module.css';
+import * as classes from './DocEditor.module.css';
 import * as fn from './Fn';
 import { BubbleMenuGroup } from './Group';
 import type { DocEditorLabels } from './labels';

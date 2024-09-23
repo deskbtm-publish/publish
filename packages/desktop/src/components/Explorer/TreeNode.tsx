@@ -25,7 +25,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { EXPLORER_NODE_ID } from '../context-menus/index.ts';
 import { useContextMenu } from '../ContextMenu/index.ts';
 import { PolymorphicIcon } from './PolymorphicIcon.tsx';
-import classes from './TreeNode.module.css';
+import * as classes from './TreeNode.module.css';
 import type { NodeData } from './types.ts';
 
 export interface TreeNodeProps extends RenderParams {

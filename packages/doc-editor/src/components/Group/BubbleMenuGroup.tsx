@@ -7,7 +7,7 @@ import type {
 import { Box, factory, useProps } from '@mantine/core';
 
 import { useDocEditorContext } from '../DocEditor.context';
-import classes from '../DocEditor.module.css';
+import * as classes from '../DocEditor.module.css';
 
 export type BubbleMenuGroupStylesNames = 'bubbleMenuGroup';
 export interface BubbleMenuGroupProps

@@ -9,12 +9,15 @@ export const reactCompilerLoader = async function (
   const callback = this.async();
 
   try {
-    const reactCompilerConfig = this.getOptions();
+    const { babelPlugins, ...reactCompilerConfig } = this.getOptions();
 
     const result = await babel.transformAsync(content, {
       sourceFileName: this.resourcePath,
       filename: this.resourcePath,
-      plugins: [[BabelPluginReactCompiler, reactCompilerConfig]],
+      plugins: [
+        [BabelPluginReactCompiler, reactCompilerConfig],
+        ...babelPlugins,
+      ],
       generatorOpts: {
         jsescOption: {
           minimal: true,

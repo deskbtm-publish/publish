@@ -28,7 +28,7 @@ import type {
 import { useDropzone } from 'react-dropzone-esm';
 
 import { DropzoneProvider } from './Dropzone.context';
-import classes from './Dropzone.module.css';
+import * as classes from './Dropzone.module.css';
 import type { DropzoneFullScreenType } from './DropzoneFullScreen';
 import { DropzoneAccept, DropzoneIdle, DropzoneReject } from './DropzoneStatus';
 

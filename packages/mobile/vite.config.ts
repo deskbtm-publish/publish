@@ -3,7 +3,6 @@ import { resolve } from 'node:path';
 import { eruda } from '@publish/dev';
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 import react from '@vitejs/plugin-react-swc';
-import million from 'million/compiler';
 import { defineConfig } from 'vite';
 import mkcert from 'vite-plugin-mkcert';
 
@@ -13,7 +12,6 @@ export default defineConfig({
   plugins: [
     eruda({ debug: enableRemoteDebug }),
     mkcert(),
-    million.vite({ auto: true }),
     react({ plugins: [['@swc-jotai/react-refresh', {}]] }),
     vanillaExtractPlugin(),
   ],

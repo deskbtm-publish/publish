@@ -6,7 +6,7 @@ import type {
 } from '@mantine/core';
 import { Box, factory, useProps, useStyles } from '@mantine/core';
 
-import classes from './PublishTypographyStyle.module.css';
+import * as classes from './PublishTypographyStyle.module.css';
 
 export type PublishTypographyStyleStyleNames = 'root';
 

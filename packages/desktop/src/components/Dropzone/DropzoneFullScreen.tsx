@@ -24,7 +24,7 @@ import type {
   DropzoneVariant,
 } from './Dropzone';
 import { Dropzone } from './Dropzone';
-import classes from './Dropzone.module.css';
+import * as classes from './Dropzone.module.css';
 
 export type DropzoneFullScreenStylesNames = DropzoneStylesNames | 'fullScreen';
 

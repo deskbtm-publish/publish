@@ -2,7 +2,7 @@ import type { Factory, ScrollAreaProps } from '@mantine/core';
 import { factory, ScrollArea, useProps } from '@mantine/core';
 import type { FC } from 'react';
 
-import classes from './ContextMenu.module.css';
+import * as classes from './ContextMenu.module.css';
 
 export interface ScrollViewProps extends ScrollAreaProps {}
 
