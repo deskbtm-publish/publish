@@ -26,7 +26,7 @@ pub fn run() {
         // handle.plugin(menu_plugin::init())?;
       }
       let main_window = app.get_webview_window("main").unwrap();
-      // main_window.open_devtools();
+      main_window.open_devtools();
       // main_window.with_webview(|webview| unsafe {
       //   // let webview2 = webview.controller().CoreWebView2().unwrap();
       // });

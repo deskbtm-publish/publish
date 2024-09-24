@@ -14,7 +14,7 @@
     "windows": [
       {
         "decorations": false,
-        "transparent": true,
+        "transparent": false,
         "title": "Publish",
         "label": "main",
         "width": 1160,
@@ -22,12 +22,7 @@
         "resizable": true,
         "fullscreen": false,
         "center": true,
-        "dragDropEnabled": false,
-        "windowEffects": {
-          "effects": [
-            "mica"
-          ]
-        }
+        "dragDropEnabled": false
       }
     ],
     "security": {},
