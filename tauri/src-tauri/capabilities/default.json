@@ -9,13 +9,11 @@
     "core:path:default",
     "core:event:default",
     "core:window:default",
-    "core:window:allow-start-dragging",
     "core:webview:default",
     "core:app:default",
     "core:resources:default",
     "core:image:default",
     "core:menu:default",
-    "core:tray:default",
-    "core:window:allow-set-focus"
+    "core:tray:default"
   ]
 }

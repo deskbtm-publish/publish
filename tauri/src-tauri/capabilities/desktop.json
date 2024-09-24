@@ -6,8 +6,6 @@
     "main"
   ],
   "permissions": [
-    "core:window:default",
-    "core:webview:allow-create-webview-window",
     "core:window:allow-start-dragging",
     "core:window:allow-center",
     "core:window:allow-destroy",
@@ -17,6 +15,7 @@
     "core:window:allow-maximize",
     "core:window:allow-toggle-maximize",
     "core:window:allow-set-fullscreen",
+    "core:window:allow-set-focus",
     "core:tray:allow-new",
     "core:tray:allow-set-icon",
     "core:tray:allow-set-menu",
@@ -25,6 +24,7 @@
     "core:tray:allow-set-visible",
     "core:tray:allow-set-temp-dir-path",
     "core:tray:allow-set-icon-as-template",
+    "core:webview:allow-create-webview-window",
     "os:allow-arch",
     "os:allow-exe-extension",
     "os:allow-family",
