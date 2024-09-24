@@ -30,7 +30,7 @@ export const GlobalHeader: FC<GlobalHeaderProps> = () => {
       <DraggableHeader w="100%" pos="relative">
         <IF is={panel?.collapsed}>
           <Tooltip openDelay={2000} label="Collapse sidebar">
-          <ActionIcon ml={18} c="gray.7" onClick={handleExpand}>
+            <ActionIcon ml={18} c="gray.7" onClick={handleExpand}>
               <IconLayoutSidebarLeftExpand />
             </ActionIcon>
           </Tooltip>

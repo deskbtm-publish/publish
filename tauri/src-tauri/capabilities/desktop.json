@@ -5,6 +5,11 @@
   "windows": [
     "main"
   ],
+  "platforms": [
+    "linux",
+    "macOS",
+    "windows"
+  ],
   "permissions": [
     "core:window:allow-start-dragging",
     "core:window:allow-center",

@@ -1,4 +1,4 @@
-use self::plugins::window_snap;
+use plugins::window_snap::show_snap_overlay;
 use tauri::Manager;
 
 mod plugins;
@@ -13,7 +13,8 @@ pub fn run() {
     .plugin(tauri_plugin_fs::init())
     .plugin(tauri_plugin_shell::init())
     .plugin(tauri_plugin_http::init())
-    .plugin(window_snap::init())
+    // .plugin(window_snap::init())
+    .invoke_handler(tauri::generate_handler![show_snap_overlay])
     .setup(|app| {
       #[cfg(all(desktop))]
       {

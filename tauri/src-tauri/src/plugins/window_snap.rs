@@ -20,10 +20,3 @@ pub async fn show_snap_overlay() {
     enigo.key(Key::Alt, Direction::Click).unwrap();
   }
 }
-
-/// Initializes the plugin.
-pub fn init<R: Runtime>() -> TauriPlugin<R> {
-  Builder::new("publish-window-snap")
-    .invoke_handler(tauri::generate_handler![show_snap_overlay])
-    .build()
-}

@@ -30,8 +30,7 @@ export const WindowsNativeTitleBar: FC<WindowsNativeTitleBarProps> =
       null,
     );
 
-    const showSnapOverlay = () =>
-      invoke('plugin:publish-window-snap|show_snap_overlay');
+    const showSnapOverlay = () => invoke('show_snap_overlay');
 
     const updateWindowMaximized = useCallback(async () => {
       const r = await current?.isMaximized();
@@ -60,7 +59,7 @@ export const WindowsNativeTitleBar: FC<WindowsNativeTitleBarProps> =
         <Center
           onMouseLeave={() => clearTimeout(timer)}
           onMouseEnter={() => {
-            timer = setTimeout(showSnapOverlay, 500);
+            timer = setTimeout(showSnapOverlay, 600);
           }}
           component="button"
           onClick={async () => current?.toggleMaximize()}
