@@ -60,7 +60,15 @@
           "SimpChinese"
         ]
       }
-    }
+    },
+    "fileAssociations": [
+      {
+        "ext": [
+          "pub"
+        ],
+        "mimeType": "application/zip"
+      }
+    ]
   },
   "plugins": {
     "updater": {

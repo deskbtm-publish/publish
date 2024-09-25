@@ -1,8 +1,4 @@
 use enigo::Keyboard;
-use tauri::{
-  plugin::{Builder, TauriPlugin},
-  Runtime,
-};
 
 #[tauri::command]
 pub async fn show_snap_overlay() {

@@ -1,11 +1,13 @@
 use std::sync::atomic::{AtomicBool, Ordering};
 use tauri::{
   menu::{Menu, MenuItem},
-  tray::{ClickType, TrayIconBuilder},
+  tray::{MouseButton, MouseButtonState, TrayIconBuilder, TrayIconEvent},
   Manager, Runtime, WebviewUrl,
 };
 
 pub fn create_tray<R: Runtime>(app: &tauri::AppHandle<R>) -> tauri::Result<()> {
+  const MAIN_TRAY_ID: &str = "main_tray";
+
   let toggle_i = MenuItem::with_id(app, "toggle", "Toggle", true, None::<&str>)?;
   let new_window_i = MenuItem::with_id(app, "new-window", "New window", true, None::<&str>)?;
   let icon_i_1 = MenuItem::with_id(app, "icon-1", "Icon 1", true, None::<&str>)?;
@@ -14,8 +16,6 @@ pub fn create_tray<R: Runtime>(app: &tauri::AppHandle<R>) -> tauri::Result<()> {
   let set_title_i = MenuItem::with_id(app, "set-title", "Set Title", true, None::<&str>)?;
   let switch_i = MenuItem::with_id(app, "switch-menu", "Switch Menu", true, None::<&str>)?;
   let quit_i = MenuItem::with_id(app, "quit", "Quit", true, None::<&str>)?;
-  let remove_tray_i =
-    MenuItem::with_id(app, "remove-tray", "Remove Tray icon", true, None::<&str>)?;
   let menu1 = Menu::with_items(
     app,
     &[
@@ -27,27 +27,20 @@ pub fn create_tray<R: Runtime>(app: &tauri::AppHandle<R>) -> tauri::Result<()> {
       &set_title_i,
       &switch_i,
       &quit_i,
-      &remove_tray_i,
     ],
   )?;
-  let menu2 = Menu::with_items(
-    app,
-    &[&toggle_i, &new_window_i, &switch_i, &quit_i, &remove_tray_i],
-  )?;
+  let menu2 = Menu::with_items(app, &[&toggle_i, &new_window_i, &switch_i, &quit_i])?;
 
-  let is_menu1 = AtomicBool::new(true);
+  let is_menu1: AtomicBool = AtomicBool::new(true);
 
-  let _ = TrayIconBuilder::with_id("tray-1")
+  let _ = TrayIconBuilder::with_id(MAIN_TRAY_ID)
     .tooltip("Tauri")
     .icon(app.default_window_icon().unwrap().clone())
     .menu(&menu1)
-    .menu_on_left_click(false)
+    .menu_on_left_click(true)
     .on_menu_event(move |app, event| match event.id.as_ref() {
       "quit" => {
         app.exit(0);
-      }
-      "remove-tray" => {
-        app.remove_tray_by_id("tray-1");
       }
       "toggle" => {
         if let Some(window) = app.get_webview_window("main") {
@@ -76,7 +69,7 @@ pub fn create_tray<R: Runtime>(app: &tauri::AppHandle<R>) -> tauri::Result<()> {
         } else {
           (menu1.clone(), "Tauri")
         };
-        if let Some(tray) = app.tray_by_id("tray-1") {
+        if let Some(tray) = app.tray_by_id(MAIN_TRAY_ID) {
           let _ = tray.set_menu(Some(menu));
           let _ = tray.set_tooltip(Some(tooltip));
         }
@@ -86,7 +79,12 @@ pub fn create_tray<R: Runtime>(app: &tauri::AppHandle<R>) -> tauri::Result<()> {
       _ => {}
     })
     .on_tray_icon_event(|tray, event| {
-      if event.click_type == ClickType::Left {
+      if let TrayIconEvent::Click {
+        button: MouseButton::Left,
+        button_state: MouseButtonState::Up,
+        ..
+      } = event
+      {
         let app = tray.app_handle();
         if let Some(window) = app.get_webview_window("main") {
           let _ = window.show();
