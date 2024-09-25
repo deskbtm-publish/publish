@@ -295,18 +295,14 @@
       "type": "string",
       "oneOf": [
         {
-          "description": "allow-input-simulation -> Enables the input-simulation command without any pre-configured scope.",
+          "description": "Enables the input-simulation command without any pre-configured scope.",
           "type": "string",
-          "enum": [
-            "allow-input-simulation"
-          ]
+          "const": "allow-input-simulation"
         },
         {
-          "description": "deny-input-simulation -> Denies the input-simulation command without any pre-configured scope.",
+          "description": "Denies the input-simulation command without any pre-configured scope.",
           "type": "string",
-          "enum": [
-            "deny-input-simulation"
-          ]
+          "const": "deny-input-simulation"
         }
       ]
     }

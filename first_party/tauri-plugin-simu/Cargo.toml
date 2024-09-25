@@ -9,10 +9,10 @@ exclude = ["/examples", "/webview-dist", "/webview-src", "/node_modules"]
 links = "tauri-plugin-simu"
 
 [dependencies]
-tauri = { version = "2.0.0-rc.6" }
+tauri = { version = "2.0.0-rc.15" }
 serde = "1.0"
 thiserror = "1.0"
 enigo = "0.2.1"
 
 [build-dependencies]
-tauri-plugin = { version = "2.0.0-rc.6", features = ["build"] }
+tauri-plugin = { version = "2.0.0-rc.12", features = ["build"] }
