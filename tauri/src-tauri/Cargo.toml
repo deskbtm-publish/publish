@@ -27,9 +27,7 @@ tauri = { workspace = true, features = [
   "devtools",
   "tray-icon",
   "image-ico",
-  "image-png",
-  "macos-private-api",
-  "protocol-asset"
+  "image-png"
 ] }
 tauri-plugin-autostart = { workspace = true, branch = "v2" }
 tauri-plugin-fs = { workspace = true, branch = "v2" }

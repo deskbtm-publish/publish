@@ -1,4 +1,4 @@
-import { ActionIcon, Flex, rem, Tooltip } from '@mantine/core';
+import { ActionIcon, Flex, Tooltip } from '@mantine/core';
 import { IconLayoutSidebarLeftExpand } from '@publish/shared';
 import type { FC } from 'react';
 import { useCallback } from 'react';
@@ -29,7 +29,7 @@ export const GlobalHeader: FC<GlobalHeaderProps> = () => {
     >
       <DraggableHeader w="100%" pos="relative">
         <IF is={panel?.collapsed}>
-          <Tooltip openDelay={2000} label="Collapse sidebar">
+          <Tooltip openDelay={1200} label="Collapse sidebar">
             <ActionIcon ml={18} c="gray.7" onClick={handleExpand}>
               <IconLayoutSidebarLeftExpand />
             </ActionIcon>

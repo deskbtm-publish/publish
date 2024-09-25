@@ -11,22 +11,7 @@
   },
   "app": {
     "withGlobalTauri": true,
-    "windows": [
-      {
-        "decorations": false,
-        "transparent": false,
-        "title": "Publish",
-        "label": "main",
-        "width": 1160,
-        "height": 800,
-        "resizable": true,
-        "fullscreen": false,
-        "center": true,
-        "dragDropEnabled": false
-      }
-    ],
-    "security": {},
-    "macOSPrivateApi": true
+    "security": {}
   },
   "bundle": {
     "active": true,

@@ -20,15 +20,17 @@ export const SidebarHeader = ({ ...props }: SidebarHeaderProps) => {
   }, [panel]);
 
   return (
-    <DraggableHeader ml={rem(18)}>
+    <DraggableHeader mx={rem(18)}>
       <IF is={os.type === 'macos'}>
         <DarwinNativeTitleBar />
       </IF>
-      <Tooltip openDelay={2000} label="Expand sidebar">
-        <ActionIcon onClick={handleCollapse}>
-          <IconLayoutSidebarLeftExpand />
-        </ActionIcon>
-      </Tooltip>
+      <IF is={!panel?.collapsed}>
+        <Tooltip openDelay={2000} label="Expand sidebar">
+          <ActionIcon onClick={handleCollapse}>
+            <IconLayoutSidebarLeftExpand />
+          </ActionIcon>
+        </Tooltip>
+      </IF>
       {children}
     </DraggableHeader>
   );

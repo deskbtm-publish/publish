@@ -1,0 +1,24 @@
+{
+  "$schema": "../../node_modules/@tauri-apps/cli/schema.json",
+  "app": {
+    "windows": [
+      {
+        "decorations": false,
+        "transparent": true,
+        "title": "Publish",
+        "label": "main",
+        "width": 1160,
+        "height": 800,
+        "resizable": true,
+        "fullscreen": false,
+        "center": true,
+        "dragDropEnabled": false,
+        "windowEffects": {
+          "effects": [
+            "mica"
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -6,42 +6,42 @@ use tauri::{AppHandle, Manager};
 mod jscall;
 mod tray;
 
-fn handle_file_associations(app: AppHandle, files: Vec<PathBuf>) {
-  // -- Scope handling start --
+// fn handle_file_associations(app: AppHandle, files: Vec<PathBuf>) {
+//   // -- Scope handling start --
 
-  // You can remove this block if you only want to know about the paths, but not actually "use" them in the frontend.
+//   // You can remove this block if you only want to know about the paths, but not actually "use" them in the frontend.
 
-  // This requires the `fs` tauri plugin and is required to make the plugin's frontend work:
-  // use tauri_plugin_fs::FsExt;
-  // let fs_scope = app.fs_scope();
+//   // This requires the `fs` tauri plugin and is required to make the plugin's frontend work:
+//   // use tauri_plugin_fs::FsExt;
+//   // let fs_scope = app.fs_scope();
 
-  // This is for the `asset:` protocol to work:
-  let asset_protocol_scope = app.asset_protocol_scope();
+//   // This is for the `asset:` protocol to work:
+//   let asset_protocol_scope = app.asset_protocol_scope();
 
-  for file in &files {
-    // This requires the `fs` plugin:
-    // let _ = fs_scope.allow_file(file);
+//   for file in &files {
+//     // This requires the `fs` plugin:
+//     // let _ = fs_scope.allow_file(file);
 
-    // This is for the `asset:` protocol:
-    let _ = asset_protocol_scope.allow_file(file);
-  }
+//     // This is for the `asset:` protocol:
+//     let _ = asset_protocol_scope.allow_file(file);
+//   }
 
-  // -- Scope handling end --
+//   // -- Scope handling end --
 
-  let files = files
-    .into_iter()
-    .map(|f| {
-      let file = f.to_string_lossy().replace("\\", "\\\\"); // escape backslash
-      format!("\"{file}\"",) // wrap in quotes for JS array
-    })
-    .collect::<Vec<_>>()
-    .join(",");
+//   let files = files
+//     .into_iter()
+//     .map(|f| {
+//       let file = f.to_string_lossy().replace("\\", "\\\\"); // escape backslash
+//       format!("\"{file}\"",) // wrap in quotes for JS array
+//     })
+//     .collect::<Vec<_>>()
+//     .join(",");
 
-  tauri::WebviewWindowBuilder::new(&app, "main", Default::default())
-    .initialization_script(&format!("window.openedFiles = [{files}]"))
-    .build()
-    .unwrap();
-}
+//   tauri::WebviewWindowBuilder::new(&app, "main", Default::default())
+//     .initialization_script(&format!("window.openedFiles = [{files}]"))
+//     .build()
+//     .unwrap();
+// }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {

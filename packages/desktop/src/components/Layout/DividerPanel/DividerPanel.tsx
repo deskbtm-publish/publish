@@ -17,6 +17,7 @@ import { Panel, PanelProps } from './Panel';
 import { useDividerPanel } from './use-divider-panel';
 import type { ResizeCallbackArgs, UseResizableProps } from './use-resizable';
 import { useResizable } from './use-resizable';
+import { IF } from 'reactgets';
 
 export interface DividerPanelProps
   extends Partial<UseResizableProps>,
@@ -88,7 +89,9 @@ export const DividerPanelInner = function ({
         }}
       >
         <Box flex={1}>{children?.[0]}</Box>
-        <DividerHandle isDragging={isDragging} {...separatorProps} />
+        <IF is={!panel?.collapsed}>
+          <DividerHandle isDragging={isDragging} {...separatorProps} />
+        </IF>
       </Box>
       <Box
         pos="relative"

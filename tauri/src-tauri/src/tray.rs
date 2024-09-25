@@ -9,7 +9,7 @@ pub fn create_tray<R: Runtime>(app: &tauri::AppHandle<R>) -> tauri::Result<()> {
   const MAIN_TRAY_ID: &str = "main_tray";
 
   let toggle_i = MenuItem::with_id(app, "toggle", "Toggle", true, None::<&str>)?;
-  let new_window_i = MenuItem::with_id(app, "new-window", "New window", true, None::<&str>)?;
+  let new_window_i = MenuItem::with_id(app, "new-window", "Quick Share", true, None::<&str>)?;
   let icon_i_1 = MenuItem::with_id(app, "icon-1", "Icon 1", true, None::<&str>)?;
   let icon_i_2 = MenuItem::with_id(app, "icon-2", "Icon 2", true, None::<&str>)?;
   #[cfg(target_os = "macos")]
