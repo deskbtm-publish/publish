@@ -1,3 +1,6 @@
+// Copyright (C) 2022 Han
+// SPDX-License-Identifier: FSL-1.1-Apache-2.0
+
 use std::sync::{Arc, Mutex};
 use windows::{
   core::PCWSTR,
