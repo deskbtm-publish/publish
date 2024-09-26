@@ -4403,6 +4403,7 @@ __metadata:
   dependencies:
     "@tauri-apps/cli": "npm:2.0.0-rc.16"
     cross-env: "npm:7.0.3"
+    shx: "npm:0.3.4"
   languageName: unknown
   linkType: soft
 
