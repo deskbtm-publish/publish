@@ -1,6 +1,8 @@
 {
   "$schema": "../../node_modules/@tauri-apps/cli/schema.json",
   "app": {
+    "withGlobalTauri": true,
+    "macOSPrivateApi": true,
     "windows": [
       {
         "decorations": false,

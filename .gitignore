@@ -16,7 +16,7 @@
 **/build/*
 **/gen/*
 /**/*.tsbuildinfo
-temp
+
 # Logs
 logs
 *.log
@@ -47,3 +47,7 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# Temp
+temp
+**/temp-icons-macos/*

@@ -9,18 +9,13 @@
     "beforeDevCommand": "yarn workspace @publish/desktop dev",
     "beforeBuildCommand": "yarn workspace @publish/desktop build"
   },
-  "app": {
-    "withGlobalTauri": true,
-    "macosPrivateApi": true,
-    "security": {}
-  },
   "bundle": {
     "active": true,
     "targets": "all",
     "icon": [
       "icons/128x128.png",
       "icons/128x128@2x.png",
-      "icons/icon.icns",
+      "icons/macos/icon.icns",
       "icons/icon.ico"
     ],
     "resources": [],
