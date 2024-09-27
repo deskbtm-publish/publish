@@ -7,7 +7,7 @@
     "dev": "cross-env PUBLISH_BUILD_PLATFORM=desktop tauri dev",
     "build": "cross-env PUBLISH_BUILD_PLATFORM=desktop RELEASE=true tauri build",
     "tauri": "tauri",
-    "icon:macos": "yarn tauri icon ./app-icon-macos.png -o temp-icons-macos && shx cp temp-icons-macos/icon.icns icons && shx rm -rf temp-icons-macos"
+    "icon:macos": "yarn tauri icon ./app-icon-macos.png -o temp-icons-macos && shx cp temp-icons-macos/icon.icns ./src-tauri/icons && shx rm -rf temp-icons-macos"
   },
   "keywords": [],
   "author": "",
