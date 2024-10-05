@@ -25,7 +25,7 @@ import {
 } from '@tabler/icons-react';
 import { useState } from 'react';
 
-import { useDocEditorContext } from '../DocEditor.context';
+import { useDocEditorContext } from '../DocEditorContext';
 import type { PrimitiveFnProps } from './PrimitiveFn';
 import { PrimitiveFn } from './PrimitiveFn';
 

@@ -5,7 +5,7 @@ export type {
   DocEditorStylesNames,
 } from './DocEditor';
 export { DocEditor } from './DocEditor';
-export { useDocEditorContext } from './DocEditor.context';
+export { useDocEditorContext } from './DocEditorContext';
 export * from './Fn';
 export { PrimitiveFn } from './Fn/PrimitiveFn';
 export * from './Group';

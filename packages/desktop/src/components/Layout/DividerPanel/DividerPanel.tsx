@@ -8,7 +8,7 @@ import type { PropsWithChildren } from 'react';
 import { useCallback, useImperativeHandle, useMemo, useRef } from 'react';
 import { type FC } from 'react';
 import React from 'react';
-import { useProps } from 'reactgets/hooks/use-props';
+import { WithDefaultProps, useProps } from 'reactgets/hooks/use-props';
 
 import { DividerHandle } from './DividerHandle';
 import * as classes from './DividerPanel.module.css';
@@ -52,19 +52,29 @@ const defaultProps = {
   min: 208,
   max: 608,
   dividerWidth: 16,
-};
+  axis: 'x',
+} satisfies DividerPanelProps;
 
 export const DividerPanelInner = function ({
   ref,
   ...props
-}: DividerPanelProps & {
+}: WithDefaultProps<DividerPanelProps, typeof defaultProps> & {
   ref?: React.RefObject<DividerPanelInnerRef | null>;
 }) {
-  const { children, dividerWidth, initial, hideDividerCollapsed, ...rest } =
-    props;
-  const { isDragging, position, separatorProps, setPosition } = useResizable({
-    axis: 'x',
+  const {
+    children,
+    dividerWidth,
     initial,
+    hideDividerCollapsed,
+    axis,
+    ...rest
+  } = props;
+  const cRef = useRef<HTMLDivElement>(null);
+  const direction = axis === 'x' ? 'row' : 'column';
+  const { isDragging, position, separatorProps, setPosition } = useResizable({
+    axis,
+    initial,
+    containerRef: cRef,
     onResizeEnd: debounce(({ position }: ResizeCallbackArgs) => {
       LocalStore.set(SPLIT_PANEL_STORAGE_KEY, { position, expanded: true });
     }, 50),
@@ -79,7 +89,7 @@ export const DividerPanelInner = function ({
   }, [setPosition]);
 
   return (
-    <Flex direction="row" h="100%">
+    <Flex ref={cRef} direction={direction} h="100%">
       <Box
         pos="relative"
         className={classes.panelSlideTransition}

@@ -14,7 +14,7 @@ import {
 } from '@mantine/core';
 import { ReactElement } from 'react';
 
-import { useDocEditorContext } from '../DocEditor.context';
+import { useDocEditorContext } from '../DocEditorContext';
 import * as classes from '../DocEditor.module.css';
 
 export type PrimitiveFnStylesNames = 'primitiveFn';

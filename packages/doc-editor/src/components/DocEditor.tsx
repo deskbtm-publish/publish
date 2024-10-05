@@ -9,7 +9,7 @@ import type { Editor } from '@tiptap/react';
 import React, { useMemo } from 'react';
 
 import { DocEditorContent } from './Content/Content';
-import { DocEditorProvider } from './DocEditor.context';
+import { DocEditorProvider } from './DocEditorContext';
 import * as classes from './DocEditor.module.css';
 import * as fn from './Fn';
 import { BubbleMenuGroup } from './Group';

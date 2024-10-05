@@ -50,6 +50,6 @@
   "dependencies": {
     "@clack/prompts": "0.7.0",
     "commander": "12.1.0",
-    "libnpmpack": "7.0.4"
+    "libnpmpack": "8.0.0"
   }
 }

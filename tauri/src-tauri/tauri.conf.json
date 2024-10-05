@@ -9,9 +9,6 @@
     "beforeDevCommand": "yarn workspace @publish/desktop dev",
     "beforeBuildCommand": "yarn workspace @publish/desktop build"
   },
-  "app": {
-    "withGlobalTauri": true
-  },
   "bundle": {
     "active": true,
     "targets": "all",

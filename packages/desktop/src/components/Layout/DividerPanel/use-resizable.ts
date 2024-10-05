@@ -41,7 +41,7 @@ export type UseResizableProps = {
   /**
    * ref of the container element
    */
-  containerRef?: React.RefObject<HTMLElement>;
+  containerRef?: React.RefObject<HTMLElement | null | undefined>;
   /**
    * if true, cannot resize
    */
@@ -222,8 +222,19 @@ export const useResizable = ({
 
       if (onResizeEnd) onResizeEnd({ position: positionRef.current });
     },
-    // prettier-ignore
-    [disabled, axis, onResizeStart, shiftStep, step, reverse, position, min, max, onResizeEnd, initial],
+    [
+      disabled,
+      axis,
+      onResizeStart,
+      shiftStep,
+      step,
+      reverse,
+      position,
+      min,
+      max,
+      onResizeEnd,
+      initial,
+    ],
   );
 
   const handleDoubleClick = useCallback<React.MouseEventHandler>(() => {

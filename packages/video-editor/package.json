@@ -21,12 +21,10 @@
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
   },
   "devDependencies": {
-    "@mantine/core": "7.13.0",
-    "@mantine/hooks": "7.13.0",
+    "@mantine/core": "7.13.2",
+    "@mantine/hooks": "7.13.2",
     "@tabler/icons-react": "3.19.0",
+    "reactgets": "workspace:^",
     "typescript": "5.6.2"
-  },
-  "dependencies": {
-    "etro": "^0.12.1"
   }
 }

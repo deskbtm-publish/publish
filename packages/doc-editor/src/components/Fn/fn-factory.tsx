@@ -2,7 +2,7 @@ import { rem, useProps } from '@mantine/core';
 import { Editor } from '@tiptap/core';
 import React from 'react';
 
-import { useDocEditorContext } from '../DocEditor.context';
+import { useDocEditorContext } from '../DocEditorContext';
 import { DocEditorLabels } from '../labels';
 import { PrimitiveFn, PrimitiveFnProps } from './PrimitiveFn';
 

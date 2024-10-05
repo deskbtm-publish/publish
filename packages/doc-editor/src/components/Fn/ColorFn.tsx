@@ -1,7 +1,7 @@
 import type { BoxProps, ElementProps } from '@mantine/core';
 import { ColorSwatch, useProps } from '@mantine/core';
 
-import { useDocEditorContext } from '../DocEditor.context';
+import { useDocEditorContext } from '../DocEditorContext';
 import { PrimitiveFn } from './PrimitiveFn';
 
 export interface ColorFnProps extends BoxProps, ElementProps<'div'> {

@@ -7,7 +7,7 @@ import type {
 import { Box, factory, useProps } from '@mantine/core';
 import { EditorContent } from '@tiptap/react';
 
-import { useDocEditorContext } from '../DocEditor.context';
+import { useDocEditorContext } from '../DocEditorContext';
 import * as classes from '../DocEditor.module.css';
 import { PublishTypographyStyle } from '../PublishTypographyStyle';
 
