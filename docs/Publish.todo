@@ -84,6 +84,17 @@
               "tags": [],
               "tip": "https://tiptap.dev/docs/editor/guide/node-views/examples#drag-handles"
             }
+          },
+          {
+            "key": 1728121711144,
+            "children": [],
+            "todo": {
+              "content": "vimium select mode",
+              "id": 1728121711144,
+              "level": "default",
+              "done": false,
+              "start": 1728121711144
+            }
           }
         ],
         "todo": {
@@ -482,7 +493,7 @@
       1710466104153,
       1710840320139,
       1713494020588,
-      1708233092650
+      1708233027669
     ],
     "schema": "https://github.com/Saber2pr/vsc-ext-todolist/blob/master/src/api/type.ts#L3",
     "add_mode": "bottom",
@@ -503,6 +514,6 @@
     "showEndTime": false,
     "simpleMode": false,
     "lang": "en",
-    "version": "1718435506362"
+    "version": "1728121744198"
   }
 }

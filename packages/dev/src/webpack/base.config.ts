@@ -275,50 +275,6 @@ export function createConfiguration({
             test: /\.(ttf|eot|woff|woff2)$/,
             type: 'asset/resource',
           },
-          // {
-          //   test: /\.(js|mjs|jsx|ts|tsx)$/,
-          //   exclude: /node_modules/,
-          //   use: [
-          //     {
-          //       loader: require.resolve('swc-loader'),
-          //       options: {
-          //         // https://swc.rs/docs/configuring-swc/
-          //         jsc: {
-          //           preserveAllComments: true,
-          //           parser: {
-          //             syntax: 'typescript',
-          //             dynamicImport: true,
-          //             topLevelAwait: false,
-          //             tsx: true,
-          //             decorators: true,
-          //           },
-          //           target: 'es2022',
-          //           externalHelpers: false,
-          //           transform: {
-          //             react: {
-          //               runtime: 'automatic',
-          //               refresh: kDevMode && {
-          //                 refreshReg: '$RefreshReg$',
-          //                 refreshSig: '$RefreshSig$',
-          //                 emitFullSignatures: true,
-          //               },
-          //             },
-          //             useDefineForClassFields: false,
-          //           },
-          //         },
-          //       },
-          //     },
-          //     reactCompiler && {
-          //       loader: require.resolve('react-compiler-loader'),
-          //       options: {
-          //         babelPlugins: [
-          //           '@babel/plugin-syntax-jsx',
-          //           ['@babel/plugin-syntax-typescript', { isTSX: true }],
-          //         ],
-          //       },
-          //     },
-          //   ].filter(Boolean),
-          // },
           {
             test: /\.css$/,
             exclude: /\.module\.css$/,
@@ -354,12 +310,13 @@ export function createConfiguration({
   } satisfies Configuration['module'];
 
   const plugins = [
-    new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: 'css/[name].[contenthash:8].css',
-      chunkFilename: 'css/[name].[contenthash:8].chunk.css',
-    }),
+    !kDevMode &&
+      new MiniCssExtractPlugin({
+        // Options similar to the same options in webpackOptions.output
+        // both options are optional
+        filename: 'css/[name].[contenthash:8].css',
+        chunkFilename: 'css/[name].[contenthash:8].chunk.css',
+      }),
     new ProgressPlugin({ percentBy: 'entries' }),
     // new webpack.optimize.LimitChunkCountPlugin({
     //   maxChunks: 1,
