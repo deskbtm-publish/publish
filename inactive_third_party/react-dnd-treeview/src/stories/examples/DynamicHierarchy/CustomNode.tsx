@@ -1,8 +1,8 @@
-import React from "react";
-import Typography from "@mui/material/Typography";
-import ArrowRightIcon from "@mui/icons-material/ArrowRight";
-import { NodeModel } from "~/types";
-import styles from "./CustomNode.module.css";
+import React from 'react';
+import Typography from '@mui/material/Typography';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { NodeModel } from '~/types';
+import * as styles from './CustomNode.module.css';
 
 type Props = {
   node: NodeModel;
@@ -10,11 +10,11 @@ type Props = {
   isOpen: boolean;
   hasChild: boolean;
   testIdPrefix?: string;
-  onToggle: (id: NodeModel["id"]) => void;
+  onToggle: (id: NodeModel['id']) => void;
 };
 
 export const CustomNode: React.FC<Props> = ({
-  testIdPrefix = "",
+  testIdPrefix = '',
   ...props
 }) => {
   const { id, droppable, data } = props.node;

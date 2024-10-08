@@ -8,7 +8,7 @@ import { TreeProps, NodeModel, DropOptions } from '~/types';
 import { FileProperties } from '~/stories/types';
 import { CustomNode } from './CustomNode';
 import { AddDialog } from './AddDialog';
-import styles from './AddRemoveDuplicateNodes.module.css';
+import * as styles from './AddRemoveDuplicateNodes.module.css';
 
 const getLastId = (treeData: NodeModel[]) => {
   const reversedArray = [...treeData].sort((a, b) => {

@@ -4668,10 +4668,14 @@ __metadata:
     "@capacitor/status-bar": "npm:6.0.0"
     "@ionic/react": "npm:8.1.1"
     "@ionic/react-router": "npm:8.1.1"
+    "@tabler/icons-react": "npm:3.19.0"
     "@types/react-router": "npm:5.1.20"
     "@types/react-router-dom": "npm:5.3.3"
+    "@vitejs/plugin-react-swc": "npm:3.7.1"
+    cross-env: "npm:7.0.3"
     react-router: "npm:5.3.4"
     react-router-dom: "npm:5.3.4"
+    vite: "npm:5.4.8"
   languageName: unknown
   linkType: soft
 
@@ -5495,7 +5499,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/core@npm:1.7.28":
+"@swc/core@npm:1.7.28, @swc/core@npm:^1.7.26":
   version: 1.7.28
   resolution: "@swc/core@npm:1.7.28"
   dependencies:
@@ -7059,6 +7063,17 @@ __metadata:
     "@typescript-eslint/types": "npm:8.8.0"
     eslint-visitor-keys: "npm:^3.4.3"
   checksum: 10/325733fce58c8ac917ff8485949fff927794fd842abb4a665549e7a2e63437e6b7b464b60d3c320da1980e43a6bee69b9dd84139b8dc93685b188efbf96fa707
+  languageName: node
+  linkType: hard
+
+"@vitejs/plugin-react-swc@npm:3.7.1":
+  version: 3.7.1
+  resolution: "@vitejs/plugin-react-swc@npm:3.7.1"
+  dependencies:
+    "@swc/core": "npm:^1.7.26"
+  peerDependencies:
+    vite: ^4 || ^5
+  checksum: 10/e86c1424998e0d249edb9b22ea38fbf4d26732e6732789cefcd8754c04140b0cfed4f1b22e8c755a1b04d21b32d61557e995d49cad41176865461951b113cfbc
   languageName: node
   linkType: hard
 

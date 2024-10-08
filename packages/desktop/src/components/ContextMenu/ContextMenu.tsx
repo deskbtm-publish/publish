@@ -7,7 +7,7 @@ import { useEffect, useReducer, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 
 import type { ShowContextMenuParams } from './context-menu';
-import styles from './ContextMenu.module.css';
+import * as styles from './ContextMenu.module.css';
 import { ContextMenuProvider } from './ContextMenuContext';
 import { ContextMenuDivider } from './Divider';
 import { ContextMenuEvents } from './enums';

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Button,
   Select,
@@ -13,20 +13,20 @@ import {
   DialogContent,
   DialogActions,
   SelectChangeEvent,
-} from "@mui/material";
-import { NodeModel } from "~/types";
-import { FileProperties } from "~/stories/types";
-import styles from "./AddDialog.module.css";
+} from '@mui/material';
+import { NodeModel } from '~/types';
+import { FileProperties } from '~/stories/types';
+import * as styles from './AddDialog.module.css';
 
 type Props = {
   tree: NodeModel<FileProperties>[];
   onClose: () => void;
-  onSubmit: (e: Omit<NodeModel<FileProperties>, "id">) => void;
+  onSubmit: (e: Omit<NodeModel<FileProperties>, 'id'>) => void;
 };
 
 export const AddDialog: React.FC<Props> = (props) => {
-  const [text, setText] = useState("");
-  const [fileType, setFileType] = useState("text");
+  const [text, setText] = useState('');
+  const [fileType, setFileType] = useState('text');
   const [parent, setParent] = useState(0);
   const [droppable, setDroppable] = useState(false);
 
@@ -34,7 +34,7 @@ export const AddDialog: React.FC<Props> = (props) => {
     setText(e.target.value);
   };
 
-  const handleChangeParent = (e: SelectChangeEvent<NodeModel["id"]>) => {
+  const handleChangeParent = (e: SelectChangeEvent<NodeModel['id']>) => {
     setParent(Number(e.target.value));
   };
 
@@ -62,7 +62,7 @@ export const AddDialog: React.FC<Props> = (props) => {
             onChange={handleChangeText}
             value={text}
             inputProps={{
-              "data-testid": "dialog-input-text",
+              'data-testid': 'dialog-input-text',
             }}
           />
         </div>
@@ -113,7 +113,7 @@ export const AddDialog: React.FC<Props> = (props) => {
       <DialogActions>
         <Button onClick={props.onClose}>Cancel</Button>
         <Button
-          disabled={text === ""}
+          disabled={text === ''}
           onClick={() =>
             props.onSubmit({
               text,
@@ -121,7 +121,7 @@ export const AddDialog: React.FC<Props> = (props) => {
               droppable,
               data: {
                 fileType,
-                fileSize: "",
+                fileSize: '',
               },
             })
           }

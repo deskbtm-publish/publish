@@ -34,9 +34,6 @@
     "directory": "first_party/bfs",
     "type": "git"
   },
-  "engines": {
-    "node": ">=20.0.0"
-  },
   "scripts": {
     "build": "shx rm -rf dist && tsc",
     "prepack": "npm run build",

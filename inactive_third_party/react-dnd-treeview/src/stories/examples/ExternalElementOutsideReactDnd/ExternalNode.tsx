@@ -1,9 +1,9 @@
-import React from "react";
-import Typography from "@mui/material/Typography";
-import { NodeModel } from "~/types";
-import { FileProperties } from "~/stories/types";
-import { TypeIcon } from "~/stories/examples/components/TypeIcon";
-import styles from "./ExternalNode.module.css";
+import React from 'react';
+import Typography from '@mui/material/Typography';
+import { NodeModel } from '~/types';
+import { FileProperties } from '~/stories/types';
+import { TypeIcon } from '~/stories/examples/components/TypeIcon';
+import * as styles from './ExternalNode.module.css';
 
 type Props = {
   node: NodeModel<FileProperties>;
@@ -13,7 +13,7 @@ export const ExternalNode: React.FC<Props> = (props) => {
   const { id, droppable, data } = props.node;
 
   const handleDragStart = (e: React.DragEvent) => {
-    e.dataTransfer.setData("text", JSON.stringify(props.node));
+    e.dataTransfer.setData('text', JSON.stringify(props.node));
   };
 
   return (

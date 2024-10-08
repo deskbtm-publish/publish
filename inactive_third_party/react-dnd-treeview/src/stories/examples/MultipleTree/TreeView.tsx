@@ -1,11 +1,11 @@
-import React from "react";
-import { Tree } from "~/Tree";
-import { TreeProps } from "~/types";
-import { CustomNode } from "~/stories/examples/components/CustomNode";
-import { CustomDragPreview } from "~/stories/examples/components/CustomDragPreview";
-import styles from "./TreeView.module.css";
+import React from 'react';
+import { Tree } from '~/Tree';
+import { TreeProps } from '~/types';
+import { CustomNode } from '~/stories/examples/components/CustomNode';
+import { CustomDragPreview } from '~/stories/examples/components/CustomDragPreview';
+import * as styles from './TreeView.module.css';
 
-type Props<T> = Pick<TreeProps<T>, "tree" | "onDrop" | "rootId"> & {
+type Props<T> = Pick<TreeProps<T>, 'tree' | 'onDrop' | 'rootId'> & {
   testIdPrefix: string;
 };
 

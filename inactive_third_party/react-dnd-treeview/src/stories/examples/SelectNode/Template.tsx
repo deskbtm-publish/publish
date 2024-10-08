@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { Story } from "@storybook/react";
-import { Tree } from "~/Tree";
-import { TreeProps, NodeModel } from "~/types";
-import { useDropHandler } from "~/stories/useDropHandler";
-import { FileProperties } from "~/stories/types";
-import { CustomNode } from "./CustomNode";
-import styles from "./SelectNode.module.css";
+import React, { useState } from 'react';
+import { Story } from '@storybook/react';
+import { Tree } from '~/Tree';
+import { TreeProps, NodeModel } from '~/types';
+import { useDropHandler } from '~/stories/useDropHandler';
+import { FileProperties } from '~/stories/types';
+import { CustomNode } from './CustomNode';
+import * as styles from './SelectNode.module.css';
 
 export const Template: Story<TreeProps<FileProperties>> = (args) => {
   const [tree, handleDrop] = useDropHandler<FileProperties>(args);
@@ -16,9 +16,9 @@ export const Template: Story<TreeProps<FileProperties>> = (args) => {
     <>
       <div className={styles.current}>
         <p>
-          Current node:{" "}
+          Current node:{' '}
           <span className={styles.currentLabel} data-testid="selected-node">
-            {selectedNode ? selectedNode.text : "none"}
+            {selectedNode ? selectedNode.text : 'none'}
           </span>
         </p>
       </div>
@@ -28,7 +28,7 @@ export const Template: Story<TreeProps<FileProperties>> = (args) => {
         onDrop={handleDrop}
         render={(
           node: NodeModel<FileProperties>,
-          { depth, isOpen, onToggle }
+          { depth, isOpen, onToggle },
         ) => (
           <CustomNode
             node={node}

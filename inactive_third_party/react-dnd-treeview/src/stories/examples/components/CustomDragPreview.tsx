@@ -1,8 +1,8 @@
-import React from "react";
-import { DragLayerMonitorProps } from "~/types";
-import { FileProperties } from "../../types";
-import { TypeIcon } from "./TypeIcon";
-import styles from "./CustomDragPreview.module.css";
+import React from 'react';
+import { DragLayerMonitorProps } from '~/types';
+import { FileProperties } from '../../types';
+import { TypeIcon } from './TypeIcon';
+import * as styles from './CustomDragPreview.module.css';
 
 type Props = {
   monitorProps: DragLayerMonitorProps<FileProperties>;

@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { Button } from "@mui/material";
-import { Add } from "@mui/icons-material";
-import { Story } from "@storybook/react";
-import { Tree } from "~/index";
-import { TreeProps, NodeModel, DropOptions } from "~/types";
-import { useDropHandler } from "~/stories/useDropHandler";
-import { FileProperties } from "~/stories/types";
-import externalNodesJson from "~/stories/assets/external-nodes.json";
-import { ExternalNode } from "./ExternalNode";
-import { DragLayer } from "./DragLayer";
-import styles from "./ExternalElementInsideReactDnd.module.css";
+import React, { useState } from 'react';
+import { Button } from '@mui/material';
+import { Add } from '@mui/icons-material';
+import { Story } from '@storybook/react';
+import { Tree } from '~/index';
+import { TreeProps, NodeModel, DropOptions } from '~/types';
+import { useDropHandler } from '~/stories/useDropHandler';
+import { FileProperties } from '~/stories/types';
+import externalNodesJson from '~/stories/assets/external-nodes.json';
+import { ExternalNode } from './ExternalNode';
+import { DragLayer } from './DragLayer';
+import * as styles from './ExternalElementInsideReactDnd.module.css';
 
 export const Template: Story<TreeProps<FileProperties>> = (args) => {
   const [tree, updateTree] = useDropHandler<FileProperties>(args);
@@ -19,13 +19,13 @@ export const Template: Story<TreeProps<FileProperties>> = (args) => {
 
   const handleDrop = (
     newTree: NodeModel<FileProperties>[],
-    options: DropOptions<FileProperties>
+    options: DropOptions<FileProperties>,
   ) => {
     const { dragSourceId } = options;
 
     updateTree(newTree, options);
     setExternalNodes(
-      externalNodes.filter((exnode) => exnode.id !== dragSourceId)
+      externalNodes.filter((exnode) => exnode.id !== dragSourceId),
     );
   };
 
@@ -35,8 +35,8 @@ export const Template: Story<TreeProps<FileProperties>> = (args) => {
       parent: 0,
       text: `External node ${lastId - 100}`,
       data: {
-        fileType: "text",
-        fileSize: "1KB",
+        fileType: 'text',
+        fileSize: '1KB',
       },
     };
 

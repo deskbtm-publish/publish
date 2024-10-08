@@ -1,10 +1,10 @@
-import React from "react";
-import Typography from "@mui/material/Typography";
-import ArrowRightIcon from "@mui/icons-material/ArrowRight";
-import { TypeIcon } from "~/stories/examples/components/TypeIcon";
-import { NodeModel, RenderParams } from "~/types";
-import { FileProperties } from "~/stories/types";
-import styles from "./CustomNode.module.css";
+import React from 'react';
+import Typography from '@mui/material/Typography';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { TypeIcon } from '~/stories/examples/components/TypeIcon';
+import { NodeModel, RenderParams } from '~/types';
+import { FileProperties } from '~/stories/types';
+import * as styles from './CustomNode.module.css';
 
 type Props = RenderParams & {
   node: NodeModel<FileProperties>;
@@ -15,7 +15,7 @@ type Props = RenderParams & {
 };
 
 export const CustomNode: React.FC<Props> = ({
-  testIdPrefix = "",
+  testIdPrefix = '',
   ...props
 }) => {
   const { id, droppable, data } = props.node;
@@ -49,7 +49,7 @@ export const CustomNode: React.FC<Props> = ({
       data-testid={`${testIdPrefix}custom-node-${id}`}
       onClick={handleClick}
     >
-      <div className={`${styles.arrow} ${props.isOpen ? styles.isOpen : ""}`}>
+      <div className={`${styles.arrow} ${props.isOpen ? styles.isOpen : ''}`}>
         {props.node.droppable && (
           <div onClick={handleToggle}>
             <ArrowRightIcon data-testid={`arrow-right-icon-${id}`} />

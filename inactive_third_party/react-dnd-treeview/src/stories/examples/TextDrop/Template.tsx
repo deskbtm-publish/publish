@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { Story } from "@storybook/react";
-import { TextField } from "@mui/material";
-import { NativeTypes } from "react-dnd-html5-backend";
-import { Tree } from "~/index";
-import styles from "./TextDrop.module.css";
-import { MockText } from "./MockText";
-import type { FileProperties } from "~/stories/types";
-import type { TreeProps, NodeModel, DropOptions } from "~/types";
+import React, { useState } from 'react';
+import { Story } from '@storybook/react';
+import { TextField } from '@mui/material';
+import { NativeTypes } from 'react-dnd-html5-backend';
+import { Tree } from '~/index';
+import * as styles from './TextDrop.module.css';
+import { MockText } from './MockText';
+import type { FileProperties } from '~/stories/types';
+import type { TreeProps, NodeModel, DropOptions } from '~/types';
 
 export const Template: Story<TreeProps<FileProperties>> = (args) => {
   const [tree, setTree] = useState<NodeModel<FileProperties>[]>(args.tree);
@@ -14,7 +14,7 @@ export const Template: Story<TreeProps<FileProperties>> = (args) => {
 
   const handleDrop = (
     newTree: NodeModel<FileProperties>[],
-    options: DropOptions<FileProperties>
+    options: DropOptions<FileProperties>,
   ) => {
     const { dropTargetId, monitor } = options;
     const dragSource = monitor.getItem();
@@ -31,8 +31,8 @@ export const Template: Story<TreeProps<FileProperties>> = (args) => {
           parent: dropTargetId,
           text,
           data: {
-            fileSize: "1KB",
-            fileType: "text",
+            fileSize: '1KB',
+            fileType: 'text',
           },
         },
       ];
@@ -40,7 +40,7 @@ export const Template: Story<TreeProps<FileProperties>> = (args) => {
       setLastId(lastId + 1);
     } else if (itemType === NativeTypes.HTML) {
       const html = dragSource.html as string;
-      const tempEl = document.createElement("div");
+      const tempEl = document.createElement('div');
       tempEl.innerHTML = html;
       const text = tempEl.textContent as string;
 
@@ -51,8 +51,8 @@ export const Template: Story<TreeProps<FileProperties>> = (args) => {
           parent: dropTargetId,
           text,
           data: {
-            fileSize: "1KB",
-            fileType: "text",
+            fileSize: '1KB',
+            fileType: 'text',
           },
         },
       ];

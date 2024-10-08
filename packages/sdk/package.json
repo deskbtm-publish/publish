@@ -34,9 +34,6 @@
     "directory": "packages/sdk",
     "type": "git"
   },
-  "engines": {
-    "node": ">=20.0.0"
-  },
   "scripts": {
     "build": "shx rm -rf dist && tsc",
     "prepack": "npm run build",

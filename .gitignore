@@ -14,7 +14,7 @@
 **/target/*
 **/dist/*
 **/build/*
-**/gen/*
+**/gen/schemas
 /**/*.tsbuildinfo
 
 # Logs

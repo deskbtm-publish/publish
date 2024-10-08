@@ -1,28 +1,28 @@
-import React from "react";
-import { Meta } from "@storybook/react";
-import { expect } from "@storybook/jest";
-import { within, fireEvent, waitFor } from "@storybook/testing-library";
-import { DndProvider, MultiBackend, getBackendOptions, Tree } from "~/index";
-import { pageFactory } from "~/stories/pageFactory";
-import * as argTypes from "~/stories/argTypes";
-import { TreeProps } from "~/types";
-import { FileProperties } from "~/stories/types";
+import React from 'react';
+import { Meta } from '@storybook/react';
+import { expect } from '@storybook/jest';
+import { within, fireEvent, waitFor } from '@storybook/testing-library';
+import { DndProvider, MultiBackend, getBackendOptions, Tree } from '~/index';
+import { pageFactory } from '~/stories/pageFactory';
+import * as argTypes from '~/stories/argTypes';
+import { TreeProps } from '~/types';
+import { FileProperties } from '~/stories/types';
 import {
   dragEnterAndDragOver,
   dragLeaveAndDragEnd,
   getPointerCoords,
   wait,
-} from "~/stories/examples/helpers";
-import { CustomNode } from "./CustomNode";
-import { CustomDragPreview } from "~/stories/examples/components/CustomDragPreview";
-import { interactionsDisabled } from "~/stories/examples/interactionsDisabled";
-import { DefaultTemplate } from "~/stories/examples/DefaultTemplate";
-import sampleData from "~/stories/assets/sample-default.json";
-import styles from "./AutoExpandWithDragOverNode.module.css";
+} from '~/stories/examples/helpers';
+import { CustomNode } from './CustomNode';
+import { CustomDragPreview } from '~/stories/examples/components/CustomDragPreview';
+import { interactionsDisabled } from '~/stories/examples/interactionsDisabled';
+import { DefaultTemplate } from '~/stories/examples/DefaultTemplate';
+import sampleData from '~/stories/assets/sample-default.json';
+import * as styles from './AutoExpandWithDragOverNode.module.css';
 
 export default {
   component: Tree,
-  title: "Basic Examples/Auto expand with drag over node",
+  title: 'Basic Examples/Auto expand with drag over node',
   argTypes,
   decorators: [
     (Story) => (
@@ -51,13 +51,13 @@ AutoExpandWithDragOverNodeStory.args = {
   ),
 };
 
-AutoExpandWithDragOverNodeStory.storyName = "Auto expand with drag over node";
+AutoExpandWithDragOverNodeStory.storyName = 'Auto expand with drag over node';
 
 AutoExpandWithDragOverNodeStory.parameters = {
   docs: {
     page: pageFactory({
-      jsId: "auto-expand-with-drag-over-node-js-7izeed",
-      tsId: "auto-expand-with-drag-over-node-ts-mde4zo",
+      jsId: 'auto-expand-with-drag-over-node-js-7izeed',
+      tsId: 'auto-expand-with-drag-over-node-ts-mde4zo',
     }),
   },
 };
@@ -68,10 +68,10 @@ if (!interactionsDisabled) {
 
     // hover File3 into Folder1 during 0.5sec
     {
-      expect(canvas.queryByText("File 1-2")).toBeNull();
+      expect(canvas.queryByText('File 1-2')).toBeNull();
 
-      const dragSource = canvas.getByText("File 3");
-      const dropTarget = canvas.getByTestId("custom-node-1");
+      const dragSource = canvas.getByText('File 3');
+      const dropTarget = canvas.getByTestId('custom-node-1');
       const coords = getPointerCoords(dropTarget);
 
       await wait();
@@ -80,7 +80,7 @@ if (!interactionsDisabled) {
       await wait(500);
       dragLeaveAndDragEnd(dragSource, dropTarget);
       await wait();
-      expect(await canvas.findByText("File 1-2")).toBeInTheDocument();
+      expect(await canvas.findByText('File 1-2')).toBeInTheDocument();
     }
   };
 }

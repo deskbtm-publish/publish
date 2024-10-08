@@ -1,0 +1,13 @@
+{
+  "$schema": "../../node_modules/@tauri-apps/cli/schema.json",
+  "build": {
+    "frontendDist": "../../packages/desktop/dist",
+    "devUrl": "https://localhost:3000",
+    "beforeDevCommand": "yarn workspace @publish/mobile dev",
+    "beforeBuildCommand": "yarn workspace @publish/mobile build"
+  },
+  "app": {
+    "macOSPrivateApi": true,
+    "withGlobalTauri": true
+  }
+}

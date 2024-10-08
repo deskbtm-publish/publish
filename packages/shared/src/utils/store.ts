@@ -1,3 +1,5 @@
+import { is } from '@deskbtm/gadgets/is';
+
 export class LocalStore {
   static set<T extends object>(key: string, value: T) {
     const v = this.get(key);
@@ -7,12 +9,18 @@ export class LocalStore {
     );
   }
 
-  static get<T extends object>(
-    key: string,
-    fallback?: Record<string, unknown>,
-  ): T {
+  static get<T extends any>(key: string, defaultValue?: T): T | undefined {
     try {
-      return JSON.parse(localStorage.getItem(key)!) ?? ((fallback ?? {}) as T);
+      const v = localStorage.getItem(key);
+
+      if (!v) return defaultValue;
+
+      const vv = JSON.parse(v);
+
+      if (is.object(vv)) {
+        return Object.assign({}, defaultValue, v);
+      }
+      return vv;
     } catch (error) {
       return {} as T;
     }

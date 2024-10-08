@@ -1,18 +1,18 @@
-import React from "react";
-import Typography from "@mui/material/Typography";
-import Checkbox from "@mui/material/Checkbox";
-import ArrowRightIcon from "@mui/icons-material/ArrowRight";
-import { NodeModel } from "~/types";
-import { FileProperties } from "~/stories/types";
-import { TypeIcon } from "~/stories/examples/components/TypeIcon";
-import styles from "./CustomNode.module.css";
+import React from 'react';
+import Typography from '@mui/material/Typography';
+import Checkbox from '@mui/material/Checkbox';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { NodeModel } from '~/types';
+import { FileProperties } from '~/stories/types';
+import { TypeIcon } from '~/stories/examples/components/TypeIcon';
+import * as styles from './CustomNode.module.css';
 
 type Props = {
   node: NodeModel<FileProperties>;
   depth: number;
   isOpen: boolean;
   isSelected: boolean;
-  onToggle: (id: NodeModel["id"]) => void;
+  onToggle: (id: NodeModel['id']) => void;
   onSelect: (node: NodeModel) => void;
 };
 
@@ -29,11 +29,11 @@ export const CustomNode: React.FC<Props> = (props) => {
 
   return (
     <div
-      className={`${styles.root} ${props.isSelected ? styles.isSelected : ""}`}
+      className={`${styles.root} ${props.isSelected ? styles.isSelected : ''}`}
       style={{ paddingInlineStart: indent }}
       onClick={handleSelect}
     >
-      <div className={`${styles.arrow} ${props.isOpen ? styles.isOpen : ""}`}>
+      <div className={`${styles.arrow} ${props.isOpen ? styles.isOpen : ''}`}>
         {props.node.droppable && (
           <div onClick={handleToggle}>
             <ArrowRightIcon />

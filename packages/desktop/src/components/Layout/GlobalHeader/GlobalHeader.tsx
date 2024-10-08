@@ -6,7 +6,7 @@ import { IF } from 'reactgets';
 import { useTauriOS } from 'tauri-reactgets';
 
 import { WindowsNativeTitleBar } from '../../NativeTitleBar';
-import { useDividerPanel } from '../DividerPanel';
+import { useDividerPanel } from '../../DividerPanel';
 import { DraggableHeader } from '../DraggableHeader';
 
 export interface GlobalHeaderProps {}

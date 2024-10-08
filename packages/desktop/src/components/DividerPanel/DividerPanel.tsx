@@ -12,12 +12,11 @@ import { WithDefaultProps, useProps } from 'reactgets/hooks/use-props';
 
 import { DividerHandle } from './DividerHandle';
 import * as classes from './DividerPanel.module.css';
-import { DividerPanelContext } from './DividerPanelContext';
 import { Panel, PanelProps } from './Panel';
-import { useDividerPanel } from './use-divider-panel';
 import type { ResizeCallbackArgs, UseResizableProps } from './use-resizable';
 import { useResizable } from './use-resizable';
 import { IF } from 'reactgets';
+import { DividerPanelProvider, useDividerPanel } from './DividerPanelContext';
 
 export interface DividerPanelProps
   extends Partial<UseResizableProps>,
@@ -126,9 +125,18 @@ export const DividerPanel = factory<DividerPanelFactory>((_props, _ref) => {
     throw new Error('Must have two children');
   }
 
-  const store = useMemoStore<DividerPanelStore>(SPLIT_PANEL_STORAGE_KEY);
-  const { position } = store;
-  const initialPos = position ?? initial;
+  const defaultStoreProps = {
+    position: initial,
+    expanded: true,
+  };
+
+  const store = useMemoStore<
+    WithDefaultProps<DividerPanelStore, typeof defaultStoreProps>
+  >(SPLIT_PANEL_STORAGE_KEY, {
+    position: initial,
+    expanded: true,
+  });
+  const initialPos = store.position;
   const [expanded, handlers] = useDisclosure(store.expanded);
   const collapsed = !expanded;
   const panel = useRef<DividerPanelInnerRef>(null);
@@ -173,9 +181,9 @@ export const DividerPanel = factory<DividerPanelFactory>((_props, _ref) => {
   );
 
   return (
-    <DividerPanelContext value={context}>
+    <DividerPanelProvider value={context}>
       <DividerPanelInner ref={panel} {...props} initial={initialPos} />
-    </DividerPanelContext>
+    </DividerPanelProvider>
   );
 });
 

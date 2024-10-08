@@ -6,7 +6,7 @@ import { IF } from 'reactgets';
 import { useTauriOS } from 'tauri-reactgets';
 
 import { DarwinNativeTitleBar } from '../../NativeTitleBar';
-import { useDividerPanel } from '../DividerPanel';
+import { useDividerPanel } from '../../DividerPanel';
 import { DraggableHeader } from '../DraggableHeader';
 
 interface SidebarHeaderProps extends PropsWithChildren {}

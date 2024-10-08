@@ -1,17 +1,17 @@
-import React from "react";
-import Typography from "@mui/material/Typography";
-import ArrowRightIcon from "@mui/icons-material/ArrowRight";
-import { NodeModel } from "~/types";
-import { useDragOver } from "~/hooks";
-import { FileProperties } from "~/stories/types";
-import { TypeIcon } from "~/stories/examples/components/TypeIcon";
-import styles from "~/stories/examples/components/CustomNode.module.css";
+import React from 'react';
+import Typography from '@mui/material/Typography';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { NodeModel } from '~/types';
+import { useDragOver } from '~/hooks';
+import { FileProperties } from '~/stories/types';
+import { TypeIcon } from '~/stories/examples/components/TypeIcon';
+import * as styles from '~/stories/examples/components/CustomNode.module.css';
 
 type Props = {
   node: NodeModel<FileProperties>;
   depth: number;
   isOpen: boolean;
-  onToggle: (id: NodeModel["id"]) => void;
+  onToggle: (id: NodeModel['id']) => void;
 };
 
 export const CustomNode: React.FC<Props> = (props) => {
@@ -32,7 +32,7 @@ export const CustomNode: React.FC<Props> = (props) => {
       {...dragOverProps}
       data-testid={`custom-node-${id}`}
     >
-      <div className={`${styles.arrow} ${props.isOpen ? styles.isOpen : ""}`}>
+      <div className={`${styles.arrow} ${props.isOpen ? styles.isOpen : ''}`}>
         {props.node.droppable && (
           <div onClick={handleToggle}>
             <ArrowRightIcon />

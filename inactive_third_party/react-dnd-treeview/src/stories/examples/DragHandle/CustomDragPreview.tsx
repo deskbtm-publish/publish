@@ -1,7 +1,7 @@
-import React from "react";
-import { DragLayerMonitorProps } from "~/types";
-import { FileProperties } from "~/stories/types";
-import styles from "./CustomDragPreview.module.css";
+import React from 'react';
+import { DragLayerMonitorProps } from '~/types';
+import { FileProperties } from '~/stories/types';
+import * as styles from './CustomDragPreview.module.css';
 
 type Props = {
   monitorProps: DragLayerMonitorProps<FileProperties>;

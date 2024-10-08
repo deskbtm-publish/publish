@@ -1,23 +1,23 @@
-import React from "react";
-import { Meta } from "@storybook/react";
-import { expect } from "@storybook/jest";
-import { within, fireEvent, userEvent } from "@storybook/testing-library";
-import { DndProvider, MultiBackend, getBackendOptions, Tree } from "~/index";
-import { TreeProps, DragLayerMonitorProps } from "~/types";
-import * as argTypes from "~/stories/argTypes";
-import { CustomDragPreview } from "~/stories/examples/components/CustomDragPreview";
-import { pageFactory } from "~/stories/pageFactory";
-import { FileProperties } from "~/stories/types";
-import { toggleNode, wait } from "~/stories/examples/helpers";
-import { CustomNode } from "~/stories/examples/components/CustomNode";
-import { interactionsDisabled } from "~/stories/examples/interactionsDisabled";
-import { DefaultTemplate } from "~/stories/examples/DefaultTemplate";
-import sampleData from "~/stories/assets/sample-animate-expand.json";
-import styles from "./AnimateExpand.module.css";
+import React from 'react';
+import { Meta } from '@storybook/react';
+import { expect } from '@storybook/jest';
+import { within, fireEvent, userEvent } from '@storybook/testing-library';
+import { DndProvider, MultiBackend, getBackendOptions, Tree } from '~/index';
+import { TreeProps, DragLayerMonitorProps } from '~/types';
+import * as argTypes from '~/stories/argTypes';
+import { CustomDragPreview } from '~/stories/examples/components/CustomDragPreview';
+import { pageFactory } from '~/stories/pageFactory';
+import { FileProperties } from '~/stories/types';
+import { toggleNode, wait } from '~/stories/examples/helpers';
+import { CustomNode } from '~/stories/examples/components/CustomNode';
+import { interactionsDisabled } from '~/stories/examples/interactionsDisabled';
+import { DefaultTemplate } from '~/stories/examples/DefaultTemplate';
+import sampleData from '~/stories/assets/sample-animate-expand.json';
+import * as styles from './AnimateExpand.module.css';
 
 export default {
   component: Tree,
-  title: "Basic Examples/AnimateExpand",
+  title: 'Basic Examples/AnimateExpand',
   argTypes,
   decorators: [
     (Story) => (
@@ -47,13 +47,13 @@ AnimateExpandStory.args = {
   ),
 };
 
-AnimateExpandStory.storyName = "AnimateExpand";
+AnimateExpandStory.storyName = 'AnimateExpand';
 
 AnimateExpandStory.parameters = {
   docs: {
     page: pageFactory({
-      jsId: "animateexpand-js-vtvh18",
-      tsId: "animateexpand-ts-l5rd4r",
+      jsId: 'animateexpand-js-vtvh18',
+      tsId: 'animateexpand-ts-l5rd4r',
     }),
   },
 };
@@ -63,18 +63,18 @@ if (!interactionsDisabled) {
     const canvas = within(canvasElement);
 
     // Do not render hidden nodes.
-    expect(canvas.queryByText("File 1-01")).toBe(null);
-    expect(canvas.queryByText("File 2-1-1")).toBe(null);
+    expect(canvas.queryByText('File 1-01')).toBe(null);
+    expect(canvas.queryByText('File 2-1-1')).toBe(null);
 
     // Check style attributes before and after opening a node.
     const animateContainer =
-      canvas.getByTestId("custom-node-1").nextElementSibling;
+      canvas.getByTestId('custom-node-1').nextElementSibling;
 
     expect(animateContainer).toHaveStyle({ height: 0, opacity: 0 });
 
-    await toggleNode(canvas.getByTestId("arrow-right-icon-1"));
+    await toggleNode(canvas.getByTestId('arrow-right-icon-1'));
     await wait(300);
 
-    expect(animateContainer).toHaveStyle({ height: "640px", opacity: 1 });
+    expect(animateContainer).toHaveStyle({ height: '640px', opacity: 1 });
   };
 }

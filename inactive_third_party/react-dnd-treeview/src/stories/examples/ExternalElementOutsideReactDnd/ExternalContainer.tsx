@@ -3,7 +3,7 @@ import { Button } from '@mui/material';
 import { Add } from '@mui/icons-material';
 import { StoryContext, StoryState } from './StoryProvider';
 import { ExternalNode } from './ExternalNode';
-import styles from './ExternalElementOutsideReactDnd.module.css';
+import * as styles from './ExternalElementOutsideReactDnd.module.css';
 
 export const ExternalContainer: React.FC = (props) => {
   const storyContext = use(StoryContext) as StoryState;

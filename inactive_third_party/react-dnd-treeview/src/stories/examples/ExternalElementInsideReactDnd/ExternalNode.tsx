@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-import { useDrag } from "react-dnd";
-import { getEmptyImage } from "react-dnd-html5-backend";
-import Typography from "@mui/material/Typography";
-import { NodeModel } from "~/types";
-import { FileProperties } from "~/stories/types";
-import { TypeIcon } from "~/stories/examples/components/TypeIcon";
-import styles from "./ExternalNode.module.css";
+import React, { useEffect } from 'react';
+import { useDrag } from 'react-dnd';
+import { getEmptyImage } from 'react-dnd-html5-backend';
+import Typography from '@mui/material/Typography';
+import { NodeModel } from '~/types';
+import { FileProperties } from '~/stories/types';
+import { TypeIcon } from '~/stories/examples/components/TypeIcon';
+import * as styles from './ExternalNode.module.css';
 
 type Props = {
   node: NodeModel<FileProperties>;
@@ -14,7 +14,7 @@ type Props = {
 export const ExternalNode: React.FC<Props> = (props) => {
   const { id, droppable, data } = props.node;
   const [, drag, dragPreview] = useDrag({
-    type: "EXTERNAL_NODE",
+    type: 'EXTERNAL_NODE',
     item: props.node,
   });
 

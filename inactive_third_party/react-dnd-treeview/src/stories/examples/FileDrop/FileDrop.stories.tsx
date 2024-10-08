@@ -1,23 +1,23 @@
-import React from "react";
-import { Meta } from "@storybook/react";
-import { within } from "@storybook/testing-library";
-import { DndProvider } from "react-dnd";
-import { NativeTypes } from "react-dnd-html5-backend";
-import { Tree, MultiBackend, getBackendOptions } from "~/index";
-import { pageFactory } from "~/stories/pageFactory";
-import * as argTypes from "~/stories/argTypes";
-import { CustomDragPreview } from "~/stories/examples/components/CustomDragPreview";
-import { TreeProps, DragLayerMonitorProps } from "~/types";
-import { FileProperties } from "~/stories/types";
-import { CustomNode } from "~/stories/examples/components/CustomNode";
-import { interactionsDisabled } from "~/stories/examples/interactionsDisabled";
-import sampleData from "~/stories/assets/sample-default.json";
-import { Template } from "./Template";
-import styles from "./FileDrop.module.css";
+import React from 'react';
+import { Meta } from '@storybook/react';
+import { within } from '@storybook/testing-library';
+import { DndProvider } from 'react-dnd';
+import { NativeTypes } from 'react-dnd-html5-backend';
+import { Tree, MultiBackend, getBackendOptions } from '~/index';
+import { pageFactory } from '~/stories/pageFactory';
+import * as argTypes from '~/stories/argTypes';
+import { CustomDragPreview } from '~/stories/examples/components/CustomDragPreview';
+import { TreeProps, DragLayerMonitorProps } from '~/types';
+import { FileProperties } from '~/stories/types';
+import { CustomNode } from '~/stories/examples/components/CustomNode';
+import { interactionsDisabled } from '~/stories/examples/interactionsDisabled';
+import sampleData from '~/stories/assets/sample-default.json';
+import { Template } from './Template';
+import * as styles from './FileDrop.module.css';
 
 export default {
   component: Tree,
-  title: "Basic Examples/File drop",
+  title: 'Basic Examples/File drop',
   argTypes,
   decorators: [
     (Story) => (
@@ -47,13 +47,13 @@ FileDrop.args = {
   ),
 };
 
-FileDrop.storyName = "File drop";
+FileDrop.storyName = 'File drop';
 
 FileDrop.parameters = {
   docs: {
     page: pageFactory({
-      jsId: "file-drop-js-x1o985",
-      tsId: "file-drop-ts-4s5i48",
+      jsId: 'file-drop-js-x1o985',
+      tsId: 'file-drop-ts-4s5i48',
     }),
   },
 };

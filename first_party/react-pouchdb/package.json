@@ -1,0 +1,49 @@
+{
+  "name": "@plugkit/react-pouchdb",
+  "version": "0.0.1-alpha.1",
+  "description": "PouchDB for React",
+  "author": "Han <han@deskbtm.com>",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public",
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "./*": {
+        "types": "./dist/*.d.ts",
+        "default": "./dist/*.js"
+      }
+    }
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "repository": {
+    "url": "https://github.com/deskbtm/publish",
+    "directory": "first_party/react-pouchdb",
+    "type": "git"
+  },
+  "scripts": {
+    "build": "shx rm -rf dist && tsc",
+    "prepack": "npm run build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
+  },
+  "devDependencies": {
+    "typescript": "5.6.2"
+  },
+  "dependencies": {
+    "isomorphic-textencoder": "1.0.1"
+  }
+}

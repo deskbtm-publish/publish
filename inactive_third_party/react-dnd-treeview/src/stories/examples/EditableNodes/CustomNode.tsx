@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
-import IconButton from "@mui/material/IconButton";
-import ArrowRightIcon from "@mui/icons-material/ArrowRight";
-import CheckIcon from "@mui/icons-material/Check";
-import CloseIcon from "@mui/icons-material/Close";
-import EditIcon from "@mui/icons-material/Edit";
-import { NodeModel } from "~/types";
-import { FileProperties } from "~/stories/types";
-import styles from "./CustomNode.module.css";
+import React, { useState } from 'react';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import IconButton from '@mui/material/IconButton';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import CheckIcon from '@mui/icons-material/Check';
+import CloseIcon from '@mui/icons-material/Close';
+import EditIcon from '@mui/icons-material/Edit';
+import { NodeModel } from '~/types';
+import { FileProperties } from '~/stories/types';
+import * as styles from './CustomNode.module.css';
 
 type Props = {
   node: NodeModel<FileProperties>;
   depth: number;
   isOpen: boolean;
-  onToggle: (id: NodeModel["id"]) => void;
-  onTextChange: (id: NodeModel["id"], value: string) => void;
+  onToggle: (id: NodeModel['id']) => void;
+  onTextChange: (id: NodeModel['id'], value: string) => void;
 };
 
 export const CustomNode: React.FC<Props> = (props) => {
@@ -53,7 +53,7 @@ export const CustomNode: React.FC<Props> = (props) => {
       style={{ paddingInlineStart: indent }}
       data-testid={`custom-node-${id}`}
     >
-      <div className={`${styles.arrow} ${props.isOpen ? styles.isOpen : ""}`}>
+      <div className={`${styles.arrow} ${props.isOpen ? styles.isOpen : ''}`}>
         {props.node.droppable && (
           <div onClick={handleToggle}>
             <ArrowRightIcon data-testid={`arrow-right-icon-${id}`} />
@@ -68,12 +68,12 @@ export const CustomNode: React.FC<Props> = (props) => {
               value={labelText}
               onChange={handleChangeText}
               inputProps={{
-                "data-testid": `input-${id}`,
+                'data-testid': `input-${id}`,
               }}
             />
             <IconButton
               onClick={handleSubmit}
-              disabled={labelText === ""}
+              disabled={labelText === ''}
               data-testid={`btn-submit-${id}`}
             >
               <CheckIcon />

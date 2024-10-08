@@ -1,17 +1,17 @@
-import React, { useRef, useState } from "react";
-import { Story } from "@storybook/react";
-import { Button, TextField } from "@mui/material";
-import { Tree } from "~/Tree";
-import { TreeProps, NodeModel, TreeMethods } from "~/types";
-import { useDropHandler } from "~/stories/useDropHandler";
-import { FileProperties } from "~/stories/types";
-import { CustomNode } from "~/stories/examples/components/CustomNode";
-import { CustomDragPreview } from "~/stories/examples/components/CustomDragPreview";
-import styles from "./OpenAndCloseMethod.module.css";
+import React, { useRef, useState } from 'react';
+import { Story } from '@storybook/react';
+import { Button, TextField } from '@mui/material';
+import { Tree } from '~/Tree';
+import { TreeProps, NodeModel, TreeMethods } from '~/types';
+import { useDropHandler } from '~/stories/useDropHandler';
+import { FileProperties } from '~/stories/types';
+import { CustomNode } from '~/stories/examples/components/CustomNode';
+import { CustomDragPreview } from '~/stories/examples/components/CustomDragPreview';
+import * as styles from './OpenAndCloseMethod.module.css';
 
 export const Template: Story<TreeProps<FileProperties>> = (args) => {
   const [tree, handleDrop] = useDropHandler<FileProperties>(args);
-  const [text, setText] = useState<string>("");
+  const [text, setText] = useState<string>('');
   const ref = useRef<TreeMethods>(null);
 
   const handleChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,8 +19,8 @@ export const Template: Story<TreeProps<FileProperties>> = (args) => {
   };
 
   const getIds = (text: string) => {
-    let idTexts = text.split(",").map((id) => id.trim());
-    idTexts = idTexts.filter((id) => id !== "");
+    let idTexts = text.split(',').map((id) => id.trim());
+    idTexts = idTexts.filter((id) => id !== '');
     let ids = idTexts.map((id) => Number(id));
     ids = ids.filter((id) => !isNaN(id));
     return ids;
@@ -54,9 +54,9 @@ export const Template: Story<TreeProps<FileProperties>> = (args) => {
       <div className={styles.actions}>
         <TextField
           inputProps={{
-            "data-testid": "input-ids",
+            'data-testid': 'input-ids',
             style: {
-              padding: "6.75px 16px",
+              padding: '6.75px 16px',
             },
           }}
           variant="outlined"
@@ -87,7 +87,7 @@ export const Template: Story<TreeProps<FileProperties>> = (args) => {
         onDrop={handleDrop}
         render={(
           node: NodeModel<FileProperties>,
-          { depth, isOpen, onToggle }
+          { depth, isOpen, onToggle },
         ) => (
           <CustomNode
             node={node}

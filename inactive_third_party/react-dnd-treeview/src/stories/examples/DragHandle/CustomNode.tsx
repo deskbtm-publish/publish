@@ -1,9 +1,9 @@
-import React, { RefObject } from "react";
-import Typography from "@mui/material/Typography";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import DragHandleIcon from "@mui/icons-material/DragHandle";
-import { NodeModel } from "~/types";
-import styles from "./CustomNode.module.css";
+import React, { RefObject } from 'react';
+import Typography from '@mui/material/Typography';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import DragHandleIcon from '@mui/icons-material/DragHandle';
+import { NodeModel } from '~/types';
+import * as styles from './CustomNode.module.css';
 
 type Props = {
   node: NodeModel;
@@ -11,11 +11,11 @@ type Props = {
   isOpen: boolean;
   testIdPrefix?: string;
   handleRef: RefObject<any>;
-  onToggle: (id: NodeModel["id"]) => void;
+  onToggle: (id: NodeModel['id']) => void;
 };
 
 export const CustomNode: React.FC<Props> = ({
-  testIdPrefix = "",
+  testIdPrefix = '',
   ...props
 }) => {
   const { id, droppable, data } = props.node;
@@ -42,7 +42,7 @@ export const CustomNode: React.FC<Props> = ({
       <div className={styles.label}>
         <Typography variant="body2">{props.node.text}</Typography>
       </div>
-      <div className={`${styles.expand} ${props.isOpen ? styles.isOpen : ""}`}>
+      <div className={`${styles.expand} ${props.isOpen ? styles.isOpen : ''}`}>
         {props.node.droppable && (
           <div onClick={handleToggle}>
             <ArrowDropDownIcon data-testid={`arrow-drop-down-icon-${id}`} />

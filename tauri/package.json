@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env PUBLISH_BUILD_PLATFORM=desktop tauri dev",
+    "dev:android": "cross-env PUBLISH_BUILD_PLATFORM=desktop tauri android dev",
     "build": "cross-env PUBLISH_BUILD_PLATFORM=desktop RELEASE=true tauri build",
     "tauri": "tauri",
     "icon:macos": "yarn tauri icon ./app-icon-macos.png -o temp-icons-macos && shx cp temp-icons-macos/icon.icns ./src-tauri/icons && shx rm -rf temp-icons-macos"

@@ -1,4 +1,4 @@
-import { Box, Container, rem } from '@mantine/core';
+import { Container } from '@mantine/core';
 import { PublishDocEditor } from '@publish/doc-editor/preset/index.ts';
 import type { PropsWithChildren } from 'react';
 import { type FC } from 'react';
@@ -6,7 +6,7 @@ import { Outlet } from 'react-router';
 
 import { ExplorerProvider } from '../Explorer';
 import { ScrollView } from '../ScrollView';
-import { DividerPanel } from './DividerPanel';
+import { DividerPanel } from '../DividerPanel';
 import { GlobalHeader } from './GlobalHeader';
 import { PrimitiveSidebar } from './Sidebar';
 
