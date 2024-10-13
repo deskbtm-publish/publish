@@ -1,13 +1,14 @@
-export type NodeDataType =
-  | 'image'
-  | 'folder'
-  | 'unknown'
-  | 'text'
-  | 'video'
-  | string;
+import { type PublishableType } from '../../shared';
 
-export type NodeData = {
-  type: NodeDataType;
+export type NodeType = 'folder' | 'unknown' | PublishableType | string;
+
+export interface NodeData {
+  type: NodeType;
+  /**
+   * Droppable collapsed
+   */
+  collapsed?: boolean;
+
   size: number;
   /**
    * Create time
@@ -17,9 +18,4 @@ export type NodeData = {
    * Last modified time
    */
   modifiedTime: string;
-
-  /**
-   * Remove time
-   */
-  deathTime: string;
-};
+}

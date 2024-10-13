@@ -291,7 +291,9 @@ export function createConfiguration({
               esModule: true,
               modules: {
                 auto: true,
-                localIdentName: '[name]__[local]--[hash:base64:8]',
+                localIdentName: kProdMode
+                  ? '[hash:base64:10]'
+                  : '[folder]-[name]__[local]',
               },
               importLoaders: 2,
             }),

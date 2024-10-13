@@ -13,17 +13,17 @@ function createEventManager<E = EventType>(): EventManager<E> {
   return {
     on<T = any>(event: E, handler: Handler<T>) {
       eventList.has(event)
-        ? eventList.get(event)!.add(handler)
+        ? eventList.get(event)?.add(handler)
         : eventList.set(event, new Set([handler]));
       return this;
     },
     off<T = any>(event: E, handler: Handler<T>) {
-      eventList.has(event) && eventList.get(event)!.delete(handler);
+      eventList.has(event) && eventList.get(event)?.delete(handler);
       return this;
     },
     emit<T = any>(event: E, args: T) {
       eventList.has(event) &&
-        eventList.get(event)!.forEach((handler: Handler<T>) => {
+        eventList.get(event)?.forEach((handler: Handler<T>) => {
           handler(args);
         });
       return this;

@@ -2,8 +2,8 @@ import { Button, Card, SimpleGrid } from '@mantine/core';
 import { Sandbox } from '@publish/addon-rt';
 import { createTransport, IndexedDBTransport, Logger } from '@publish/logger';
 import { XApi } from '@publish-kit/x-api';
-import { type FC, Suspense } from 'react';
 import PouchDB from 'pouchdb';
+import { type FC, Suspense } from 'react';
 
 import { DeviceInfo } from '../DeviceInfo';
 

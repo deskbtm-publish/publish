@@ -17,7 +17,7 @@ const WorkspaceLayout: FC<DashboardLayoutProps> = () => {
     <ExplorerProvider>
       <Container p="0" fluid h="100dvh">
         <DividerPanel hideDividerCollapsed initial={278} min={208} max={608}>
-          <DividerPanel.Leading>
+          <DividerPanel.Leading h="100%">
             <PrimitiveSidebar />
           </DividerPanel.Leading>
           <DividerPanel.Trailing>

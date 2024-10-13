@@ -41,7 +41,7 @@
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
   },
   "devDependencies": {
-    "typescript": "5.6.2"
+    "typescript": "5.6.3"
   },
   "dependencies": {
     "isomorphic-textencoder": "1.0.1"

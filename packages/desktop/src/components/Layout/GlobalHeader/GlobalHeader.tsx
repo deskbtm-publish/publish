@@ -14,6 +14,7 @@ export interface GlobalHeaderProps {}
 export const GlobalHeader: FC<GlobalHeaderProps> = () => {
   const panel = useDividerPanel();
   const os = useTauriOS();
+  console.log('---------------------');
 
   const handleExpand = useCallback(() => {
     panel?.expand();
@@ -29,7 +30,7 @@ export const GlobalHeader: FC<GlobalHeaderProps> = () => {
     >
       <DraggableHeader w="100%" pos="relative">
         <IF is={panel?.collapsed}>
-          <Tooltip openDelay={1200} label="Collapse sidebar">
+          <Tooltip openDelay={800} label="Collapse sidebar">
             <ActionIcon ml={18} c="gray.7" onClick={handleExpand}>
               <IconLayoutSidebarLeftExpand />
             </ActionIcon>

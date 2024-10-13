@@ -2,108 +2,67 @@ import { Box } from '@mantine/core';
 import {
   getHotkeyHandler,
   useDisclosure,
+  useLocalStorage,
   useWindowEvent,
 } from '@mantine/hooks';
 import { getDndBackendOptions } from '@publish/shared';
-import type { NodeModel } from '@publish-kit/react-dnd-treeview';
+import type { NodeModel, TreeMethods } from '@publish-kit/react-dnd-treeview';
 import {
   isAncestor,
   MultiBackend,
   Tree,
 } from '@publish-kit/react-dnd-treeview';
 import type { FC, MouseEvent } from 'react';
-import { useCallback, useState } from 'react';
+import { useCallback, useImperativeHandle, useRef, useState } from 'react';
 import { DndProvider } from 'react-dnd';
 import { NativeTypes } from 'react-dnd-html5-backend';
 
 import { EXPLORER_EMPTY_ID } from '../context-menus';
 import { useContextMenu } from '../ContextMenu';
-// import { Dropzone } from '../Dropzone';
 import { DragPreview } from './DragPreview';
-import * as classes from './Explorer.module.css';
-import { useExplorer } from './hooks';
-import { TreeNode } from './TreeNode';
+import { EXPLORER_STORAGE_KEY } from './ExplorerProvider';
+import * as classes from './ExplorerTree.module.css';
+import { ExplorerTreeNode } from './ExplorerTreeNode';
 import type { NodeData } from './types';
+import { useExplorer } from './use-explorer';
 
-const initialData = [
-  {
-    id: 1,
-    parent: 0,
-    droppable: true,
-    text: 'Folder 1',
-    data: {
-      type: 'folder',
-      size: '2.1MB',
-    },
-  },
-  {
-    id: 2,
-    parent: 1,
-    droppable: false,
-    text: 'File 1-1',
-    data: {
-      type: 'csv',
-      size: '0.5MB',
-    },
-  },
-  {
-    id: 3,
-    parent: 1,
-    droppable: false,
-    text: 'File 1-2',
-    data: {
-      type: 'text',
-      size: '4.8MB',
-    },
-  },
-  {
-    id: 4,
-    parent: 0,
-    droppable: true,
-    text: 'Folder 2',
-    data: {
-      type: 'folder',
-      size: '2.1MB',
-    },
-  },
-  {
-    id: 5,
-    parent: 4,
-    droppable: true,
-    data: {
-      type: 'folder',
-      size: '2.1MB',
-    },
-    text: 'Folder 2-1',
-  },
-  {
-    id: 6,
-    parent: 5,
-    droppable: false,
-    text: 'File 2-1-1',
-    data: {
-      type: 'image',
-      size: '2.1MB',
-    },
-  },
-  {
-    id: 7,
-    parent: 0,
-    droppable: false,
-    text: 'File 3',
-    data: {
-      type: 'image',
-      size: '0.8MB',
-    },
-  },
-];
+type TreeData = NodeModel<NodeData>[];
 
-export const ExplorerTree: FC<any> = function () {
-  const [tree, setTree] = useState(initialData);
+export interface ExplorerTreeProps {
+  data: TreeData;
+}
+
+const getLastId = (treeData) => {
+  const reversedArray = [...treeData].sort((a, b) => {
+    if (a.id < b.id) {
+      return 1;
+    } else if (a.id > b.id) {
+      return -1;
+    }
+
+    return 0;
+  });
+
+  if (reversedArray.length > 0) {
+    return reversedArray[0].id;
+  }
+
+  return 0;
+};
+
+export const ExplorerTree: FC<ExplorerTreeProps> = function (props) {
+  const { data } = props;
+
+  const [tree, setTree] = useState<TreeData>(data);
   const [isCtrlPressing, ctrlHandler] = useDisclosure(false);
   const [isDragging, setIsDragging] = useState(false);
-  const [selectedNodes, setSelectedNodes] = useState<NodeModel<NodeData>[]>([]);
-  const { treeRef, allCollapsed } = useExplorer();
+  const [selectedNodes, setSelectedNodes] = useState<TreeData>([]);
+  const { treeRef } = useExplorer();
+  const treeViewRef = useRef<TreeMethods>(null!);
+  const [allCollapsed, setAllCollapsed] = useLocalStorage<boolean>({
+    key: EXPLORER_STORAGE_KEY,
+  });
+
   const { show } = useContextMenu({
     id: EXPLORER_EMPTY_ID,
   });
@@ -248,13 +207,38 @@ export const ExplorerTree: FC<any> = function () {
   const handleDelete = useCallback(() => {}, []);
   const handleRename = useCallback((id: number, name: string) => {}, []);
 
+  useImperativeHandle(treeRef, () => {
+    const expandAll = () => {
+      treeViewRef.current.openAll();
+      setAllCollapsed(false);
+    };
+
+    const collapseAll = () => {
+      treeViewRef.current.closeAll();
+      setAllCollapsed(true);
+    };
+
+    return {
+      toggleAll() {
+        if (allCollapsed) {
+          expandAll();
+        } else {
+          collapseAll();
+        }
+      },
+      expandAll,
+      collapseAll,
+      allCollapsed,
+    };
+  }, [allCollapsed]);
+
   return (
     <DndProvider backend={MultiBackend} options={getDndBackendOptions()}>
       <Box h="100%" flex={1} onContextMenu={showMenu}>
         <Tree<NodeData>
           extraAcceptTypes={[NativeTypes.FILE]}
-          tree={tree as any}
-          ref={treeRef!}
+          tree={tree}
+          ref={treeViewRef}
           initialOpen={!allCollapsed}
           rootId={0}
           classes={{
@@ -274,7 +258,7 @@ export const ExplorerTree: FC<any> = function () {
             );
 
             return (
-              <TreeNode
+              <ExplorerTreeNode
                 {...options}
                 onRename={handleRename}
                 onDelete={function () {}}

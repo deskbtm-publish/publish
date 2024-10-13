@@ -124,8 +124,7 @@ export const ContextMenu = ({
       eventManager.off(id, show).off(ContextMenuEvents.hideAll, hide);
     };
     // Hide rely on setState(dispatch), which is guaranteed to be the same across render
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id, animation, disableBoundariesCheck]);
+  }, [id, animation, disableBoundariesCheck, show, hide]);
 
   // Collect menu items for keyboard navigation
   useEffect(() => {
@@ -220,7 +219,7 @@ export const ContextMenu = ({
       });
     });
 
-    clearTimeout(visibilityId.current!);
+    clearTimeout(visibilityId.current);
     if (!wasVisible.current && is.function(onVisibilityChange)) {
       onVisibilityChange(true);
       wasVisible.current = true;
@@ -239,15 +238,22 @@ export const ContextMenu = ({
     )
       return;
 
-    animation &&
-    (is.string(animation) || ('exit' in animation && animation.exit))
-      ? setState((state) => ({ willLeave: state.visible }))
-      : setState((state) => ({
-          visible: state.visible ? false : state.visible,
-        }));
+    if (
+      animation &&
+      (is.string(animation) || ('exit' in animation && animation.exit))
+    ) {
+      setState((state) => ({ willLeave: state.visible }));
+    } else {
+      setState((state) => ({
+        visible: state.visible ? false : state.visible,
+      }));
+    }
 
     visibilityId.current = setTimeout(() => {
-      is.function(onVisibilityChange) && onVisibilityChange(false);
+      if (is.function(onVisibilityChange)) {
+        onVisibilityChange(false);
+      }
+
       wasVisible.current = false;
     }) as unknown as number;
   }

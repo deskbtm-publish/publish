@@ -42,6 +42,14 @@ export const theme = createTheme({
         },
       },
     },
+    Tooltip: {
+      styles: {
+        tooltip: {
+          '--tooltip-radius': 'var(--mantine-radius-sm)',
+          fontSize: 'var(--mantine-font-size-xs)',
+        },
+      },
+    },
   },
   other: {
     contextMenuHoverLight: '#B4B4B43F',

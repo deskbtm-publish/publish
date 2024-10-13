@@ -3,12 +3,10 @@ import tslintParser from '@typescript-eslint/parser';
 import prettierConfig from 'eslint-config-prettier';
 import react from 'eslint-plugin-react';
 import reactJsxRuntime from 'eslint-plugin-react/configs/jsx-runtime.js';
-import reactRecommended from 'eslint-plugin-react/configs/recommended.js';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import globals from 'globals';
 import tsEslint from 'typescript-eslint';
-import { fixupPluginRules } from '@eslint/compat';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactCompiler from 'eslint-plugin-react-compiler';
 
@@ -52,6 +50,8 @@ export default tsEslint.config(
       '@typescript-eslint/no-var-requires': 'off',
       'no-unused-vars': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
+      'no-unused-expressions': 'off',
+      '@typescript-eslint/no-unused-expressions': 'off',
       '@typescript-eslint/no-unused-vars': [
         'error',
         {
@@ -59,15 +59,6 @@ export default tsEslint.config(
           varsIgnorePattern: '^_',
           args: 'after-used',
           argsIgnorePattern: '^_',
-        },
-      ],
-      '@typescript-eslint/ban-types': [
-        'error',
-        {
-          types: {
-            Function: false,
-          },
-          extendDefaults: true,
         },
       ],
       'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
@@ -91,17 +82,16 @@ export default tsEslint.config(
       'packages/mobile/**/*.{ts,tsx}',
       'packages/shared/**/*.{ts,tsx}',
       'packages/doc-editor/**/*.{ts,tsx}',
+      'packages/video-editor/**/*.{ts,tsx}',
     ],
     plugins: {
       react,
       'react-refresh': reactRefresh,
-      'react-hooks': fixupPluginRules(reactHooks),
+      'react-hooks': reactHooks,
       'react-compiler': reactCompiler,
     },
-    ...reactRecommended,
-    ...reactJsxRuntime,
     languageOptions: {
-      ...reactRecommended.languageOptions,
+      ...reactJsxRuntime.languageOptions,
       globals: {
         ...globals.serviceworker,
         ...globals.browser,
@@ -109,7 +99,9 @@ export default tsEslint.config(
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      'react-compiler/react-compiler': 'error',
+      ...react.configs.flat['jsx-runtime'].rules,
+      'react-compiler/react-compiler': 'warn',
+      '@typescript-eslint/no-empty-object-type': 'warn',
       '@typescript-eslint/consistent-type-imports': [
         'warn',
         {

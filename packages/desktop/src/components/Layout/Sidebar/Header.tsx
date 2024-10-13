@@ -5,8 +5,8 @@ import { useCallback } from 'react';
 import { IF } from 'reactgets';
 import { useTauriOS } from 'tauri-reactgets';
 
-import { DarwinNativeTitleBar } from '../../NativeTitleBar';
 import { useDividerPanel } from '../../DividerPanel';
+import { DarwinNativeTitleBar } from '../../NativeTitleBar';
 import { DraggableHeader } from '../DraggableHeader';
 
 interface SidebarHeaderProps extends PropsWithChildren {}
@@ -25,7 +25,7 @@ export const SidebarHeader = ({ ...props }: SidebarHeaderProps) => {
         <DarwinNativeTitleBar />
       </IF>
       <IF is={!panel?.collapsed}>
-        <Tooltip openDelay={2000} label="Expand sidebar">
+        <Tooltip openDelay={800} label="Expand sidebar">
           <ActionIcon onClick={handleCollapse}>
             <IconLayoutSidebarLeftExpand />
           </ActionIcon>

@@ -1,9 +1,9 @@
 import { rem } from '@mantine/core';
-import { IconEdit } from '@tabler/icons-react';
+import { IconEdit, IconFilePlus } from '@tabler/icons-react';
 
 import type { ItemParams } from '../ContextMenu';
 import { ContextMenu } from '../ContextMenu';
-import type { TreeNodeProps } from '../Explorer/TreeNode';
+import type { ExplorerTreeNodeProps } from '../Explorer/ExplorerTreeNode';
 
 export const EXPLORER_EMPTY_ID = 'publish:explorer_empty';
 
@@ -24,7 +24,7 @@ export function ExplorerEmptyContextMenu() {
   );
 }
 
-export interface ExplorerNodeContextMenu extends TreeNodeProps {
+export interface ExplorerNodeContextMenu extends ExplorerTreeNodeProps {
   rename(): void;
 }
 
@@ -53,7 +53,13 @@ export function ExplorerNodeContextMenu() {
 
   return (
     <ContextMenu style={{ minWidth: rem(230) }} id={EXPLORER_NODE_ID}>
-      {/* <Menu.Label>Demo</Menu.Label> */}
+      <Item
+        id="new-file"
+        leading={<IconFilePlus size={16} />}
+        onClick={handleItemClick}
+      >
+        New File...
+      </Item>
       <Item
         id="rename"
         leading={<IconEdit size={16} />}

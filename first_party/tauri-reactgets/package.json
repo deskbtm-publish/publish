@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@tauri-apps/plugin-os": "2.0.0",
-    "typescript": "5.6.2"
+    "typescript": "5.6.3"
   },
   "peerDependencies": {
     "@tauri-apps/plugin-os": "*"

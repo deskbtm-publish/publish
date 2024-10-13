@@ -4,10 +4,10 @@ import { IconFileText, IconFolder, IconPhoto } from '@tabler/icons-react';
 import type { FC } from 'react';
 import { useProps } from 'reactgets/hooks/use-props';
 
-import type { NodeDataType } from './types';
+import type { NodeType } from './types';
 
 export interface PolymorphicIconProps extends ThemeIconProps {
-  type?: NodeDataType;
+  type?: NodeType;
   size?: number;
 }
 

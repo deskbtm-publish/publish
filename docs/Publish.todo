@@ -476,6 +476,18 @@
               "tip": "",
               "link": "https://www.lemonsqueezy.com/"
             }
+          },
+          {
+            "key": 1728719702994,
+            "children": [],
+            "todo": {
+              "content": "paddle",
+              "id": 1728719702994,
+              "level": "default",
+              "done": false,
+              "start": 1728719702994,
+              "link": "https://paddle.com/"
+            }
           }
         ],
         "todo": {
@@ -493,7 +505,9 @@
       1710466104153,
       1710840320139,
       1713494020588,
-      1708233027669
+      1708233027669,
+      1708233048488,
+      1708233036741
     ],
     "schema": "https://github.com/Saber2pr/vsc-ext-todolist/blob/master/src/api/type.ts#L3",
     "add_mode": "bottom",
@@ -514,6 +528,6 @@
     "showEndTime": false,
     "simpleMode": false,
     "lang": "en",
-    "version": "1728121744198"
+    "version": "1728719739552"
   }
 }
