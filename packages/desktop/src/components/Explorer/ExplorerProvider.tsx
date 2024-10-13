@@ -11,20 +11,11 @@ export const ExplorerProvider: FC<ExplorerProviderProps> = function (props) {
   const { children } = props;
   const treeRef = useRef<ExplorerTreeMethods>(null);
 
-  const expandAll = treeRef.current!.expandAll;
-  const collapseAll = treeRef.current!.collapseAll;
-  const toggleAll = treeRef.current!.toggleAll;
-  const allCollapsed = treeRef.current!.allCollapsed;
-
   const context = useMemo(
     () => ({
-      expandAll,
-      collapseAll,
-      toggleAll,
-      allCollapsed,
       treeRef,
     }),
-    [allCollapsed, collapseAll, expandAll, toggleAll, treeRef],
+    [treeRef],
   );
 
   return (

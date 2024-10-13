@@ -26,7 +26,7 @@ export class ConfigurableError extends Error {
     } else {
       this.title = options.title;
       this.description = options.description;
-      this.message = options.message!;
+      this.message = options.message ?? '';
       this.retryable = options.retryable ?? true;
       this.exportable = options.exportable ?? true;
       this.reportable = options.reportable ?? true;

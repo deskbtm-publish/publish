@@ -17,10 +17,11 @@ import {
 } from '@mantine/core';
 import { useDisclosure, useInputState } from '@mantine/hooks';
 import { IconExternalLink, IconLink } from '@tabler/icons-react';
-import React, { useState } from 'react';
+import type React from 'react';
+import { useState } from 'react';
 
-import { useDocEditorContext } from '../DocEditorContext';
 import * as classes from '../DocEditor.module.css';
+import { useDocEditorContext } from '../DocEditorContext';
 import type { PrimitiveFnProps } from './PrimitiveFn';
 import { PrimitiveFn } from './PrimitiveFn';
 

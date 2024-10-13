@@ -12,10 +12,10 @@ import {
   UnstyledButton,
   useProps,
 } from '@mantine/core';
-import { ReactElement } from 'react';
+import { type ReactElement } from 'react';
 
-import { useDocEditorContext } from '../DocEditorContext';
 import * as classes from '../DocEditor.module.css';
+import { useDocEditorContext } from '../DocEditorContext';
 
 export type PrimitiveFnStylesNames = 'primitiveFn';
 

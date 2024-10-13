@@ -8,7 +8,7 @@ export interface DeviceInfoProps {}
 
 export const DeviceInfo: FC<DeviceInfoProps> = function () {
   const info = suspend(async () => {
-    let deviceInfo: Array<[string, any]> = [];
+    let deviceInfo: [string, any][] = [];
 
     if (process.env.PUBLISH_BUILD_PLATFORM === 'web') {
       const uaParser = await import('ua-parser-js');

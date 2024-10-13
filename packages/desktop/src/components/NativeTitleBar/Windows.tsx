@@ -6,6 +6,7 @@ import {
   IconWindowsMaximizeRestore,
   IconWindowsMinimize,
 } from '@publish/shared';
+import { invoke } from '@tauri-apps/api/core';
 import {
   type FC,
   type PropsWithChildren,
@@ -15,7 +16,6 @@ import {
 } from 'react';
 import { IF } from 'reactgets';
 import { useNativeWindow } from 'tauri-reactgets';
-import { invoke } from '@tauri-apps/api/core';
 
 import * as classes from './NativeTitleBar.module.css';
 

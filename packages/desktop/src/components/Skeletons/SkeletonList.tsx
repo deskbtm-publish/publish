@@ -1,5 +1,5 @@
 import type { SkeletonProps } from '@mantine/core';
-import { Skeleton } from '@mantine/core';
+import { rem, Skeleton } from '@mantine/core';
 import type { FC } from 'react';
 import { useProps } from 'reactgets/hooks/use-props';
 
@@ -11,8 +11,8 @@ interface SkeletonListProps {
 const defaultProps = {
   count: 5,
   ip: {
-    h: 28,
-    animate: false,
+    h: rem(24),
+    animate: true,
     mt: 'sm',
   },
 };

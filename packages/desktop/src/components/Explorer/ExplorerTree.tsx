@@ -32,7 +32,7 @@ export interface ExplorerTreeProps {
   data: TreeData;
 }
 
-const getLastId = (treeData) => {
+const getLastId = (treeData: TreeData) => {
   const reversedArray = [...treeData].sort((a, b) => {
     if (a.id < b.id) {
       return 1;
@@ -44,7 +44,7 @@ const getLastId = (treeData) => {
   });
 
   if (reversedArray.length > 0) {
-    return reversedArray[0].id;
+    return Number(reversedArray[0].id);
   }
 
   return 0;
@@ -58,7 +58,7 @@ export const ExplorerTree: FC<ExplorerTreeProps> = function (props) {
   const [isDragging, setIsDragging] = useState(false);
   const [selectedNodes, setSelectedNodes] = useState<TreeData>([]);
   const { treeRef } = useExplorer();
-  const treeViewRef = useRef<TreeMethods>(null!);
+  const treeViewRef = useRef<TreeMethods>(null);
   const [allCollapsed, setAllCollapsed] = useLocalStorage<boolean>({
     key: EXPLORER_STORAGE_KEY,
   });
@@ -204,18 +204,22 @@ export const ExplorerTree: FC<ExplorerTreeProps> = function (props) {
       return false;
     }
   };
-  const handleDelete = useCallback(() => {}, []);
-  const handleRename = useCallback((id: number, name: string) => {}, []);
 
   useImperativeHandle(treeRef, () => {
     const expandAll = () => {
-      treeViewRef.current.openAll();
+      treeViewRef.current?.openAll();
       setAllCollapsed(false);
     };
 
     const collapseAll = () => {
-      treeViewRef.current.closeAll();
+      treeViewRef.current?.closeAll();
       setAllCollapsed(true);
+    };
+
+    const addNode = (node: NodeModel<NodeData>) => {
+      const lastId = getLastId(tree) + 1;
+
+      setTree([...tree, { ...node, id: lastId }]);
     };
 
     return {
@@ -226,11 +230,12 @@ export const ExplorerTree: FC<ExplorerTreeProps> = function (props) {
           collapseAll();
         }
       },
+      addNode,
       expandAll,
       collapseAll,
       allCollapsed,
     };
-  }, [allCollapsed]);
+  }, [allCollapsed, setAllCollapsed, tree]);
 
   return (
     <DndProvider backend={MultiBackend} options={getDndBackendOptions()}>
@@ -260,10 +265,6 @@ export const ExplorerTree: FC<ExplorerTreeProps> = function (props) {
             return (
               <ExplorerTreeNode
                 {...options}
-                onRename={handleRename}
-                onDelete={function () {}}
-                onCopy={function () {}}
-                onPaste={function () {}}
                 node={node}
                 isSelected={selected}
                 isDragging={selected && isDragging}

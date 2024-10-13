@@ -27,16 +27,12 @@ import { useContextMenu } from '../ContextMenu';
 import * as classes from './ExplorerTreeNode.module.css';
 import { PolymorphicIcon } from './PolymorphicIcon';
 import type { NodeData } from './types';
+import { useExplorer } from './use-explorer';
 
 export interface ExplorerTreeNodeProps extends RenderParams {
   node: NodeModel<NodeData>;
   isDragging: boolean;
   isSelected: boolean;
-  onToggle(): void;
-  onRename(id: number, name: string): void;
-  onDelete(): void;
-  onCopy(): void;
-  onPaste(): void;
   onClick?: (e: MouseEvent<HTMLDivElement>, node: NodeModel<NodeData>) => void;
 }
 
@@ -55,10 +51,10 @@ export const ExplorerTreeNode = factory<ExplorerTreeNodeFactory>(
       isDragging,
       isOpen,
       handleRef,
-      // onRename,
     } = props;
     const { droppable, data } = node;
     const [renamed, setRename] = useState(false);
+    const { treeRef } = useExplorer();
 
     const useClickOutsideRef = useClickOutside(() => {
       setRename(false);
@@ -75,7 +71,9 @@ export const ExplorerTreeNode = factory<ExplorerTreeNodeFactory>(
     };
 
     const newFile = function () {
-      // setRename(true);
+      if (droppable) {
+        treeRef.current?.addNode({ text: '111' });
+      }
     };
 
     const showMenu = useCallback(
@@ -134,17 +132,6 @@ export const ExplorerTreeNode = factory<ExplorerTreeNodeFactory>(
         ],
       ]),
     );
-
-    // const addNode = (node: any) => {
-    //   const id = getLastId(tree) + 1;
-    //   setTree([
-    //     ...tree,
-    //     {
-    //       ...node,
-    //       id,
-    //     },
-    //   ]);
-    // };
 
     return (
       <UnstyledButton

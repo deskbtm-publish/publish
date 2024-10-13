@@ -1,5 +1,8 @@
-import type { ForwardedRef } from 'react';
+import { type NodeModel } from '@publish-kit/react-dnd-treeview';
+import type { RefObject } from 'react';
 import { createContext } from 'react';
+
+import { type NodeData } from './types';
 
 export interface ExplorerNode {
   rename(id: number, name: string): void;
@@ -10,17 +13,12 @@ export interface ExplorerTreeMethods {
   expandAll(): void;
   collapseAll(): void;
   toggleAll(): void;
+  addNode(node: NodeModel<NodeData>): void;
   allCollapsed: boolean;
 }
 
-export interface ExplorerContextProps extends ExplorerTreeMethods {
-  treeRef: ForwardedRef<ExplorerTreeMethods>;
+export interface ExplorerContextProps {
+  treeRef: RefObject<ExplorerTreeMethods | null>;
 }
 
-export const ExplorerContext = createContext<ExplorerContextProps>({
-  collapseAll() {},
-  expandAll() {},
-  toggleAll() {},
-  allCollapsed: false,
-  treeRef: null,
-});
+export const ExplorerContext = createContext({} as ExplorerContextProps);

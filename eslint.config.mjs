@@ -61,7 +61,7 @@ export default tsEslint.config(
           argsIgnorePattern: '^_',
         },
       ],
-      'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
+      'no-console': ['error', { allow: ['warn', 'error', 'info', 'debug'] }],
     },
   },
   {

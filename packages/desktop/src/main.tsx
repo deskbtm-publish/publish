@@ -1,5 +1,7 @@
-// Init the kDevMode env etc
+// Init the kDevMode env etc.
 import '@deskbtm/gadgets/env';
+// Must be imported before mantine styles, otherwise conflict with mantine styles.
+import 'jotai-devtools/styles.css';
 import '@mantine/core/styles.css';
 import '@mantine/spotlight/styles.css';
 import '@fontsource/inter';
@@ -12,13 +14,17 @@ import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import { reportWebVitals } from './reportWebVitals.ts';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <Suspense>
-      <App />
-    </Suspense>
-  </React.StrictMode>,
-);
+const rootContainer = document.getElementById('root');
+
+if (rootContainer) {
+  ReactDOM.createRoot(rootContainer).render(
+    <React.StrictMode>
+      <Suspense>
+        <App />
+      </Suspense>
+    </React.StrictMode>,
+  );
+}
 
 disableGlobalContextMenu();
 

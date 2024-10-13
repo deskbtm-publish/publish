@@ -3,7 +3,7 @@ import { useCallback, useMemo, useRef, useState } from 'react';
 
 export type DividerProps = React.ComponentPropsWithoutRef<'hr'>;
 
-export type Resizable = {
+export interface Resizable {
   /**
    * border position
    */
@@ -24,16 +24,16 @@ export type Resizable = {
    * set border position
    */
   setPosition: React.Dispatch<React.SetStateAction<number>>;
-};
+}
 
-export type ResizeCallbackArgs = {
+export interface ResizeCallbackArgs {
   /**
    * position at the time of callback
    */
   position: number;
-};
+}
 
-export type UseResizableProps = {
+export interface UseResizableProps {
   /**
    * direction of resizing
    */
@@ -75,7 +75,7 @@ export type UseResizableProps = {
    * callback when border position changes end
    */
   onResizeEnd?: (args: ResizeCallbackArgs) => void;
-};
+}
 
 export type ResizableProps = UseResizableProps & {
   /**

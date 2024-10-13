@@ -4,9 +4,9 @@ import type { PropsWithChildren } from 'react';
 import { type FC } from 'react';
 import { Outlet } from 'react-router';
 
+import { DividerPanel } from '../DividerPanel';
 import { ExplorerProvider } from '../Explorer';
 import { ScrollView } from '../ScrollView';
-import { DividerPanel } from '../DividerPanel';
 import { GlobalHeader } from './GlobalHeader';
 import { PrimitiveSidebar } from './Sidebar';
 
@@ -22,9 +22,7 @@ const WorkspaceLayout: FC<DashboardLayoutProps> = () => {
           </DividerPanel.Leading>
           <DividerPanel.Trailing>
             <GlobalHeader />
-            <ScrollView>
-              <PublishDocEditor />
-            </ScrollView>
+            <ScrollView>{/* <PublishDocEditor /> */}</ScrollView>
           </DividerPanel.Trailing>
         </DividerPanel>
       </Container>

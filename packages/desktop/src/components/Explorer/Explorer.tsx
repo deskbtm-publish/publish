@@ -1,10 +1,9 @@
 import { Box, Flex } from '@mantine/core';
-import { Suspense, use, useEffect, useRef, useState, type FC } from 'react';
+import { type FC, Suspense } from 'react';
 
 import { ActionsBar } from './ActionsBar';
 import { ExplorerTree } from './ExplorerTree';
-import { useExplorer } from './use-explorer';
-
+import { SkeletonList } from '../Skeletons';
 
 const initialData = [
   {
@@ -93,24 +92,6 @@ const initialData = [
   },
 ];
 
-const getLastId = (treeData) => {
-  const reversedArray = [...treeData].sort((a, b) => {
-    if (a.id < b.id) {
-      return 1;
-    } else if (a.id > b.id) {
-      return -1;
-    }
-
-    return 0;
-  });
-
-  if (reversedArray.length > 0) {
-    return reversedArray[0].id;
-  }
-
-  return 0;
-};
-
 const mock = new Promise<typeof initialData>((resolve) =>
   setTimeout(() => {
     resolve(initialData);
@@ -120,7 +101,12 @@ const mock = new Promise<typeof initialData>((resolve) =>
 const Content: FC<any> = function () {
   const data = initialData;
 
-  return <ExplorerTree data={data} />;
+  return (
+    <Box px="md">
+      <SkeletonList />
+    </Box>
+  );
+  // return <ExplorerTree data={data} />;
 };
 
 export const Explorer: FC<any> = function () {

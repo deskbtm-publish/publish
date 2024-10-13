@@ -14,7 +14,6 @@ const { Sub, Item } = ContextMenu;
 export function ExplorerEmptyContextMenu() {
   return (
     <ContextMenu id={EXPLORER_EMPTY_ID}>
-      {/* <Menu.Label>Demo</Menu.Label> */}
       <Item>Demo2</Item>
       <Item>Demo2</Item>
       <Item>Demo2</Item>
@@ -35,8 +34,6 @@ export function ExplorerNodeContextMenu() {
     id,
     props,
   }: ItemParams<ExplorerNodeContextMenu, any>) {
-    console.log(props);
-
     if (!props) return;
 
     switch (id) {

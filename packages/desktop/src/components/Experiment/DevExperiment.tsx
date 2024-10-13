@@ -58,8 +58,6 @@ export const DevExperiment: FC<DevExperimentProps> = function () {
                 ],
               };
               db.put(doc);
-
-              console.log(r);
             }}
           >
             PouchDB

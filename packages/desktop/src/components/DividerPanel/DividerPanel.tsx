@@ -8,15 +8,15 @@ import type { PropsWithChildren } from 'react';
 import { useCallback, useImperativeHandle, useMemo, useRef } from 'react';
 import { type FC } from 'react';
 import React from 'react';
-import { WithDefaultProps, useProps } from 'reactgets/hooks/use-props';
+import { IF } from 'reactgets';
+import { useProps, type WithDefaultProps } from 'reactgets/hooks/use-props';
 
 import { DividerHandle } from './DividerHandle';
 import * as classes from './DividerPanel.module.css';
-import { Panel, PanelProps } from './Panel';
+import { DividerPanelProvider, useDividerPanel } from './DividerPanelContext';
+import { Panel, type PanelProps } from './Panel';
 import type { ResizeCallbackArgs, UseResizableProps } from './use-resizable';
 import { useResizable } from './use-resizable';
-import { IF } from 'reactgets';
-import { DividerPanelProvider, useDividerPanel } from './DividerPanelContext';
 
 export interface DividerPanelProps
   extends Partial<UseResizableProps>,
@@ -60,16 +60,10 @@ export const DividerPanelInner = function ({
 }: WithDefaultProps<DividerPanelProps, typeof defaultProps> & {
   ref?: React.RefObject<DividerPanelInnerRef | null>;
 }) {
-  const {
-    children,
-    dividerWidth,
-    initial,
-    hideDividerCollapsed,
-    axis,
-    ...rest
-  } = props;
+  const { children, initial, axis, ...rest } = props;
   const cRef = useRef<HTMLDivElement>(null);
   const direction = axis === 'x' ? 'row' : 'column';
+  // eslint-disable-next-line react-compiler/react-compiler
   const { isDragging, position, separatorProps, setPosition } = useResizable({
     axis,
     initial,
@@ -97,7 +91,9 @@ export const DividerPanelInner = function ({
           marginLeft: panel?.collapsed ? position * -1 : 0,
         }}
       >
-        <Box flex={1}>{children?.[0]}</Box>
+        <Box flex={1} w="100%">
+          {children?.[0]}
+        </Box>
         <IF is={!panel?.collapsed}>
           <DividerHandle isDragging={isDragging} {...separatorProps} />
         </IF>
@@ -125,13 +121,8 @@ export const DividerPanel = factory<DividerPanelFactory>((_props, _ref) => {
     throw new Error('Must have two children');
   }
 
-  const defaultStoreProps = {
-    position: initial,
-    expanded: true,
-  };
-
   const store = useMemoStore<
-    WithDefaultProps<DividerPanelStore, typeof defaultStoreProps>
+    WithDefaultProps<DividerPanelStore, { position: number; expanded: boolean }>
   >(SPLIT_PANEL_STORAGE_KEY, {
     position: initial,
     expanded: true,

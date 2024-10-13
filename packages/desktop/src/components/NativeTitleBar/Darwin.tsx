@@ -36,10 +36,10 @@ export const DarwinNativeTitleBar: FC<DarwinNativeTitleBarProps> = function () {
   const { hovered, ref } = useHover();
   const fullscreen = useCallback(async () => {
     if (isAltPressing) {
-      await current!.maximize();
+      await current?.maximize();
     } else {
       const fullscreen = await current?.isFullscreen();
-      await current!.setFullscreen(!fullscreen);
+      await current?.setFullscreen(!fullscreen);
     }
   }, [current, isAltPressing]);
 
@@ -75,12 +75,12 @@ export const DarwinNativeTitleBar: FC<DarwinNativeTitleBarProps> = function () {
       gap={rem(8)}
       className={classes.root}
     >
-      <UnstyledButton onClick={async () => current!.close()}>
+      <UnstyledButton onClick={async () => current?.close()}>
         <IF is={hovered}>
           <IconDarwinClose />
         </IF>
       </UnstyledButton>
-      <UnstyledButton onClick={async () => current!.minimize()}>
+      <UnstyledButton onClick={async () => current?.minimize()}>
         <IF is={hovered}>
           <IconDarwinMinimize />
         </IF>
