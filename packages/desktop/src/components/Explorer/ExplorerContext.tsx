@@ -1,3 +1,4 @@
+import { type Override }  from '@publish/shared';
 import { type NodeModel } from '@publish-kit/react-dnd-treeview';
 import type { RefObject } from 'react';
 import { createContext } from 'react';
@@ -13,7 +14,7 @@ export interface ExplorerTreeMethods {
   expandAll(): void;
   collapseAll(): void;
   toggleAll(): void;
-  addNode(node: Omit<NodeModel<NodeData>, 'id'>): void;
+  addNode(node: Omit<Override<NodeModel<NodeData>, {parent?: number | string}>, 'id'>): void;
   allCollapsed: boolean;
 }
 
