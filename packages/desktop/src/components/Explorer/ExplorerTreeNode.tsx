@@ -52,7 +52,7 @@ export const ExplorerTreeNode = factory<ExplorerTreeNodeFactory>(
       isOpen,
       handleRef,
     } = props;
-    const { droppable, data } = node;
+    const { droppable, data, parent, id } = node;
     const [renamed, setRename] = useState(false);
     const { treeRef } = useExplorer();
 
@@ -70,10 +70,18 @@ export const ExplorerTreeNode = factory<ExplorerTreeNodeFactory>(
       setRename(true);
     };
 
-    const newFile = function () {
-      if (droppable) {
-        treeRef.current?.addNode({ text: '111' });
-      }
+    const newPublish = function () {
+      treeRef.current?.addNode({
+        text: Math.random().toString(36).substring(7),
+        droppable: true,
+        parent: id,
+        data: {
+          type: 'publish-text',
+          size: 2.1,
+          birthTime: '1',
+          modifiedTime: '1',
+        },
+      });
     };
 
     const showMenu = useCallback(
@@ -83,12 +91,12 @@ export const ExplorerTreeNode = factory<ExplorerTreeNodeFactory>(
           event,
           props: {
             rename,
-            newFile,
+            newPublish,
             ...props,
           },
         });
       },
-      [props, show],
+      [show, newPublish, props],
     );
 
     const handleClick = useCallback(
@@ -154,9 +162,9 @@ export const ExplorerTreeNode = factory<ExplorerTreeNodeFactory>(
         >
           {droppable && <IconChevronRight size={14} />}
         </ActionIcon>
-        <PolymorphicIcon type={data?.type} />
+        <PolymorphicIcon opened={isOpen} type={data?.type} />
 
-        <Box pl={5}>
+        <Box pl={5} maw="50%">
           {renamed ? (
             <FocusTrap active>
               <Input
@@ -167,7 +175,13 @@ export const ExplorerTreeNode = factory<ExplorerTreeNodeFactory>(
               />
             </FocusTrap>
           ) : (
-            <Text size="sm" c="black" pos="relative" top={rem(1)}>
+            <Text
+              truncate="end"
+              size="sm"
+              c="black"
+              pos="relative"
+              top={rem(1)}
+            >
               {nodeText}
             </Text>
           )}

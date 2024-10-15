@@ -13,7 +13,7 @@ export interface ExplorerTreeMethods {
   expandAll(): void;
   collapseAll(): void;
   toggleAll(): void;
-  addNode(node: NodeModel<NodeData>): void;
+  addNode(node: Omit<NodeModel<NodeData>, 'id'>): void;
   allCollapsed: boolean;
 }
 

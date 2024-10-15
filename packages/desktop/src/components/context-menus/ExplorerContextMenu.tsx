@@ -25,6 +25,7 @@ export function ExplorerEmptyContextMenu() {
 
 export interface ExplorerNodeContextMenu extends ExplorerTreeNodeProps {
   rename(): void;
+  newPublish(): void;
 }
 
 export function ExplorerNodeContextMenu() {
@@ -40,6 +41,9 @@ export function ExplorerNodeContextMenu() {
       case 'rename':
         props.rename();
         break;
+      case 'newPublish':
+        props.newPublish();
+        break;
 
       default:
         break;
@@ -51,7 +55,7 @@ export function ExplorerNodeContextMenu() {
   return (
     <ContextMenu style={{ minWidth: rem(230) }} id={EXPLORER_NODE_ID}>
       <Item
-        id="new-file"
+        id="newPublish"
         leading={<IconFilePlus size={16} />}
         onClick={handleItemClick}
       >

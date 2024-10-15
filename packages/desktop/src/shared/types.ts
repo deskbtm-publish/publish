@@ -1,1 +1,4 @@
-export type PublishableType = 'text' | 'video' | 'audio' | string;
+export type PublishableType =
+  | 'publish-text'
+  | 'publish-video'
+  | 'publish-audio';

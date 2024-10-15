@@ -34,7 +34,7 @@ export const ActionsBar: FC<any> = function () {
       px={rem(18)}
     >
       <Group gap="xs">
-        <Tooltip openDelay={800} label="New Folder" position="bottom">
+        <Tooltip openDelay={800} label="New Fusion" position="bottom">
           <ActionIcon
             size="md"
             c="gray.7"
@@ -63,15 +63,14 @@ export const ActionsBar: FC<any> = function () {
         </Tooltip>
 
         <Tooltip openDelay={800} label="More actions" position="bottom">
-          <Menu trigger="hover" opened>
+          <Menu
+            trigger="click"
+            position="bottom-start"
+            withArrow
+            offset={{ crossAxis: 6 }}
+          >
             <Menu.Target>
-              <ActionIcon
-                size="md"
-                c="gray.7"
-                onClick={() => {
-                  treeRef.current?.toggleAll();
-                }}
-              >
+              <ActionIcon size="md" c="gray.7">
                 <IconDots size={18} />
               </ActionIcon>
             </Menu.Target>

@@ -1,16 +1,16 @@
 import { Box, Flex } from '@mantine/core';
 import { type FC, Suspense } from 'react';
 
+import { SkeletonList } from '../Skeletons';
 import { ActionsBar } from './ActionsBar';
 import { ExplorerTree } from './ExplorerTree';
-import { SkeletonList } from '../Skeletons';
 
 const initialData = [
   {
     id: 1,
     parent: 0,
     droppable: true,
-    text: 'Folder 1',
+    text: 'Folder 11111111111111111111111111111111111111111111111',
     data: {
       type: 'folder',
       size: 2.1,
@@ -24,7 +24,7 @@ const initialData = [
     droppable: false,
     text: 'File 1-1',
     data: {
-      type: 'csv',
+      type: 'file-text',
       size: 0.5,
       birthTime: '1',
       modifiedTime: '1',
@@ -101,12 +101,12 @@ const mock = new Promise<typeof initialData>((resolve) =>
 const Content: FC<any> = function () {
   const data = initialData;
 
-  return (
-    <Box px="md">
-      <SkeletonList />
-    </Box>
-  );
-  // return <ExplorerTree data={data} />;
+  // return (
+  //   <Box px="md">
+  //     <SkeletonList />
+  //   </Box>
+  // );
+  return <ExplorerTree data={data} />;
 };
 
 export const Explorer: FC<any> = function () {

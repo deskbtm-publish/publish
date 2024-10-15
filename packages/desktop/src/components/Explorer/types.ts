@@ -1,6 +1,8 @@
 import { type PublishableType } from '../../shared';
 
-export type NodeType = 'folder' | 'unknown' | PublishableType | string;
+export type FileNodeType = 'image' | 'text';
+
+export type NodeType = 'folder' | 'unknown' | FileNodeType | PublishableType;
 
 export interface NodeData {
   type: NodeType;
