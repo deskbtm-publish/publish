@@ -6844,12 +6844,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:22.5.1":
-  version: 22.5.1
-  resolution: "@types/node@npm:22.5.1"
+"@types/node@npm:22.7.5":
+  version: 22.7.5
+  resolution: "@types/node@npm:22.7.5"
   dependencies:
     undici-types: "npm:~6.19.2"
-  checksum: 10/adcec0e8a9ec9112a8cc9529b7d633356c2377fe69ca6e6de4ee39cacb8c86a18a9b7ba658e2456f8ad90d5b76767b268f517b0336c6db787cb056dcdfed107a
+  checksum: 10/e8ba102f8c1aa7623787d625389be68d64e54fcbb76d41f6c2c64e8cf4c9f4a2370e7ef5e5f1732f3c57529d3d26afdcb2edc0101c5e413a79081449825c57ac
   languageName: node
   linkType: hard
 
@@ -17022,7 +17022,7 @@ __metadata:
   dependencies:
     "@babel/core": "npm:^7.25.8"
     "@types/babel__core": "npm:^7.20.5"
-    "@types/node": "npm:22.5.1"
+    "@types/node": "npm:22.7.5"
     "@types/react": "npm:types-react@rc"
     "@types/react-dom": "npm:types-react@rc"
     babel-plugin-react-compiler: "npm:0.0.0-experimental-ad3b12a-20241011"
@@ -17381,7 +17381,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "reactgets@workspace:first_party/reactgets"
   dependencies:
-    "@types/node": "npm:22.5.1"
+    "@types/node": "npm:22.7.5"
     "@types/react": "npm:types-react@rc"
     "@types/react-dom": "npm:types-react@rc"
     typescript: "npm:5.6.3"
