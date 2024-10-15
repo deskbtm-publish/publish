@@ -218,6 +218,10 @@ export const ExplorerTree: FC<ExplorerTreeProps> = function (props) {
 
     const addNode = (node: NodeModel<NodeData>) => {
       const lastId = getLastId(tree) + 1;
+      console.log(node, '-----');
+      if (!node.parent) {
+        node.parent = 0;
+      }
 
       setTree([...tree, { ...node, id: lastId }]);
     };

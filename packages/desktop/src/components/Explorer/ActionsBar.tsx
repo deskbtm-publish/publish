@@ -34,12 +34,21 @@ export const ActionsBar: FC<any> = function () {
       px={rem(18)}
     >
       <Group gap="xs">
-        <Tooltip openDelay={800} label="New Fusion" position="bottom">
+        <Tooltip openDelay={800} label="New Binder" position="bottom">
           <ActionIcon
             size="md"
             c="gray.7"
             onClick={() => {
-              treeRef.current?.toggleAll();
+              treeRef.current?.addNode({
+                text: Math.random().toString(36).substring(7),
+                droppable: true,
+                data: {
+                  type: 'publish-text',
+                  size: 2.1,
+                  birthTime: '1',
+                  modifiedTime: '1',
+                },
+              });
             }}
           >
             <IconFolderPlus size={18} />

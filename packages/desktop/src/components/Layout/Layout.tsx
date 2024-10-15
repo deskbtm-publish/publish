@@ -22,7 +22,9 @@ const WorkspaceLayout: FC<DashboardLayoutProps> = () => {
           </DividerPanel.Leading>
           <DividerPanel.Trailing>
             <GlobalHeader />
-            <ScrollView>{/* <PublishDocEditor /> */}</ScrollView>
+            <ScrollView>
+              <PublishDocEditor />
+            </ScrollView>
           </DividerPanel.Trailing>
         </DividerPanel>
       </Container>

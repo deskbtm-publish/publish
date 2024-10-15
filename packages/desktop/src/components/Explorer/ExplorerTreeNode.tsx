@@ -52,7 +52,7 @@ export const ExplorerTreeNode = factory<ExplorerTreeNodeFactory>(
       isOpen,
       handleRef,
     } = props;
-    const { droppable, data, parent, id } = node;
+    const { droppable, data, id } = node;
     const [renamed, setRename] = useState(false);
     const { treeRef } = useExplorer();
 
