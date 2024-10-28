@@ -16947,7 +16947,7 @@ __metadata:
     postcss-preset-mantine: "npm:1.17.0"
     postcss-simple-vars: "npm:7.0.1"
     prettier: "npm:3.3.3"
-    react: "npm:19.0.0-rc-cae764ce-20241025"
+    react: "npm:19.0.0-rc.0"
     react-dnd: "npm:16.0.1"
     react-dom: "npm:19.0.0-rc-cae764ce-20241025"
     react-error-boundary: "npm:4.1.2"
@@ -17418,10 +17418,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:19.0.0-rc-cae764ce-20241025":
-  version: 19.0.0-rc-cae764ce-20241025
-  resolution: "react@npm:19.0.0-rc-cae764ce-20241025"
-  checksum: 10/494729252cda1ae8036d1f8f89e70a5488e4de065cc3e94a6118cdc92d931751b34170668d578ae2e7a5162b833047c73c1d3eb72a5e17e15eeab46ce5019479
+"react@npm:19.0.0-rc.0":
+  version: 19.0.0-rc.0
+  resolution: "react@npm:19.0.0-rc.0"
+  checksum: 10/a6409939a79bdadd4c8fbb211a4ed670e5ed986dc7c946b855e5d6694e956122e2cbae4bd88360920a8e0758813de7b198ebc03e8fb4b1bea53f6433b2bfec6b
   languageName: node
   linkType: hard
 
