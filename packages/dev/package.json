@@ -31,14 +31,14 @@
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
   },
   "devDependencies": {
-    "@babel/plugin-syntax-jsx": "7.25.7",
-    "@babel/plugin-syntax-typescript": "7.25.7",
+    "@babel/plugin-syntax-jsx": "7.25.9",
+    "@babel/plugin-syntax-typescript": "7.25.9",
     "@deskbtm/dev-mkcert": "1.17.5",
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.15",
     "@svgr/webpack": "8.1.0",
     "@swc-jotai/react-refresh": "0.2.0",
-    "@swc/core": "1.7.35",
-    "browserslist": "4.24.0",
+    "@swc/core": "1.7.40",
+    "browserslist": "4.24.2",
     "case-sensitive-paths-webpack-plugin": "2.4.0",
     "copy-webpack-plugin": "12.0.2",
     "css-loader": "7.1.2",
@@ -47,7 +47,7 @@
     "dotenv-expand": "11.0.6",
     "eslint-webpack-plugin": "4.2.0",
     "file-loader": "6.2.0",
-    "html-webpack-plugin": "5.6.0",
+    "html-webpack-plugin": "5.6.3",
     "image-minimizer-webpack-plugin": "4.1.0",
     "mini-css-extract-plugin": "2.9.1",
     "postcss": "8.4.47",
@@ -55,7 +55,7 @@
     "postcss-loader": "8.1.1",
     "postcss-mixins": "11.0.3",
     "postcss-normalize": "13.0.1",
-    "postcss-preset-env": "10.0.7",
+    "postcss-preset-env": "10.0.8",
     "postcss-preset-mantine": "1.17.0",
     "postcss-simple-vars": "7.0.1",
     "react-dev-utils": "12.0.1",
@@ -67,7 +67,7 @@
     "swc-loader": "0.2.6",
     "terser-webpack-plugin": "5.3.10",
     "typescript": "5.6.3",
-    "web-vitals": "4.2.3",
+    "web-vitals": "4.2.4",
     "webpack": "5.95.0",
     "webpack-bundle-analyzer": "4.10.2",
     "webpack-cli": "5.1.4",
@@ -75,7 +75,7 @@
     "webpack-manifest-plugin": "5.0.0",
     "webpack-merge": "6.0.1",
     "workbox-webpack-plugin": "7.1.0",
-    "workspace-tools": "0.36.4"
+    "workspace-tools": "0.37.0"
   },
   "dependencies": {
     "react-compiler-loader": "workspace:^"

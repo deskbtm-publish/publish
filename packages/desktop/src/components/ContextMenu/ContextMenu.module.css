@@ -12,7 +12,6 @@
   box-sizing: border-box;
   box-shadow: var(--publish-color-contextmenu-border);
   border-radius: var(--mantine-radius-default);
-  /* padding: rem(4px); */
   z-index: 999;
   &::before {
     content: '';

@@ -6,11 +6,12 @@ import type {
 } from '@mantine/core';
 import { Box, factory, useProps, useStyles } from '@mantine/core';
 import type { Editor } from '@tiptap/react';
-import React, { useMemo } from 'react';
+import type React from 'react';
+import { useMemo } from 'react';
 
 import { DocEditorContent } from './Content/Content';
-import { DocEditorProvider } from './DocEditorContext';
 import * as classes from './DocEditor.module.css';
+import { DocEditorProvider } from './DocEditorContext';
 import * as fn from './Fn';
 import { BubbleMenuGroup } from './Group';
 import type { DocEditorLabels } from './labels';

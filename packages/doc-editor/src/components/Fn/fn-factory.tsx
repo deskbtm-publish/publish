@@ -1,10 +1,10 @@
 import { rem, useProps } from '@mantine/core';
-import { Editor } from '@tiptap/core';
+import { type Editor } from '@tiptap/core';
 import React from 'react';
 
 import { useDocEditorContext } from '../DocEditorContext';
-import { DocEditorLabels } from '../labels';
-import { PrimitiveFn, PrimitiveFnProps } from './PrimitiveFn';
+import { type DocEditorLabels } from '../labels';
+import { PrimitiveFn, type PrimitiveFnProps } from './PrimitiveFn';
 
 export interface FnFactoryProps {
   label: keyof DocEditorLabels;

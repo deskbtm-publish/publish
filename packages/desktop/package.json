@@ -9,23 +9,23 @@
     "dev": "cross-env NODE_ENV=development tsx ../../node_modules/webpack/bin/webpack.js serve -c publish-pack.config.ts"
   },
   "dependencies": {
-    "@mantine/core": "7.13.2",
-    "@mantine/dates": "7.13.2",
-    "@mantine/dropzone": "7.13.2",
-    "@mantine/form": "7.13.2",
-    "@mantine/hooks": "7.13.2",
-    "@mantine/notifications": "7.13.2",
-    "@mantine/nprogress": "7.13.2",
-    "@mantine/spotlight": "7.13.2",
+    "@mantine/core": "7.13.4",
+    "@mantine/dates": "7.13.4",
+    "@mantine/dropzone": "7.13.4",
+    "@mantine/form": "7.13.4",
+    "@mantine/hooks": "7.13.4",
+    "@mantine/notifications": "7.13.4",
+    "@mantine/nprogress": "7.13.4",
+    "@mantine/spotlight": "7.13.4",
     "@publish-kit/x-api": "workspace:^",
     "@publish/doc-editor": "workspace:^",
     "@publish/logger": "workspace:^",
     "@tanstack/react-virtual": "^3.10.8",
-    "@tauri-apps/api": "2.0.2",
+    "@tauri-apps/api": "2.0.3",
     "@tauri-apps/plugin-autostart": "2.0.0",
-    "@tauri-apps/plugin-http": "2.0.0",
+    "@tauri-apps/plugin-http": "2.0.1",
     "@tauri-apps/plugin-os": "2.0.0",
-    "@tauri-apps/plugin-shell": "2.0.0",
+    "@tauri-apps/plugin-shell": "2.0.1",
     "@tauri-apps/plugin-updater": "2.0.0",
     "pouchdb": "9.0.0",
     "react-router": "6.27.0",
@@ -36,7 +36,7 @@
   "devDependencies": {
     "@types/pouchdb": "6.4.2",
     "cross-env": "7.0.3",
-    "tsx": "4.19.1"
+    "tsx": "4.19.2"
   },
   "sideEffects": [
     "*.module.css"

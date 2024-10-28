@@ -15,10 +15,10 @@ import { PlaceholderContext } from './providers';
 import type { NodeModel, RenderParams } from './types';
 import { hasChildNodes, isDroppable } from './utils';
 
-type Props = {
+interface Props {
   id: NodeModel['id'];
   depth: number;
-};
+}
 
 export const Node = <T,>(props: Props): ReactElement | null => {
   const treeContext = useTreeContext<T>();

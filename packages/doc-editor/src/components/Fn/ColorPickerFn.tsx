@@ -92,7 +92,7 @@ export const ColorPickerFn = ({
     close();
   };
 
-  const fns = colors!.map((color, index) => (
+  const fns = colors?.map((color, index) => (
     <ColorSwatch
       key={index}
       component="button"

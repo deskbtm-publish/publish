@@ -13,8 +13,8 @@ export const resolver: CSSVariablesResolver = (theme) => ({
     '--publish-backdrop-color-default':
       process.env.PUBLISH_BUILD_PLATFORM === 'desktop'
         ? '#ffffff'
-        : '#ffffff80',
-    '--publish-backdrop-filter': 'saturate(180%) blur(10px)',
+        : '#ffffffb3',
+    '--publish-backdrop-filter': 'saturate(180%) blur(18px)',
   },
   dark: {
     '--publish-color-contextmenu-hover': theme.other.contextMenuHoverLight,

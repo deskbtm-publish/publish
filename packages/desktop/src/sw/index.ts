@@ -1,1 +1,1 @@
-import '@publish/addon-rt/guard/net-guard.ts';
+import '@publish/addon-rt/guards/net-guard.ts';
