@@ -20,6 +20,7 @@
     "@publish-kit/x-api": "workspace:^",
     "@publish/doc-editor": "workspace:^",
     "@publish/logger": "workspace:^",
+    "@tanstack/react-virtual": "^3.10.8",
     "@tauri-apps/api": "2.0.2",
     "@tauri-apps/plugin-autostart": "2.0.0",
     "@tauri-apps/plugin-http": "2.0.0",

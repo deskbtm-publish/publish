@@ -1,15 +1,2 @@
-.treeRoot {
-  list-style-type: none;
-  padding-inline-start: rem(10px);
-  padding-inline-end: rem(15px);
-  margin: 0;
-  height: 100%;
-
-  & :where(ul, li) {
-    padding-inline-start: rem(6px);
-  }
-}
-
-.listItem {
-  list-style-type: none;
+.root {
 }

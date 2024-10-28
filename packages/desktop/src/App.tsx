@@ -19,7 +19,7 @@ import { resolver, theme } from './theme';
 const DevTools: FC = function () {
   return kDevMode ? (
     <Suspense>
-      <JotaiDevTools />
+      <JotaiDevTools position="bottom-right" />
       <ReactQueryDevtools initialIsOpen={kDevMode} position="bottom" />
       <DevLab />
     </Suspense>

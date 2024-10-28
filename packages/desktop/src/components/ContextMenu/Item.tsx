@@ -1,3 +1,4 @@
+import { NOP } from '@deskbtm/gadgets';
 import type { MantineColor } from '@mantine/core';
 import { Box, parseThemeColor, useMantineTheme } from '@mantine/core';
 import { clsx } from 'clsx';
@@ -125,7 +126,7 @@ export const ContextMenuItem: React.FC<ItemProps> = ({
   data,
   propsFromTrigger,
   keyMatcher,
-  onClick = () => {},
+  onClick = NOP,
   disabled = false,
   hidden = false,
   closeOnClick = true,
@@ -158,15 +159,15 @@ export const ContextMenuItem: React.FC<ItemProps> = ({
 
   // provide a feedback to the user that the item has been clicked before closing the menu
   function dispatchUserHandler() {
-    const node = itemNode.current!;
-    node.focus();
-    node.addEventListener(
+    const node = itemNode.current;
+    node?.focus();
+    node?.addEventListener(
       'animationend',
       // defer, required for react 17
       () => setTimeout(contextMenu.hideAll),
       { once: true },
     );
-    node.classList.add(styles.itemFeedback);
+    node?.classList.add(styles.itemFeedback);
     onClick(handlerParams);
   }
 

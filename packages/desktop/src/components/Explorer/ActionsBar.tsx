@@ -87,7 +87,7 @@ export const ActionsBar: FC<any> = function () {
               <Menu.Label>Application</Menu.Label>
               <Menu.Item
                 leftSection={
-                  <IconSettings style={{ width: rem(14), height: rem(14) }} />
+                  <IconSettings style={{ width: rem(16), height: rem(16) }} />
                 }
               >
                 Settings
@@ -95,7 +95,7 @@ export const ActionsBar: FC<any> = function () {
               <Menu.Item
                 leftSection={
                   <IconMessageCircle
-                    style={{ width: rem(14), height: rem(14) }}
+                    style={{ width: rem(16), height: rem(16) }}
                   />
                 }
               >
@@ -103,14 +103,14 @@ export const ActionsBar: FC<any> = function () {
               </Menu.Item>
               <Menu.Item
                 leftSection={
-                  <IconPhoto style={{ width: rem(14), height: rem(14) }} />
+                  <IconPhoto style={{ width: rem(16), height: rem(16) }} />
                 }
               >
                 Gallery
               </Menu.Item>
               <Menu.Item
                 leftSection={
-                  <IconSearch style={{ width: rem(14), height: rem(14) }} />
+                  <IconSearch style={{ width: rem(16), height: rem(16) }} />
                 }
                 rightSection={
                   <Text size="xs" c="dimmed">
@@ -127,7 +127,7 @@ export const ActionsBar: FC<any> = function () {
               <Menu.Item
                 leftSection={
                   <IconArrowsLeftRight
-                    style={{ width: rem(14), height: rem(14) }}
+                    style={{ width: rem(16), height: rem(16) }}
                   />
                 }
               >
@@ -136,7 +136,7 @@ export const ActionsBar: FC<any> = function () {
               <Menu.Item
                 color="red"
                 leftSection={
-                  <IconTrash style={{ width: rem(14), height: rem(14) }} />
+                  <IconTrash style={{ width: rem(16), height: rem(16) }} />
                 }
               >
                 Delete my account

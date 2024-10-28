@@ -12,7 +12,7 @@
   touch-action: none;
   z-index: 199;
   height: 100%;
-  right: rem(-8px);
+  right: rem(-16);
   --_resize-divider-width: rem(1px);
   --_resize-divider-color: var(--_resize-divider-inactive-color);
 

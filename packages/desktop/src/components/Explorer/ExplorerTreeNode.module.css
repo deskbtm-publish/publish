@@ -1,9 +1,11 @@
 .node {
-  border-radius: var(--mantine-radius-default);
   display: flex;
   align-items: center;
+
   @mixin hover {
-    background-color: var(--mantine-color-gray-0);
+    color: var(--_explorer-node-color);
+    /* TODO: */
+    background-color: var(--_explorer-node-hover, var(--mantine-color-gray-0));
   }
 
   input {

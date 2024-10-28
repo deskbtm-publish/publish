@@ -14,6 +14,8 @@ import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import { reportWebVitals } from './reportWebVitals.ts';
 
+import('./styles/preset.css');
+
 const rootContainer = document.getElementById('root');
 
 if (rootContainer) {

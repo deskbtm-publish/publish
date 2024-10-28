@@ -20,4 +20,9 @@ export interface NodeData {
    * Last modified time
    */
   modifiedTime: string;
+
+  /**
+   * Set the color for the specified node type, which can be selected in Explorer or displayed on hover.
+   */
+  color?: string | { color?: string; hoverColor?: string };
 }

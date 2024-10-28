@@ -25,10 +25,6 @@ export const resolver: CSSVariablesResolver = (theme) => ({
 export const theme = createTheme({
   fontFamily: `Inter,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial,
     sans-serif, Apple Color Emoji, Segoe UI Emoji, system-ui`,
-  defaultRadius: 'xmd',
-  radius: {
-    xmd: '0.35rem',
-  },
   components: {
     ActionIcon: {
       defaultProps: {
@@ -45,7 +41,7 @@ export const theme = createTheme({
     Tooltip: {
       styles: {
         tooltip: {
-          '--tooltip-radius': 'var(--mantine-radius-sm)',
+          '--tooltip-radius': 'var(--mantine-radius-default)',
           fontSize: 'var(--mantine-font-size-xs)',
         },
       },

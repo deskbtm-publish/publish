@@ -15,7 +15,7 @@ export interface DashboardLayoutProps extends PropsWithChildren {}
 const WorkspaceLayout: FC<DashboardLayoutProps> = () => {
   return (
     <ExplorerProvider>
-      <Container p="0" fluid h="100dvh">
+      <Container p="0" fluid h="100dvh" style={{ overflow: 'hidden' }}>
         <DividerPanel hideDividerCollapsed initial={278} min={208} max={608}>
           <DividerPanel.Leading h="100%">
             <PrimitiveSidebar />

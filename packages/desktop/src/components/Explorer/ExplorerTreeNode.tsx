@@ -8,6 +8,7 @@ import {
   rem,
   Text,
   UnstyledButton,
+  useMantineTheme,
 } from '@mantine/core';
 import {
   getHotkeyHandler,
@@ -28,6 +29,7 @@ import * as classes from './ExplorerTreeNode.module.css';
 import { PolymorphicIcon } from './PolymorphicIcon';
 import type { NodeData } from './types';
 import { useExplorer } from './use-explorer';
+import { getExplorerBuiltinColors } from './utils';
 
 export interface ExplorerTreeNodeProps extends RenderParams {
   node: NodeModel<NodeData>;
@@ -51,6 +53,8 @@ export const ExplorerTreeNode = factory<ExplorerTreeNodeFactory>(
       isDragging,
       isOpen,
       handleRef,
+      containerRef: _,
+      depth,
     } = props;
     const { droppable, data, id } = node;
     const [renamed, setRename] = useState(false);
@@ -61,15 +65,30 @@ export const ExplorerTreeNode = factory<ExplorerTreeNodeFactory>(
     });
     const mergedRef = useMergedRef(useClickOutsideRef, handleRef);
     const [nodeText, setNodeText] = useInputState(node.text);
+    const theme = useMantineTheme();
+    let vars;
+    if (data?.type.includes('publish')) {
+      const { color, hover } = getExplorerBuiltinColors(data.type, { theme });
+      vars = {
+        '--_explorer-node-color': color,
+        '--_explorer-node-hover': hover,
+      };
+    }
 
     const { show } = useContextMenu({
       id: EXPLORER_NODE_ID,
     });
-
     const rename = function () {
       setRename(true);
     };
 
+    // const rowVirtualizer = useVirtualizer({
+    //   count: 10000,
+    //   getScrollElement: () => parentRef.current,
+    //   estimateSize: () => 35,
+    // });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const newPublish = function () {
       treeRef.current?.addNode({
         text: Math.random().toString(36).substring(7),
@@ -150,6 +169,13 @@ export const ExplorerTreeNode = factory<ExplorerTreeNodeFactory>(
         mih={32}
         w="100%"
         title={node.text}
+        style={{
+          paddingInlineStart: rem(10 * depth),
+        }}
+        mod={{
+          id: node.id,
+        }}
+        __vars={vars}
       >
         <ActionIcon
           component="div"
@@ -175,13 +201,7 @@ export const ExplorerTreeNode = factory<ExplorerTreeNodeFactory>(
               />
             </FocusTrap>
           ) : (
-            <Text
-              truncate="end"
-              size="sm"
-              c="black"
-              pos="relative"
-              top={rem(1)}
-            >
+            <Text truncate="end" size="sm" pos="relative" top={rem(1)}>
               {nodeText}
             </Text>
           )}

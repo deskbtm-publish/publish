@@ -22,7 +22,6 @@ export interface DividerPanelProps
   extends Partial<UseResizableProps>,
     PropsWithChildren {
   hideDividerCollapsed?: boolean;
-  dividerWidth?: number;
 }
 
 export interface DividerPanelStore {
@@ -50,7 +49,6 @@ const defaultProps = {
   initial: 278,
   min: 208,
   max: 608,
-  dividerWidth: 16,
   axis: 'x',
 } satisfies DividerPanelProps;
 

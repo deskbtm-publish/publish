@@ -12,13 +12,21 @@ import {
   MultiBackend,
   Tree,
 } from '@publish-kit/react-dnd-treeview';
+import { useVirtualizer } from '@tanstack/react-virtual';
 import type { FC, MouseEvent } from 'react';
-import { useCallback, useImperativeHandle, useRef, useState } from 'react';
+import {
+  useCallback,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { DndProvider } from 'react-dnd';
 import { NativeTypes } from 'react-dnd-html5-backend';
 
 import { EXPLORER_EMPTY_ID } from '../context-menus';
 import { useContextMenu } from '../ContextMenu';
+import { ScrollView } from '../ScrollView';
 import { DragPreview } from './DragPreview';
 import { EXPLORER_STORAGE_KEY } from './ExplorerProvider';
 import * as classes from './ExplorerTree.module.css';
@@ -52,7 +60,6 @@ const getLastId = (treeData: TreeData) => {
 
 export const ExplorerTree: FC<ExplorerTreeProps> = function (props) {
   const { data } = props;
-
   const [tree, setTree] = useState<TreeData>(data);
   const [isCtrlPressing, ctrlHandler] = useDisclosure(false);
   const [isDragging, setIsDragging] = useState(false);
@@ -62,17 +69,23 @@ export const ExplorerTree: FC<ExplorerTreeProps> = function (props) {
   const [allCollapsed, setAllCollapsed] = useLocalStorage<boolean>({
     key: EXPLORER_STORAGE_KEY,
   });
-
   const { show } = useContextMenu({
     id: EXPLORER_EMPTY_ID,
   });
-
   const showMenu = useCallback(
     (e: MouseEvent) => {
       show({ event: e });
     },
     [show],
   );
+  const scrollRef = useRef(null);
+  const count = useMemo(() => getLastId(tree) + 1, [tree]);
+
+  const rowVirtualizer = useVirtualizer({
+    count,
+    getScrollElement: () => scrollRef.current,
+    estimateSize: () => 35,
+  });
 
   useWindowEvent(
     'keydown',
@@ -205,6 +218,7 @@ export const ExplorerTree: FC<ExplorerTreeProps> = function (props) {
     }
   };
 
+  // eslint-disable-next-line react-compiler/react-compiler
   useImperativeHandle(treeRef, () => {
     const expandAll = () => {
       treeViewRef.current?.openAll();
@@ -218,7 +232,7 @@ export const ExplorerTree: FC<ExplorerTreeProps> = function (props) {
 
     const addNode = (node: NodeModel<NodeData>) => {
       const lastId = getLastId(tree) + 1;
-      console.log(node, '-----');
+
       if (!node.parent) {
         node.parent = 0;
       }
@@ -242,42 +256,45 @@ export const ExplorerTree: FC<ExplorerTreeProps> = function (props) {
   }, [allCollapsed, setAllCollapsed, tree]);
 
   return (
-    <DndProvider backend={MultiBackend} options={getDndBackendOptions()}>
-      <Box h="100%" flex={1} onContextMenu={showMenu}>
-        <Tree<NodeData>
-          extraAcceptTypes={[NativeTypes.FILE]}
-          tree={tree}
-          ref={treeViewRef}
-          initialOpen={!allCollapsed}
-          rootId={0}
-          classes={{
-            root: classes.root,
-            listItem: classes.listItem,
-          }}
-          onDrop={handleDrop}
-          onDragStart={handleDragStart}
-          onDragEnd={handleDragEnd}
-          canDrop={handleDroppable}
-          dragPreviewRender={(monitorProps) => {
-            return <DragPreview nodes={selectedNodes} {...monitorProps} />;
-          }}
-          render={(node, options) => {
-            const selected = selectedNodes.some(
-              (selectedNode) => selectedNode.id === node.id,
-            );
+    <ScrollView>
+      <DndProvider backend={MultiBackend} options={getDndBackendOptions()}>
+        <Box h="100%" flex={1} onContextMenu={showMenu}>
+          <Tree<NodeData>
+            extraAcceptTypes={[NativeTypes.FILE]}
+            tree={tree}
+            ref={treeViewRef}
+            listComponent="div"
+            listItemComponent="div"
+            initialOpen={!allCollapsed}
+            rootId={0}
+            classes={{
+              root: classes.root,
+            }}
+            onDrop={handleDrop}
+            onDragStart={handleDragStart}
+            onDragEnd={handleDragEnd}
+            canDrop={handleDroppable}
+            dragPreviewRender={(monitorProps) => {
+              return <DragPreview nodes={selectedNodes} {...monitorProps} />;
+            }}
+            render={(node, options) => {
+              const selected = selectedNodes.some(
+                (selectedNode) => selectedNode.id === node.id,
+              );
 
-            return (
-              <ExplorerTreeNode
-                {...options}
-                node={node}
-                isSelected={selected}
-                isDragging={selected && isDragging}
-                onClick={handlePointerNode}
-              />
-            );
-          }}
-        />
-      </Box>
-    </DndProvider>
+              return (
+                <ExplorerTreeNode
+                  {...options}
+                  node={node}
+                  isSelected={selected}
+                  isDragging={selected && isDragging}
+                  onClick={handlePointerNode}
+                />
+              );
+            }}
+          />
+        </Box>
+      </DndProvider>
+    </ScrollView>
   );
 };

@@ -1,11 +1,16 @@
-import { Box, Flex } from '@mantine/core';
+import { Box, Flex, ScrollArea } from '@mantine/core';
+import { type NodeModel } from '@publish-kit/react-dnd-treeview';
 import { type FC, Suspense } from 'react';
 
+import { ScrollView } from '../ScrollView';
 import { SkeletonList } from '../Skeletons';
 import { ActionsBar } from './ActionsBar';
 import { ExplorerTree } from './ExplorerTree';
+import { type NodeData } from './types';
 
-const initialData = [
+type NewType = NodeModel<NodeData>;
+
+const initialData: NewType[] = [
   {
     id: 1,
     parent: 0,
@@ -21,10 +26,10 @@ const initialData = [
   {
     id: 2,
     parent: 1,
-    droppable: false,
+    droppable: true,
     text: 'File 1-1',
     data: {
-      type: 'file-text',
+      type: 'publish-text',
       size: 0.5,
       birthTime: '1',
       modifiedTime: '1',
@@ -90,6 +95,68 @@ const initialData = [
       modifiedTime: '1',
     },
   },
+  {
+    id: 8,
+    parent: 0,
+    droppable: false,
+    text: 'File 3',
+    data: {
+      type: 'image',
+      size: 0.8,
+      birthTime: '1',
+      modifiedTime: '1',
+    },
+  },
+  {
+    id: 9,
+    parent: 0,
+    droppable: false,
+    text: 'File 3',
+    data: {
+      type: 'image',
+      size: 0.8,
+      birthTime: '1',
+      modifiedTime: '1',
+    },
+  },
+  {
+    id: 10,
+    parent: 0,
+    droppable: false,
+    text: 'File 3',
+    data: {
+      type: 'image',
+      size: 0.8,
+      birthTime: '1',
+      modifiedTime: '1',
+    },
+  },
+  {
+    id: 11,
+    parent: 0,
+    droppable: false,
+    text: 'File 3',
+    data: {
+      type: 'image',
+      size: 0.8,
+      birthTime: '1',
+      modifiedTime: '1',
+    },
+  },
+  ...Array.from({ length: 100 }).map((v, i) => {
+    return {
+      id: i + 12,
+      parent: 0,
+      droppable: false,
+      text: 'File 3',
+      data: {
+        type: 'image',
+        size: 0.8,
+        birthTime: '1',
+        modifiedTime: '1',
+      },
+    } as const;
+  }),
 ];
 
 const mock = new Promise<typeof initialData>((resolve) =>
@@ -112,13 +179,11 @@ const Content: FC<any> = function () {
 export const Explorer: FC<any> = function () {
   return (
     <Box flex={1}>
-      <Flex direction="column" h="100%">
-        <ActionsBar />
+      <ActionsBar />
 
-        <Suspense fallback={<Box>dsadsadas</Box>}>
-          <Content />
-        </Suspense>
-      </Flex>
+      <Suspense fallback={<Box>dsadsadas</Box>}>
+        <Content />
+      </Suspense>
     </Box>
   );
 };
