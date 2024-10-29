@@ -1,7 +1,9 @@
 import { Flex, type FlexProps, rem } from '@mantine/core';
-import { type FC, useMemo } from 'react';
+import { useEventListener } from '@mantine/hooks';
+import { getCurrentWindow } from '@tauri-apps/api/window';
+import { type FC, useCallback, useMemo } from 'react';
 
-export interface DraggableHeaderProps extends FlexProps {}
+export type DraggableHeaderProps = FlexProps;
 
 export const DraggableHeader: FC<DraggableHeaderProps> = function (props) {
   const style = useMemo(
@@ -15,10 +17,18 @@ export const DraggableHeader: FC<DraggableHeaderProps> = function (props) {
       ),
     [props.style],
   );
+  const drag = useCallback((e) => {
+    const appWindow = getCurrentWindow();
+    if (e.buttons === 1) {
+      e.detail === 2 ? appWindow.toggleMaximize() : appWindow.startDragging();
+    }
+  }, []);
+  const ref = useEventListener('mousedown', drag);
 
   return (
     <Flex
-      data-tauri-drag-region
+      // data-tauri-drag-region
+      ref={ref}
       align="center"
       pos="relative"
       justify="space-between"
