@@ -37,28 +37,6 @@
     "os:allow-locale",
     "os:allow-platform",
     "os:allow-os-type",
-    "os:allow-version",
-    {
-      "identifier": "http:allow-fetch",
-      "allow": [
-        {
-          "url": "https://*"
-        },
-        {
-          "url": "ipc://*"
-        }
-      ]
-    },
-    {
-      "identifier": "http:default",
-      "allow": [
-        {
-          "url": "https://*"
-        },
-        {
-          "url": "ipc://*"
-        }
-      ]
-    }
+    "os:allow-version"
   ]
 }

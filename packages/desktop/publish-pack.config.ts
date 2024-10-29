@@ -28,7 +28,7 @@ const config = configure({
   optimization: {
     splitChunks: {
       chunks(chunk) {
-        return !excludeChunks.includes(chunk.name!);
+        return !excludeChunks.includes(chunk.name);
       },
     },
   },
