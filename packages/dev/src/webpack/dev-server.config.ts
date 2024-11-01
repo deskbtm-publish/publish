@@ -10,7 +10,7 @@ export async function createDevServerConfiguration(): Promise<{
 }> {
   const host = process.env.HOST || '0.0.0.0';
   const port = Number(process.env.PORT) || 3001;
-  const serverProtocol = process.env.PROTOCOL ?? 'http';
+  const serverProtocol = process.env.PROTOCOL ?? 'https';
 
   let cert: ServerOptions | undefined;
   if (serverProtocol === 'https') {

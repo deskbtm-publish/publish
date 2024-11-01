@@ -8,8 +8,8 @@ import type { Configuration } from 'webpack';
 import { merge } from 'webpack-merge';
 import { findPackageRoot, findProjectRoot } from 'workspace-tools';
 
-import { createConfiguration } from './base.config';
 import { createDevServerConfiguration } from './dev-server.config';
+import { createConfiguration } from './webpack.config';
 
 export const __rootProject = findProjectRoot(process.cwd()) as string;
 export const __project = findPackageRoot(process.cwd()) as string;

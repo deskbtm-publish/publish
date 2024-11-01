@@ -6,15 +6,15 @@ import '@mantine/core/styles.css';
 import '@mantine/spotlight/styles.css';
 import '@fontsource/inter';
 import 'es-module-shims';
+import './styles/preset.module.css';
+import './styles/dev.css';
 
 import { disableGlobalContextMenu } from '@publish/shared';
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 
 import App from './App.tsx';
-import { reportWebVitals } from './reportWebVitals.ts';
-
-import('./styles/preset.css');
+import { reportWebVitals } from './reportWebVitals';
 
 const rootContainer = document.getElementById('root');
 

@@ -24,19 +24,23 @@ import {
 
 declare global {
   const kReleaseMode: string;
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace NodeJS {
+    interface ProcessEnv {
+      RELEASE: string;
+    }
+  }
 }
 // Exclude source map to reduce Tauri bundle size.
-kMode('release', process.env.RELEASE!, 'true');
+kMode('release', process.env.RELEASE, 'true');
 
 function getStyleLoaders(cssOptions: any) {
   return [
-    kDevMode
-      ? {
-          loader: require.resolve('style-loader'),
-        }
-      : {
-          loader: MiniCssExtractPlugin.loader,
-        },
+    {
+      loader: kDevMode
+        ? require.resolve('style-loader')
+        : MiniCssExtractPlugin.loader,
+    },
     {
       loader: require.resolve('css-loader'),
       options: cssOptions,
@@ -283,6 +287,8 @@ export function createConfiguration({
               modules: false,
               importLoaders: 1,
             }),
+            // See https://github.com/webpack/webpack/issues/6571
+            sideEffects: true,
           },
           {
             test: /\.module\.css$/,
