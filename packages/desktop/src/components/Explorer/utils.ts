@@ -16,8 +16,8 @@ import { type NodeType } from './types';
 // 'yellow',
 // 'orange',
 // 'teal',
-const builtInColors = {
-  'publish-text': 'cyan',
+export const explorerBuiltInColors = {
+  'publish-text': 'blue',
 };
 
 export const getExplorerBuiltinColors = (
@@ -28,7 +28,7 @@ export const getExplorerBuiltinColors = (
     theme: MantineTheme;
   },
 ) => {
-  const c = builtInColors[type];
+  const c = explorerBuiltInColors[type];
   const parsedThemeColor = parseThemeColor({ color: c, theme });
   const colors = theme.variantColorResolver({
     color: c,

@@ -3,7 +3,7 @@
   align-items: center;
 
   @mixin hover {
-    color: var(--_explorer-node-color);
+    /* color: var(--_explorer-node-color); */
     /* TODO: */
     background-color: var(--_explorer-node-hover, var(--mantine-color-gray-0));
   }

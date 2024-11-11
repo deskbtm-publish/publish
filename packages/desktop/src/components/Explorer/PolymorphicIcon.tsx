@@ -1,6 +1,6 @@
 import type { ThemeIconProps } from '@mantine/core';
 import { ThemeIcon } from '@mantine/core';
-import { IconText } from '@publish/shared';
+import { IconText, IconVideo } from '@publish/shared';
 import {
   IconFileText,
   IconFolder,
@@ -11,6 +11,7 @@ import type { FC } from 'react';
 import { useProps } from 'reactgets/hooks/use-props';
 
 import type { NodeType } from './types';
+import { explorerBuiltInColors } from './utils';
 
 export interface PolymorphicIconProps extends ThemeIconProps {
   type?: NodeType;
@@ -19,9 +20,9 @@ export interface PolymorphicIconProps extends ThemeIconProps {
 }
 
 const defaultProps = {
-  size: 21,
-  c: 'gray.7',
-};
+  size: 22,
+  c: 'dark',
+} satisfies PolymorphicIconProps;
 
 export const PolymorphicIcon: FC<PolymorphicIconProps> = (_props) => {
   const {
@@ -32,6 +33,7 @@ export const PolymorphicIcon: FC<PolymorphicIconProps> = (_props) => {
     ...rest
   } = useProps(defaultProps, _props) as Required<PolymorphicIconProps>;
 
+  // const c = explorerBuiltInColors[type] ?? 'dark';
   let icon;
   switch (type) {
     case 'image':
