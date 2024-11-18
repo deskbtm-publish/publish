@@ -4854,7 +4854,7 @@ __metadata:
     "@publish/doc-editor": "workspace:^"
     "@publish/logger": "workspace:^"
     "@tanstack/react-virtual": "npm:^3.10.9"
-    "@tauri-apps/api": "npm:2.1.0"
+    "@tauri-apps/api": "npm:2.1.1"
     "@tauri-apps/plugin-autostart": "npm:2.0.0"
     "@tauri-apps/plugin-http": "npm:2.0.1"
     "@tauri-apps/plugin-os": "npm:2.0.0"
@@ -4917,7 +4917,7 @@ __metadata:
     webpack-bundle-analyzer: "npm:4.10.2"
     webpack-cli: "npm:5.1.4"
     webpack-dev-server: "npm:5.1.0"
-    webpack-manifest-plugin: "npm:5.0.0"
+    webpack-manifest-plugin: "npm:^5.0.0"
     webpack-merge: "npm:6.0.1"
     workbox-webpack-plugin: "npm:7.3.0"
     workspace-tools: "npm:0.38.0"
@@ -6093,10 +6093,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tauri-apps/api@npm:2.1.0":
-  version: 2.1.0
-  resolution: "@tauri-apps/api@npm:2.1.0"
-  checksum: 10/ef2512fde4abdccc5cd90f57a5fda13a1bccbb81273aecf89f956cf7d0094080bc49c2f479b1a50dfe3b06b22e6c55cee29729cb03efa91afc7596cc6b4ef91e
+"@tauri-apps/api@npm:2.1.1":
+  version: 2.1.1
+  resolution: "@tauri-apps/api@npm:2.1.1"
+  checksum: 10/be7276d1e455bb767966d9f99980f48ec3a6b860b24fcd958174bf99142229800d37fac0f1017091e7a65b496b71f4a25df4acb262aea0ee05fe937d6c8758e2
   languageName: node
   linkType: hard
 
@@ -19616,7 +19616,7 @@ __metadata:
   resolution: "tauri-plugin-simu-api@workspace:first_party/tauri-plugin-simu"
   dependencies:
     "@rollup/plugin-typescript": "npm:^11.1.6"
-    "@tauri-apps/api": "npm:2.1.0"
+    "@tauri-apps/api": "npm:2.1.1"
     rollup: "npm:^4.24.2"
     tslib: "npm:^2.8.1"
     typescript: "npm:5.6.3"
@@ -20875,7 +20875,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-manifest-plugin@npm:5.0.0":
+"webpack-manifest-plugin@npm:^5.0.0":
   version: 5.0.0
   resolution: "webpack-manifest-plugin@npm:5.0.0"
   dependencies:

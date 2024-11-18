@@ -143,20 +143,20 @@ const initialData: NewType[] = [
       modifiedTime: '1',
     },
   },
-  ...Array.from({ length: 100 }).map((v, i) => {
-    return {
-      id: i + 12,
-      parent: 0,
-      droppable: false,
-      text: 'File 3',
-      data: {
-        type: 'image',
-        size: 0.8,
-        birthTime: '1',
-        modifiedTime: '1',
-      },
-    } as const;
-  }),
+  // ...Array.from({ length: 100 }).map((v, i) => {
+  //   return {
+  //     id: i + 12,
+  //     parent: 0,
+  //     droppable: false,
+  //     text: 'File 3',
+  //     data: {
+  //       type: 'image',
+  //       size: 0.8,
+  //       birthTime: '1',
+  //       modifiedTime: '1',
+  //     },
+  //   } as const;
+  // }),
 ];
 
 const mock = new Promise<typeof initialData>((resolve) =>

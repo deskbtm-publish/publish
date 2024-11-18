@@ -6,12 +6,12 @@ import { useTreeContext } from './hooks';
 import { PlaceholderContext } from './providers';
 import type { NodeModel } from './types';
 
-type Props = {
+interface Props {
   depth: number;
   listCount: number;
   dropTargetId: NodeModel['id'];
   index?: number;
-};
+}
 
 export const Placeholder = <T,>(props: Props): ReactElement | null => {
   const {

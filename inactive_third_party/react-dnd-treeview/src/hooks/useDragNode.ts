@@ -31,7 +31,7 @@ const handleTouchStart = (e: TouchEvent) => register(e);
 
 export const useDragNode = <T>(
   item: NodeModel<T>,
-  ref: React.RefObject<HTMLElement>,
+  ref: React.RefObject<HTMLElement | null>,
 ): [
   boolean,
   DragElementWrapper<DragSourceOptions>,

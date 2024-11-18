@@ -13,6 +13,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import { type Configuration, DefinePlugin, ProgressPlugin } from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import { WebpackManifestPlugin } from 'webpack-manifest-plugin';
 
 import { getEnvironment } from './env';
 import {
@@ -36,11 +37,11 @@ kMode('release', process.env.RELEASE, 'true');
 
 function getStyleLoaders(cssOptions: any) {
   return [
-    {
-      loader: kDevMode
-        ? require.resolve('style-loader')
-        : MiniCssExtractPlugin.loader,
-    },
+    kDevMode
+      ? require.resolve('style-loader')
+      : {
+          loader: MiniCssExtractPlugin.loader,
+        },
     {
       loader: require.resolve('css-loader'),
       options: cssOptions,
@@ -345,6 +346,23 @@ export function createConfiguration({
           to: path.resolve(__project, 'dist'),
         },
       ],
+    }),
+    new WebpackManifestPlugin({
+      fileName: 'asset-manifest.json',
+      generate: (seed, files, entrypoints) => {
+        const manifestFiles = files.reduce((manifest, file) => {
+          manifest[file.name] = file.path;
+          return manifest;
+        }, seed);
+        const entrypointFiles = entrypoints.main.filter(
+          (fileName) => !fileName.endsWith('.map'),
+        );
+
+        return {
+          files: manifestFiles,
+          entrypoints: entrypointFiles,
+        };
+      },
     }),
   ].filter(Boolean) satisfies Configuration['plugins'];
 

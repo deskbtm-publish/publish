@@ -44,7 +44,7 @@ export type ExplorerTreeNodeFactory = Factory<{
 }>;
 
 export const ExplorerTreeNode = factory<ExplorerTreeNodeFactory>(
-  (props, _ref) => {
+  (props, ref) => {
     const {
       node,
       onClick,
@@ -170,7 +170,7 @@ export const ExplorerTreeNode = factory<ExplorerTreeNodeFactory>(
         w="100%"
         title={node.text}
         style={{
-          paddingInlineStart: rem(10 * depth),
+          paddingInlineStart: rem(8 * (depth + 1)),
         }}
         mod={{
           id: node.id,

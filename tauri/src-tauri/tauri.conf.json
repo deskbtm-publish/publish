@@ -5,7 +5,7 @@
   "identifier": "com.deskbtm.publish",
   "build": {
     "frontendDist": "../../packages/desktop/dist",
-    "devUrl": "http://localhost:3000",
+    "devUrl": "https://localhost:3000",
     "beforeDevCommand": "yarn workspace @publish/desktop dev",
     "beforeBuildCommand": "yarn workspace @publish/desktop build"
   },

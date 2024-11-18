@@ -12,7 +12,7 @@ export interface NodeModel<T = unknown> {
 }
 
 export type DragItem<T> = NodeModel<T> & {
-  ref: RefObject<HTMLElement>;
+  ref: RefObject<HTMLElement | null>;
 };
 
 export interface NativeDragItem {
@@ -26,7 +26,7 @@ export interface RenderParams {
   isDropTarget: boolean;
   draggable: boolean;
   hasChild: boolean;
-  containerRef: RefObject<HTMLElement>;
+  containerRef: RefObject<HTMLElement | null>;
   handleRef: RefObject<any>;
   onToggle(): void;
 }
@@ -34,6 +34,7 @@ export interface RenderParams {
 export type NodeRender<T> = (
   node: NodeModel<T>,
   params: RenderParams,
+  index: number,
 ) => ReactElement;
 
 export type ClickHandler = (data: NodeModel) => void;

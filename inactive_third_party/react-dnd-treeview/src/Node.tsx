@@ -18,6 +18,7 @@ import { hasChildNodes, isDroppable } from './utils';
 interface Props {
   id: NodeModel['id'];
   depth: number;
+  index: number;
 }
 
 export const Node = <T,>(props: Props): ReactElement | null => {
@@ -81,7 +82,7 @@ export const Node = <T,>(props: Props): ReactElement | null => {
 
   return (
     <Component ref={containerRef} className={className} role="listitem">
-      {treeContext.render(item, params)}
+      {treeContext.render(item, params, props.index)}
       {enableAnimateExpand && params.hasChild && (
         <AnimateHeight isVisible={open}>
           <Container parentId={props.id} depth={props.depth + 1} />

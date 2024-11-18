@@ -46,24 +46,32 @@ export const Container = <T,>(props: Props): ReactElement => {
   ) {
     drop(ref);
   }
-
+  // const count = view.length;
+  // const virtualizer = useVirtualizer({
+  //   count,
+  //   getScrollElement: () => ref.current,
+  //   estimateSize: () => 35,
+  // });
   const className = useContainerClassName(props.parentId, isOver);
   const rootProps = treeContext.rootProps || {};
   const Component = treeContext.listComponent;
+  // const items = virtualizer.getVirtualItems();
 
   return (
     <Component ref={ref} role="list" {...rootProps} className={className}>
-      {view.map((node, index) => (
-        <React.Fragment key={node.id}>
-          <Placeholder
-            depth={props.depth}
-            listCount={view.length}
-            dropTargetId={props.parentId}
-            index={index}
-          />
-          <Node id={node.id} depth={props.depth} />
-        </React.Fragment>
-      ))}
+      {view.map((node, index) => {
+        return (
+          <React.Fragment key={node.id}>
+            <Placeholder
+              depth={props.depth}
+              listCount={view.length}
+              dropTargetId={props.parentId}
+              index={index}
+            />
+            <Node index={index} id={node.id} depth={props.depth} />
+          </React.Fragment>
+        );
+      })}
       <Placeholder
         depth={props.depth}
         listCount={view.length}

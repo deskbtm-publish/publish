@@ -79,13 +79,16 @@ export const ExplorerTree: FC<ExplorerTreeProps> = function (props) {
     [show],
   );
   const scrollRef = useRef(null);
-  const count = useMemo(() => getLastId(tree) + 1, [tree]);
+  // const count1 = useMemo(() => getLastId(tree) + 1, [tree]);
 
-  const rowVirtualizer = useVirtualizer({
-    count,
-    getScrollElement: () => scrollRef.current,
-    estimateSize: () => 35,
-  });
+  const count = tree.length;
+
+  // const virtualizer = useVirtualizer({
+  //   count,
+  //   getScrollElement: () => scrollRef.current,
+  //   estimateSize: () => 35,
+  // });
+  // const items = virtualizer.getVirtualItems();
 
   useWindowEvent(
     'keydown',
@@ -218,7 +221,6 @@ export const ExplorerTree: FC<ExplorerTreeProps> = function (props) {
     }
   };
 
-  // eslint-disable-next-line react-compiler/react-compiler
   useImperativeHandle(treeRef, () => {
     const expandAll = () => {
       treeViewRef.current?.openAll();
@@ -256,45 +258,48 @@ export const ExplorerTree: FC<ExplorerTreeProps> = function (props) {
   }, [allCollapsed, setAllCollapsed, tree]);
 
   return (
-    <ScrollView>
-      <DndProvider backend={MultiBackend} options={getDndBackendOptions()}>
-        <Box h="100%" flex={1} onContextMenu={showMenu}>
-          <Tree<NodeData>
-            extraAcceptTypes={[NativeTypes.FILE]}
-            tree={tree}
-            ref={treeViewRef}
-            listComponent="div"
-            listItemComponent="div"
-            initialOpen={!allCollapsed}
-            rootId={0}
-            classes={{
-              root: classes.root,
-            }}
-            onDrop={handleDrop}
-            onDragStart={handleDragStart}
-            onDragEnd={handleDragEnd}
-            canDrop={handleDroppable}
-            dragPreviewRender={(monitorProps) => {
-              return <DragPreview nodes={selectedNodes} {...monitorProps} />;
-            }}
-            render={(node, options) => {
-              const selected = selectedNodes.some(
-                (selectedNode) => selectedNode.id === node.id,
-              );
+    <DndProvider backend={MultiBackend} options={getDndBackendOptions()}>
+      <ScrollView ref={scrollRef} h="100%" flex={1} onContextMenu={showMenu}>
+        <Tree<NodeData>
+          extraAcceptTypes={[NativeTypes.FILE]}
+          tree={tree}
+          ref={treeViewRef}
+          listComponent="div"
+          listItemComponent="div"
+          initialOpen={!allCollapsed}
+          rootId={0}
+          classes={{
+            root: classes.root,
+          }}
+          onDrop={handleDrop}
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
+          canDrop={handleDroppable}
+          dragPreviewRender={(monitorProps) => {
+            return <DragPreview nodes={selectedNodes} {...monitorProps} />;
+          }}
+          render={(node, options, index) => {
+            // const item = items[index];
+            const selected = selectedNodes.some(
+              (selectedNode) => selectedNode.id === node.id,
+            );
 
-              return (
-                <ExplorerTreeNode
-                  {...options}
-                  node={node}
-                  isSelected={selected}
-                  isDragging={selected && isDragging}
-                  onClick={handlePointerNode}
-                />
-              );
-            }}
-          />
-        </Box>
-      </DndProvider>
-    </ScrollView>
+            // console.log(item, index, item?.index);
+            return (
+              <ExplorerTreeNode
+                // key={item.key}
+                // data-index={item.index}
+                // ref={virtualizer.measureElement}
+                {...options}
+                node={node}
+                isSelected={selected}
+                isDragging={selected && isDragging}
+                onClick={handlePointerNode}
+              />
+            );
+          }}
+        />
+      </ScrollView>
+    </DndProvider>
   );
 };

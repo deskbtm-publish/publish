@@ -18,7 +18,7 @@ const defaultProps: Partial<ScrollViewProps> = {
   type: 'hover',
 };
 
-export const ScrollView: FC<ScrollViewProps> = factory(function (_props, ref) {
+export const ScrollView = factory<ScrollViewFactory>(function (_props, ref) {
   const props = useProps(defaultProps, _props);
 
   return (
