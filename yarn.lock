@@ -1866,12 +1866,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/share@npm:6.0.0":
-  version: 6.0.0
-  resolution: "@capacitor/share@npm:6.0.0"
+"@capacitor/share@npm:6.0.3":
+  version: 6.0.3
+  resolution: "@capacitor/share@npm:6.0.3"
   peerDependencies:
     "@capacitor/core": ^6.0.0
-  checksum: 10/3f9dabd0d4e2448b494cab6bcfb0f3f2c1300edc9bb8f013810ef2106d22a881fdc31128c2095c5fce41c1fd03b9811da117655a701296b80b8e4814c75de9fe
+  checksum: 10/f31aaf17db505912d06e9aaef70cdf41fc1e8ccc438755e87316f1ae0f95f38fe7a70bc10ffc1c87224457594a80e7b6d849771eb950c6bc1dd0a0613f3323d3
   languageName: node
   linkType: hard
 
@@ -4981,7 +4981,7 @@ __metadata:
     "@capacitor/keyboard": "npm:6.0.0"
     "@capacitor/local-notifications": "npm:6.0.0"
     "@capacitor/push-notifications": "npm:6.0.0"
-    "@capacitor/share": "npm:6.0.0"
+    "@capacitor/share": "npm:6.0.3"
     "@capacitor/splash-screen": "npm:6.0.0"
     "@capacitor/status-bar": "npm:6.0.0"
     "@ionic/react": "npm:8.1.1"
