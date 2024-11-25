@@ -1737,12 +1737,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/android@npm:6.0.0":
-  version: 6.0.0
-  resolution: "@capacitor/android@npm:6.0.0"
+"@capacitor/android@npm:6.2.0":
+  version: 6.2.0
+  resolution: "@capacitor/android@npm:6.2.0"
   peerDependencies:
-    "@capacitor/core": ^6.0.0
-  checksum: 10/568046fd0f006b5c62e1b525cc8589407a65daa5178c421cbc13fec2a080abb25e502206c8eacfda2362b89371b1157e6f87f0eace11dae7adc845435ab0de75
+    "@capacitor/core": ^6.2.0
+  checksum: 10/ec1c6030433a46880ce0e284d0a4108a2a5cab43b9cf813911ff9d666a172591c9eb856ed85dac0ef0fb01e52c9348cd4bb4b144fe9c81147f6dc0d73e6cfe11
   languageName: node
   linkType: hard
 
@@ -17215,7 +17215,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "publish@workspace:."
   dependencies:
-    "@capacitor/android": "npm:6.0.0"
+    "@capacitor/android": "npm:6.2.0"
     "@capacitor/app": "npm:6.0.0"
     "@capacitor/cli": "npm:6.0.0"
     "@capacitor/core": "npm:6.0.0"
