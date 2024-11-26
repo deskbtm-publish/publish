@@ -23,6 +23,7 @@ export class LocalStore {
       }
       return vv;
     } catch (error) {
+      console.error(error);
       return {} as T;
     }
   }

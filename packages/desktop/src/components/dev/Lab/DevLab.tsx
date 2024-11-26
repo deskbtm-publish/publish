@@ -3,7 +3,7 @@ import { useLocalStorage } from '@mantine/hooks';
 import { IconFlask } from '@tabler/icons-react';
 import { type FC } from 'react';
 
-import { DevExperiment } from './DevExperiment';
+import { ExperimentDashboard } from './ExperimentDashboard';
 
 export interface DevLabProps {}
 
@@ -25,7 +25,7 @@ export const DevLab: FC<DevLabProps> = function () {
           onClose={() => setOpen(false)}
           size="100%"
         >
-          <DevExperiment />
+          <ExperimentDashboard />
         </Drawer>
 
         <ActionIcon

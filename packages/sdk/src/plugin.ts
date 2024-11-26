@@ -1,5 +1,5 @@
 import type { OptionKinds } from './components';
-import type { Manifest } from './register.interface';
+import type { Manifest } from './manifest.interface';
 
 export interface Preferences {
   hideDefaults?: OptionKinds[];

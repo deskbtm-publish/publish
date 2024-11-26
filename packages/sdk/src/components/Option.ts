@@ -60,7 +60,7 @@ export interface ImageOptions extends CommonOptions {
    * The urls can be displayed by <img />.
    * e.g. url string, blob, base64 string...
    */
-  urls?: Array<string | Blob | unknown>;
+  urls?: (string | Blob | unknown)[];
 }
 
 export interface SelectOptions extends CommonOptions {

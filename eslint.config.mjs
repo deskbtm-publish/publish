@@ -50,6 +50,7 @@ export default tsEslint.config(
       '@typescript-eslint/no-var-requires': 'off',
       'no-unused-vars': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-extraneous-class': 'off',
       'no-unused-expressions': 'off',
       '@typescript-eslint/no-unused-expressions': 'off',
       '@typescript-eslint/no-unused-vars': [

@@ -11,7 +11,7 @@ import { TauriOSProvider, TauriWindowProvider } from 'tauri-reactgets';
 import { v4 } from 'uuid';
 
 import { GlobalContextMenus } from './components/context-menus';
-import { DevLab } from './components/Experiment/DevLab';
+import { DevLab } from './components/dev';
 import { PublishSpotlight } from './components/Spotlight';
 import { router } from './router';
 import { resolver, theme } from './theme';

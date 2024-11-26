@@ -7,13 +7,13 @@ import { type FC, Suspense } from 'react';
 
 import { DeviceInfo } from '../DeviceInfo';
 
-export interface DevExperimentProps {}
+export interface ExperimentDashboardProps {}
 
 const logger = Logger.create({
   transports: [createTransport(IndexedDBTransport)],
 });
 
-export const DevExperiment: FC<DevExperimentProps> = function () {
+export const ExperimentDashboard: FC<ExperimentDashboardProps> = function () {
   return (
     <>
       <Suspense>
@@ -130,4 +130,4 @@ export const DevExperiment: FC<DevExperimentProps> = function () {
   );
 };
 
-DevExperiment.displayName = '@publish/desktop/DevExperiment';
+ExperimentDashboard.displayName = '@publish/desktop/ExperimentDashboard';

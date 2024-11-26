@@ -4,7 +4,7 @@ export const create = async function () {
   await p.group({
     projectName: () =>
       p.text({
-        message: 'Project name?',
+        message: 'Project name ?',
       }),
     language: () =>
       p.select({

@@ -45,7 +45,7 @@
     "typescript": "5.6.3"
   },
   "dependencies": {
-    "@clack/prompts": "0.7.0",
+    "@clack/prompts": "0.8.1",
     "commander": "12.1.0",
     "libnpmpack": "8.0.0"
   }

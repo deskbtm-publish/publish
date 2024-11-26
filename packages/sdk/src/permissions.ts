@@ -49,4 +49,4 @@ export const permissions = [
   'fs:write',
 ] as const;
 
-export type PermissionsManifest = Array<(typeof permissions)[number]>;
+export type PermissionsManifest = (typeof permissions)[number][];
