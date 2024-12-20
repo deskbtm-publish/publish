@@ -30,7 +30,7 @@ export abstract class Transport {
   }
 
   getOptions() {
-    return this.options!;
+    return this.options;
   }
 
   abstract handle(content: TransportContent): Promise<void> | void;
@@ -44,7 +44,10 @@ export abstract class Transport {
   abstract grind(namespace: string): Promise<void> | void;
 }
 
-export type TransportSynth = { transport: Clz; options?: TransportOptions };
+export interface TransportSynth {
+  transport: Clz;
+  options?: TransportOptions;
+}
 
 export function createTransport<T extends Clz>(
   transport: T,

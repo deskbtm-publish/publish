@@ -15,9 +15,9 @@
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
   },
   "devDependencies": {
-    "debug": "4.3.7",
-    "idb": "8.0.0",
-    "typescript": "5.6.3"
+    "debug": "4.4.0",
+    "idb": "8.0.1",
+    "typescript": "5.7.2"
   },
   "peerDependencies": {
     "debug": "4.3.4",

@@ -61,7 +61,7 @@ export class Logger {
       },
       options,
     );
-    this._debug = debug(this._options.namespace);
+    this._debug = debug(this._options.namespace as string);
 
     for (const { transport, options } of this._options.transports) {
       const opt: TransportOptions = Object.assign({}, this._options, options);
@@ -141,7 +141,7 @@ export class Logger {
 
   public grind(namespace?: string) {
     for (const transport of this._transports) {
-      transport.grind(namespace ?? this._options.namespace!);
+      transport.grind(namespace ?? (this._options.namespace as string));
     }
   }
 

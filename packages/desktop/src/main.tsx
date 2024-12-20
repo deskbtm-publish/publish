@@ -1,4 +1,5 @@
 // Init the kDevMode env etc.
+
 import '@deskbtm/gadgets/env';
 // Must be imported before mantine styles, otherwise conflict with mantine styles.
 import 'jotai-devtools/styles.css';
@@ -10,6 +11,16 @@ import './styles/preset.module.css';
 import './styles/dev.css';
 
 import { disableGlobalContextMenu } from '@publish/shared';
+/// #if DEV
+import { scan } from 'react-scan';
+if (typeof window !== 'undefined') {
+  scan({
+    enabled: true,
+    log: true,
+    animationSpeed: 'off',
+  });
+}
+/// #endif
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 

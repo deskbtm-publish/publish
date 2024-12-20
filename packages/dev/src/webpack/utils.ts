@@ -21,6 +21,7 @@ export const require = createRequire(import.meta.url);
 
 export interface InternalConfiguration {
   reactCompiler?: boolean;
+  conditionalCompile?: boolean | Record<string, any>;
 }
 
 export interface PublishPackConfiguration

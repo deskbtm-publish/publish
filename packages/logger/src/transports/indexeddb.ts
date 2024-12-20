@@ -7,6 +7,7 @@ import { WorkerScript } from '../utils';
 export interface IndexedDBTransportOptions extends TransportOptions {}
 
 export class IndexedDBTransport extends Transport {
+  // eslint-disable-next-line @typescript-eslint/no-useless-constructor
   constructor(options: IndexedDBTransportOptions) {
     super(options);
   }

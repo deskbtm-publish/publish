@@ -32,8 +32,16 @@ declare global {
     }
   }
 }
+
 // Exclude source map to reduce Tauri bundle size.
 kMode('release', process.env.RELEASE, 'true');
+
+const conditionalCompileOptions = {
+  PROD: kProdMode,
+  DEV: kDevMode,
+  RELEASE: kReleaseMode,
+  env: process.env,
+};
 
 function getStyleLoaders(cssOptions: any) {
   return [
@@ -84,6 +92,11 @@ const swcOptions = {
   },
 };
 
+const defaultConfig = {
+  reactCompiler: true,
+  conditionalCompile: true,
+} satisfies InternalConfiguration;
+
 /**
  * buildMode is used for bundle
  * envMode is used for environment, eg buildMode=production to minify the code
@@ -91,9 +104,14 @@ const swcOptions = {
  *
  * @returns
  */
-export function createConfiguration({
-  reactCompiler,
-}: InternalConfiguration): Configuration {
+export function createConfiguration(
+  options: InternalConfiguration,
+): Configuration {
+  const { reactCompiler, conditionalCompile } = Object.assign(
+    {},
+    defaultConfig,
+    options,
+  );
   const kEnvMode = process.env.NODE_ENV as Configuration['mode'];
   const publicPath = process.env.PUBLIC_PATH ?? '/';
 
@@ -120,6 +138,14 @@ export function createConfiguration({
     globalObject: 'globalThis',
     publicPath,
   } satisfies Configuration['output'];
+  let conditionalLoader: Record<string, any> | null = null;
+
+  if (conditionalCompile) {
+    conditionalLoader = {
+      loader: 'ifdef-loader',
+      options: Object.assign({}, conditionalCompileOptions, conditionalCompile),
+    };
+  }
 
   const optimization = {
     minimize: kProdMode,
@@ -222,6 +248,7 @@ export function createConfiguration({
             loader: require.resolve('swc-loader'),
             options: swcOptions,
           },
+          conditionalLoader,
         ],
       },
       {
@@ -241,6 +268,7 @@ export function createConfiguration({
               ],
             },
           },
+          conditionalLoader,
         ].filter(Boolean),
       },
 

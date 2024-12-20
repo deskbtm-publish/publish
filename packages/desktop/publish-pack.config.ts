@@ -1,5 +1,4 @@
-import '@deskbtm/gadgets';
-
+import '@deskbtm/gadgets/env';
 import path from 'node:path';
 
 import { __project, configure, HTML } from '@publish/dev';

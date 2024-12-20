@@ -30,12 +30,13 @@ export const WindowsNativeTitleBar: FC<WindowsNativeTitleBarProps> =
       null,
     );
 
+    // Support windows snap overlay. https://www.microsoft.com/en-us/windows/tips/snap
     const showSnapOverlay = () => invoke('show_snap_overlay');
 
     const updateWindowMaximized = useCallback(async () => {
       const r = await current?.isMaximized();
       setWindowMaximized(r);
-    }, []);
+    }, [current]);
 
     let timer: NodeJS.Timeout;
 
