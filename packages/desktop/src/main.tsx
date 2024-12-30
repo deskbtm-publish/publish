@@ -38,7 +38,7 @@ if (rootContainer) {
     </React.StrictMode>,
   );
 }
-
+// Disable right click on the page.
 disableGlobalContextMenu();
 
 reportWebVitals(!kProdMode ? console.debug : undefined);

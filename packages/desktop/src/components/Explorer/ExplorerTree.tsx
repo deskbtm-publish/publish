@@ -1,4 +1,3 @@
-import { Box } from '@mantine/core';
 import {
   getHotkeyHandler,
   useDisclosure,
@@ -12,15 +11,8 @@ import {
   MultiBackend,
   Tree,
 } from '@publish-kit/react-dnd-treeview';
-import { useVirtualizer } from '@tanstack/react-virtual';
 import type { FC, MouseEvent } from 'react';
-import {
-  useCallback,
-  useImperativeHandle,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import { useCallback, useImperativeHandle, useRef, useState } from 'react';
 import { DndProvider } from 'react-dnd';
 import { NativeTypes } from 'react-dnd-html5-backend';
 
@@ -81,7 +73,7 @@ export const ExplorerTree: FC<ExplorerTreeProps> = function (props) {
   const scrollRef = useRef(null);
   // const count1 = useMemo(() => getLastId(tree) + 1, [tree]);
 
-  const count = tree.length;
+  // const count = tree.length;
 
   // const virtualizer = useVirtualizer({
   //   count,
@@ -278,7 +270,7 @@ export const ExplorerTree: FC<ExplorerTreeProps> = function (props) {
           dragPreviewRender={(monitorProps) => {
             return <DragPreview nodes={selectedNodes} {...monitorProps} />;
           }}
-          render={(node, options, index) => {
+          render={(node, options) => {
             // const item = items[index];
             const selected = selectedNodes.some(
               (selectedNode) => selectedNode.id === node.id,
