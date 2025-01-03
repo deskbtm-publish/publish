@@ -29,6 +29,6 @@
     "@types/react-router-dom": "5.3.3",
     "@vitejs/plugin-react-swc": "3.7.2",
     "cross-env": "7.0.3",
-    "vite": "6.0.6"
+    "vite": "6.0.7"
   }
 }
