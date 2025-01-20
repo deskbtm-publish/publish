@@ -47,12 +47,12 @@
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
   },
   "devDependencies": {
-    "typescript": "5.7.2"
+    "typescript": "5.7.3"
   },
   "dependencies": {
     "@juggle/resize-observer": "3.4.0",
     "dnd-multi-backend": "8.1.2",
-    "framer-motion": "11.15.0",
+    "framer-motion": "11.17.0",
     "react-dnd-html5-backend": "16.0.1",
     "react-dnd-touch-backend": "16.0.1",
     "react-use-measure": "2.1.1"

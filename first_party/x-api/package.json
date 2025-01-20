@@ -14,12 +14,12 @@
   "dependencies": {
     "debug": "4.4.0",
     "lodash.merge": "4.6.2",
-    "uuid": "11.0.3"
+    "uuid": "11.0.5"
   },
   "devDependencies": {
     "@types/lodash.merge": "4.6.9",
     "@types/uuid": "10.0.0",
-    "typescript": "5.7.2",
+    "typescript": "5.7.3",
     "vitest": "2.1.8"
   }
 }

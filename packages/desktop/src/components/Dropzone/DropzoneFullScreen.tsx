@@ -77,7 +77,7 @@ export const DropzoneFullScreen = factory<DropzoneFullScreenFactory>(
       style,
       styles,
       unstyled,
-      vars,
+      vars: _,
       active,
       onDrop,
       onReject,

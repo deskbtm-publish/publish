@@ -1,6 +1,5 @@
 import type { Factory, ScrollAreaProps } from '@mantine/core';
 import { factory, ScrollArea } from '@mantine/core';
-import type { FC } from 'react';
 import { useProps } from 'reactgets';
 
 import * as classes from './ScrollView.module.css';
@@ -9,7 +8,7 @@ export interface ScrollViewProps extends ScrollAreaProps {}
 
 export type ScrollViewFactory = Factory<{
   props: ScrollViewProps;
-  ref: HTMLElement;
+  ref: HTMLDivElement;
 }>;
 
 const defaultProps: Partial<ScrollViewProps> = {
@@ -20,6 +19,7 @@ const defaultProps: Partial<ScrollViewProps> = {
 
 export const ScrollView = factory<ScrollViewFactory>(function (_props, ref) {
   const props = useProps(defaultProps, _props);
+  const { classNames, ...rests } = props;
 
   return (
     <ScrollArea.Autosize
@@ -28,8 +28,9 @@ export const ScrollView = factory<ScrollViewFactory>(function (_props, ref) {
         root: classes.root,
         scrollbar: classes.scrollbar,
         thumb: classes.scrollbarThumb,
+        ...classNames,
       }}
-      {...props}
+      {...rests}
     />
   );
 });

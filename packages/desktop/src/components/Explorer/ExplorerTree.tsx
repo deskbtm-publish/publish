@@ -251,7 +251,13 @@ export const ExplorerTree: FC<ExplorerTreeProps> = function (props) {
 
   return (
     <DndProvider backend={MultiBackend} options={getDndBackendOptions()}>
-      <ScrollView ref={scrollRef} h="100%" flex={1} onContextMenu={showMenu}>
+      <ScrollView
+        mod={{ react: 'ExplorerTree' }}
+        ref={scrollRef}
+        h="100%"
+        flex={1}
+        onContextMenu={showMenu}
+      >
         <Tree<NodeData>
           extraAcceptTypes={[NativeTypes.FILE]}
           tree={tree}
@@ -279,6 +285,7 @@ export const ExplorerTree: FC<ExplorerTreeProps> = function (props) {
             // console.log(item, index, item?.index);
             return (
               <ExplorerTreeNode
+                key={node.id}
                 // key={item.key}
                 // data-index={item.index}
                 // ref={virtualizer.measureElement}

@@ -143,20 +143,20 @@ const initialData: NewType[] = [
       modifiedTime: '1',
     },
   },
-  // ...Array.from({ length: 100 }).map((v, i) => {
-  //   return {
-  //     id: i + 12,
-  //     parent: 0,
-  //     droppable: false,
-  //     text: 'File 3',
-  //     data: {
-  //       type: 'image',
-  //       size: 0.8,
-  //       birthTime: '1',
-  //       modifiedTime: '1',
-  //     },
-  //   } as const;
-  // }),
+  ...Array.from({ length: 100 }).map((v, i) => {
+    return {
+      id: i + 12,
+      parent: 0,
+      droppable: false,
+      text: 'File ' + i,
+      data: {
+        type: 'image',
+        size: 0.8,
+        birthTime: '1',
+        modifiedTime: '1',
+      },
+    } as const;
+  }),
 ];
 
 const mock = new Promise<typeof initialData>((resolve) =>
@@ -178,11 +178,18 @@ const Content: FC<any> = function () {
 
 export const Explorer: FC<any> = function () {
   return (
-    <Box flex={1}>
+    <Box
+      mod={{ react: 'Explorer' }}
+      flex={1}
+      h="100%"
+      style={{ display: 'flex', flexDirection: 'column' }}
+    >
       <ActionsBar />
 
       <Suspense fallback={<Box>dsadsadas</Box>}>
-        <Content />
+        <div style={{ flex: 1, overflow: 'hidden' }}>
+          <Content />
+        </div>
       </Suspense>
     </Box>
   );

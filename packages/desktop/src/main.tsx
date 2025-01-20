@@ -6,7 +6,6 @@ import 'jotai-devtools/styles.css';
 import '@mantine/core/styles.css';
 import '@mantine/spotlight/styles.css';
 import '@fontsource/inter';
-import 'es-module-shims';
 import './styles/preset.module.css';
 import './styles/dev.css';
 
@@ -15,7 +14,7 @@ import { disableGlobalContextMenu } from '@publish/shared';
 import { scan } from 'react-scan';
 if (typeof window !== 'undefined') {
   scan({
-    enabled: true,
+    enabled: false,
     log: true,
     animationSpeed: 'off',
   });
