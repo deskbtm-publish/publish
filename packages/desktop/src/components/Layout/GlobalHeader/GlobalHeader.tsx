@@ -5,8 +5,8 @@ import { useCallback } from 'react';
 import { IF } from 'reactgets';
 import { useTauriOS } from 'tauri-reactgets';
 
-import { WindowsNativeTitleBar } from '../../NativeTitleBar';
 import { useDividerPanel } from '../../DividerPanel';
+import { WindowsNativeTitleBar } from '../../NativeTitleBar';
 import { DraggableHeader } from '../DraggableHeader';
 
 export interface GlobalHeaderProps {}
@@ -14,7 +14,6 @@ export interface GlobalHeaderProps {}
 export const GlobalHeader: FC<GlobalHeaderProps> = () => {
   const panel = useDividerPanel();
   const os = useTauriOS();
-  console.log('---------------------');
 
   const handleExpand = useCallback(() => {
     panel?.expand();

@@ -7,6 +7,7 @@ export interface DeviceInfoProps {}
 
 export const DeviceInfo: FC<DeviceInfoProps> = function () {
   const info = useDevice();
+  // const info = use(devicePromise);
 
   return (
     <Card padding="lg" shadow="sm" radius="md" h={200} withBorder>

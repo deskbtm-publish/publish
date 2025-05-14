@@ -7,7 +7,6 @@ import {
   Input,
   rem,
   Text,
-  UnstyledButton,
   useMantineTheme,
 } from '@mantine/core';
 import {
@@ -44,7 +43,7 @@ export type ExplorerTreeNodeFactory = Factory<{
 }>;
 
 export const ExplorerTreeNode = factory<ExplorerTreeNodeFactory>(
-  (props, ref) => {
+  (props, _ref) => {
     const {
       node,
       onClick,
@@ -161,13 +160,12 @@ export const ExplorerTreeNode = factory<ExplorerTreeNodeFactory>(
     );
 
     return (
-      <UnstyledButton
+      <Box
         className={classes.node}
         ref={mergedRef}
         onContextMenu={showMenu}
         onClick={handleClick}
         mih={32}
-        w="100%"
         title={node.text}
         style={{
           paddingInlineStart: rem(8 * (depth + 1)),
@@ -206,7 +204,7 @@ export const ExplorerTreeNode = factory<ExplorerTreeNodeFactory>(
             </Text>
           )}
         </Box>
-      </UnstyledButton>
+      </Box>
     );
   },
 );

@@ -252,6 +252,7 @@ export const ExplorerTree: FC<ExplorerTreeProps> = function (props) {
   return (
     <DndProvider backend={MultiBackend} options={getDndBackendOptions()}>
       <ScrollView
+        type="always"
         mod={{ react: 'ExplorerTree' }}
         ref={scrollRef}
         h="100%"

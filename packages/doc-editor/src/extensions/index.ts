@@ -5,5 +5,5 @@ export * from './file-input';
 export * from './image';
 export * from './image';
 export * from './slash-commands';
-export * from './toc';
 export * from './task-list';
+export * from './toc';

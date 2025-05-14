@@ -51,10 +51,10 @@
   },
   "dependencies": {
     "@juggle/resize-observer": "3.4.0",
-    "dnd-multi-backend": "8.1.2",
-    "framer-motion": "11.17.0",
+    "dnd-multi-backend": "9.0.0",
+    "framer-motion": "12.4.7",
     "react-dnd-html5-backend": "16.0.1",
     "react-dnd-touch-backend": "16.0.1",
-    "react-use-measure": "2.1.1"
+    "react-use-measure": "2.1.7"
   }
 }

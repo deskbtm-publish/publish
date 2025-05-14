@@ -1,9 +1,7 @@
-import { Box, Flex, ScrollArea } from '@mantine/core';
+import { Box } from '@mantine/core';
 import { type NodeModel } from '@publish-kit/react-dnd-treeview';
 import { type FC, Suspense } from 'react';
 
-import { ScrollView } from '../ScrollView';
-import { SkeletonList } from '../Skeletons';
 import { ActionsBar } from './ActionsBar';
 import { ExplorerTree } from './ExplorerTree';
 import { type NodeData } from './types';
@@ -186,10 +184,8 @@ export const Explorer: FC<any> = function () {
     >
       <ActionsBar />
 
-      <Suspense fallback={<Box>dsadsadas</Box>}>
-        <div style={{ flex: 1, overflow: 'hidden' }}>
-          <Content />
-        </div>
+      <Suspense>
+        <Content />
       </Suspense>
     </Box>
   );
